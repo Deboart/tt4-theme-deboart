@@ -1,0 +1,580 @@
+/* ============================================
+   PARADIGM SECTION - ТЁМНЫЙ МЕТАЛЛИК
+   ============================================ */
+
+.deboart-paradigm-section {
+    background: #E8E3D5 !important; /* Тёплый папирусный */
+    color: #1A1A1A;
+    position: relative;
+}
+
+/* Текстура папируса */
+.deboart-paradigm-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cGF0aCBkPSJNMjAgMTBoMTB2MTBIMjB6TTUwIDQwaDEwdjEwSDUweiIgZmlsbD0icmdiYSgwLDAsMCwwLjAyKSIvPjxwYXRoIGQ9Ik0xMCAzMGwxMC0xME0zMCAxMGwxMC01IE03MCA1MGwxMC0xMCIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=');
+    background-repeat: repeat;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Лёгкая тень по краям для объёма */
+.deboart-paradigm-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.05);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Контейнер - восстановлен из старого */
+.deboart-paradigm-section .wp-block-group__inner-container {
+    max-width: 1200px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+/* Заголовок */
+.paradigm-heading {
+    font-family: var(--wp--preset--font-family--spectral, serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--wp--preset--color--primary-white, #F8F8F8);
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Контейнер диаграммы */
+.paradigm-diagram-container {
+    position: relative;
+    min-height: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.paradigm-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    position: relative;
+    margin: 0 auto;
+    max-width: 1000px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Основные блоки (ФОРМА и СОДЕРЖАНИЕ) */
+.paradigm-block {
+    background: rgba(220, 220, 220, 0.95) !important; /* Светлый фон как в старом */
+    border: 2px solid rgba(26, 95, 180, 0.3);
+    border-radius: 0;
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    min-width: 280px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.paradigm-block:hover {
+    border-color: var(--wp--preset--color--accent-blue, #1A5FB4);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+}
+
+.paradigm-block .paradigm-icon {
+    font-size: 3.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.paradigm-block .paradigm-label {
+    font-family: var(--wp--preset--font-family--spectral, serif);
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    color: #121212 !important; /* Тёмный текст */
+}
+
+.paradigm-block .paradigm-description {
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: 0.85rem;
+    color: rgba(18, 18, 18, 0.7);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Сетки форм и содержаний */
+.paradigm-forms-grid,
+.paradigm-content-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto !important;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+/* Карточки элементов - восстановлены из старого */
+.paradigm-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1.5rem 1rem !important;
+    background: var(--wp--preset--color--primary-white, #F8F8F8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 0 !important;
+    cursor: pointer !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    min-height: 120px !important;
+    text-align: center !important;
+    position: relative;
+    overflow: hidden;
+    animation: itemAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+/* Анимация появления */
+@keyframes itemAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Задержки для форм */
+.paradigm-forms-grid .paradigm-item:nth-child(1) { animation-delay: 0.1s; }
+.paradigm-forms-grid .paradigm-item:nth-child(2) { animation-delay: 0.2s; }
+.paradigm-forms-grid .paradigm-item:nth-child(3) { animation-delay: 0.3s; }
+.paradigm-forms-grid .paradigm-item:nth-child(4) { animation-delay: 0.4s; }
+.paradigm-forms-grid .paradigm-item:nth-child(5) { animation-delay: 0.5s; }
+.paradigm-forms-grid .paradigm-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* Задержки для содержаний */
+.paradigm-content-grid .paradigm-item:nth-child(1) { animation-delay: 0.7s; }
+.paradigm-content-grid .paradigm-item:nth-child(2) { animation-delay: 0.8s; }
+.paradigm-content-grid .paradigm-item:nth-child(3) { animation-delay: 0.9s; }
+.paradigm-content-grid .paradigm-item:nth-child(4) { animation-delay: 1.0s; }
+.paradigm-content-grid .paradigm-item:nth-child(5) { animation-delay: 1.1s; }
+.paradigm-content-grid .paradigm-item:nth-child(6) { animation-delay: 1.2s; }
+
+/* Эффект подсветки */
+.paradigm-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(26, 95, 180, 0.1),
+        transparent);
+    transition: left 0.6s ease;
+}
+
+.paradigm-item:hover::before {
+    left: 100%;
+}
+
+.paradigm-item:hover {
+    transform: translateY(-8px) !important;
+    border-color: var(--wp--preset--color--accent-blue, #1A5FB4) !important;
+    border-width: 2px !important;
+    box-shadow: 
+        0 16px 32px rgba(26, 95, 180, 0.25),
+        0 0 30px rgba(26, 95, 180, 0.15),
+        inset 0 0 20px rgba(26, 95, 180, 0.05) !important;
+    z-index: 10;
+}
+
+.paradigm-item-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.paradigm-item:hover .paradigm-item-icon {
+    transform: scale(1.3) rotate(5deg);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.paradigm-item-label {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 0.95rem;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #121212 !important; /* Тёмный текст */
+}
+
+/* Стрелки */
+.paradigm-arrow {
+    font-size: 3rem;
+    color: var(--wp--preset--color--accent-blue, #1A5FB4);
+    animation: arrowPulse 2s infinite;
+    z-index: 2;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 0 10px rgba(26, 95, 180, 0.7);
+    position: relative;
+}
+
+@keyframes arrowPulse {
+    0%, 100% { 
+        opacity: 0.8; 
+        transform: scale(1) translateY(0);
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.15) translateY(5px);
+    }
+}
+
+/* Подсказка (tooltip) */
+.paradigm-tooltip {
+    position: absolute;
+    background: var(--wp--preset--color--primary-white);
+    border: 2px solid #121212;
+    padding: 1.75rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    min-width: 300px;
+    max-width: 350px;
+    pointer-events: none;
+}
+
+.paradigm-tooltip.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.tooltip-title {
+    font-family: var(--wp--preset--font-family--spectral, serif);
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: #121212;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tooltip-description {
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(18, 18, 18, 0.8);
+    margin-bottom: 1.25rem;
+}
+
+.tooltip-examples {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tooltip-badge {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    background: #121212;
+    color: var(--wp--preset--color--primary-white);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #121212;
+}
+
+.tooltip-badge:hover {
+    background: var(--wp--preset--color--accent-blue, #1A5FB4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 95, 180, 0.3);
+}
+
+/* Текст после диаграммы - восстановлен из старого */
+.deboart-paradigm-section .paradigm-description {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace) !important;
+    font-size: 1rem !important;
+    color:#1A1A1A;
+    text-align: center !important;
+    margin-top: 3rem !important;
+    line-height: 1.5 !important;
+    max-width: 600px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.deboart-paradigm-section .paradigm-description small {
+    font-size: 0.85rem;
+    opacity: 0.5;
+    display: block;
+    margin-top: 0.75rem;
+    font-weight: 300;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .paradigm-forms-grid,
+    .paradigm-content-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .deboart-paradigm-section {
+        padding: 40px 0;
+    }
+    
+    .deboart-paradigm-section .wp-block-group__inner-container {
+        padding: 0 16px !important;
+    }
+    
+    .paradigm-heading {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .paradigm-diagram {
+        padding: 1rem 0.5rem;
+        gap: 1.5rem;
+    }
+    
+ .paradigm-forms-grid,
+    .paradigm-content-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* ДВЕ колонки */
+        gap: 12px;
+        padding: 0;
+        margin: 15px auto !important;
+        max-width: 100%;
+    }
+    
+    .paradigm-item {
+        padding: 1rem 0.5rem !important;
+        min-height: 100px !important;
+    }
+    
+    .paradigm-item-icon {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .paradigm-item-label {
+        font-size: 0.8rem !important;
+    }
+    
+    .paradigm-block {
+        padding: 1.5rem 2rem !important;
+        min-width: auto !important;
+    }
+    
+    .paradigm-block .paradigm-icon {
+        font-size: 2.5rem !important;
+    }
+    
+    .paradigm-block .paradigm-label {
+        font-size: 1.3rem !important;
+    }
+    
+    .paradigm-arrow {
+        font-size: 2rem !important;
+        height: 40px !important;
+    }
+    
+    .deboart-paradigm-section .paradigm-description {
+        margin-top: 2rem !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .paradigm-forms-grid,
+    .paradigm-content-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* ДВЕ колонки */
+        gap: 8px;
+        padding: 0 4px;
+        max-width: 100%;
+    }
+    
+   .paradigm-item {
+        padding: 0.75rem 0.25rem !important;
+        min-height: 80px !important;
+    }
+    
+    .paradigm-item-icon {
+        font-size: 1.5rem !important;
+    }
+    
+    .paradigm-item-label {
+        font-size: 0.7rem !important;
+    }
+    
+    .paradigm-block {
+        padding: 1rem 1.25rem !important;
+    }
+    
+    .paradigm-block .paradigm-icon {
+        font-size: 2rem !important;
+    }
+    
+    .paradigm-block .paradigm-label {
+        font-size: 1rem !important;
+    }
+    
+    .paradigm-arrow {
+        font-size: 1.5rem !important;
+        height: 30px !important;
+    }
+}
+
+@media (max-width: 360px) {
+   .paradigm-forms-grid,
+    .paradigm-content-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* Всё ещё две */
+        gap: 6px;
+    }
+    
+    .paradigm-item {
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        min-height: 60px !important;
+        padding: 0.5rem 1rem !important;
+    }
+    
+    .paradigm-item-icon {
+        margin-bottom: 0 !important;
+        margin-right: 0.75rem !important;
+        font-size: 1.3rem !important;
+    }
+    
+    .paradigm-item-label {
+        font-size: 0.7rem !important;
+        text-align: left !important;
+    }
+}
+
+    /* Если реально не влезает, тогда одна */
+    @media (max-width: 320px) {
+        .paradigm-forms-grid,
+        .paradigm-content-grid {
+            grid-template-columns: 1fr !important;
+            max-width: 240px;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+    }
+
+/* Общие исправления */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+
+
+
+
+/* ============================================
+   PARADIGM SECTION - ГЛАДКАЯ НЕРЖАВЕЙКА
+   Без текстуры, только градиент и иней
+   ============================================ */
+
+.deboart-paradigm-section {
+    color: #1A1A1A;
+    position: relative;
+    padding: 80px 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Гладкий металлический градиент */
+.deboart-paradigm-section {
+    background: linear-gradient(165deg, #C5C8CC 0%, #B0B3B8 40%, #9DA0A5 100%) !important;
+}
+
+/* Инеевый отлив (лёгкая голубизна) - только на десктопах */
+@media (min-width: 769px) {
+    .deboart-paradigm-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(ellipse at 70% 30%, rgba(200, 220, 240, 0.15) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 1;
+    }
+}
+
+/* Лёгкое затемнение по краям */
+.deboart-paradigm-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Контент поверх */
+.deboart-paradigm-section .wp-block-group__inner-container {
+    position: relative;
+    z-index: 2;
+}

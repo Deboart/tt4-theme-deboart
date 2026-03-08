@@ -1,0 +1,92 @@
+/* archive-works.css - только общие стили архива */
+
+.archive-works {
+    padding: 80px 24px;
+    background-color: var(--wp--preset--color--primary-dark-blue);
+    color: var(--wp--preset--color--primary-white);
+}
+
+.archive-header {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.archive-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: var(--wp--preset--color--primary-white);
+}
+
+.archive-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Статистика в шапке */
+.archive-stats {
+    margin-top: 16px;
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.archive-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stats-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.stats-sort {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .archive-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .archive-works {
+        padding: 48px 16px;
+    }
+    
+    .archive-title {
+        font-size: 28px;
+    }
+    
+    .archive-description {
+        font-size: 14px;
+        gap: 6px;
+    }
+    
+    .stats-count {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+/* Общие стили для состояния загрузки */
+.works-grid.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}

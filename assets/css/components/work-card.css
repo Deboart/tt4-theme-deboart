@@ -1,0 +1,391 @@
+/* ============================================
+   DEBOART WORK CARD v4.5
+   Поддержка WordPress SVG-эмодзи
+============================================ */
+
+.work-card {
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.work-card:hover {
+    border-color: var(--wp--preset--color--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.work-card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ИЗОБРАЖЕНИЕ */
+.work-card-image {
+    position: relative;
+    padding-top: 75%;
+    overflow: hidden;
+    background: #1a1a1a;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.work-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.work-card:hover .work-card-image img {
+    opacity: 0.8;
+}
+
+/* ПЛЕЙСХОЛДЕР */
+.work-card-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.placeholder-grid span {
+    background: rgba(26, 95, 180, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.placeholder-label {
+    position: relative;
+    z-index: 2;
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 4px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* КОНТЕНТ  */
+.work-card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ЗАГОЛОВОК */
+.work-card-title {
+    font-family: var(--wp--preset--font-family--spectral);
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 4px 0;
+    color: var(--wp--preset--color--primary-white);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+
+/* БЕЙДЖИ */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 11px;
+    border: 1px solid transparent;
+}
+
+/* Эмодзи внутри бейджа - WordPress преобразует их в img.emoji */
+.badge .emoji,
+.badge img.emoji {
+    display: inline-block !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 !important;
+    vertical-align: middle !important;
+}
+
+/* ГОД */
+.work-card-year {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Эмодзи года */
+.work-card-year .emoji,
+.work-card-year img.emoji {
+    display: inline-block !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 !important;
+    vertical-align: middle !important;
+}
+
+/* Иконки в бейджах - поддержка WordPress эмодзи */
+.badge-icon {
+    font-size: 16px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+}
+
+/* Специально для WordPress SVG-эмодзи */
+.badge-icon img.emoji,
+.badge-icon .emoji {
+    display: inline-block !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 !important;
+    vertical-align: middle !important;
+    pointer-events: none;
+}
+
+.badge-text {
+    line-height: 1;
+}
+
+.badge-count {
+    font-size: 9px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 4px;
+    border-radius: 2px;
+    margin-left: 4px;
+}
+
+/* Форма */
+.badge-form {
+    background: rgba(26, 95, 180, 0.1);
+    border-color: rgba(26, 95, 180, 0.2);
+    color: #8cb4ff;
+}
+
+.work-card:hover .badge-form {
+    background: rgba(26, 95, 180, 0.2);
+    border-color: var(--wp--preset--color--accent-blue);
+}
+
+/* Содержание */
+.badge-feeling {
+    background: rgba(255, 159, 74, 0.1);
+    border-color: rgba(255, 159, 74, 0.2);
+    color: #ffb07c;
+}
+
+.work-card:hover .badge-feeling {
+    background: rgba(255, 159, 74, 0.2);
+    border-color: #ff9f4a;
+}
+
+/* Клиент */
+.badge-client {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.work-card:hover .badge-client {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ЭКСЦЕРПТ */
+.work-card-excerpt {
+    font-family: var(--wp--preset--font-family--manrope);
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 8px 0;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ФУТЕР КАРТОЧКИ (кнопка + год) */
+.work-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* КНОПКА */
+.work-card-actions {
+    flex: 1;
+}
+
+.work-card-link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--wp--preset--color--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 0;
+    transition: all 0.2s ease;
+}
+
+.work-card:hover .work-card-link-button {
+    color: #7ab0ff;
+    transform: translateX(-2px);
+}
+
+.link-arrow {
+    transition: transform 0.2s ease;
+    font-size: 14px;
+}
+
+.work-card:hover .link-arrow {
+    transform: translateX(4px);
+}
+
+/* ГОД (приглушённый, справа) */
+.work-card-year {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    transition: all 0.2s ease;
+}
+
+.work-card:hover .work-card-year {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Поддержка эмодзи в годе */
+.year-icon img.emoji,
+.year-icon .emoji {
+    display: inline-block !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 !important;
+    vertical-align: middle !important;
+}
+
+.year-icon {
+    font-size: 16px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+}
+
+.year-value {
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 768px) {
+    .work-card-content {
+        padding: 16px;
+    }
+    
+    .work-card-title {
+        font-size: 16px;
+    }
+    
+    .badge {
+        padding: 3px 8px;
+        font-size: 10px;
+    }
+    
+    .badge-icon {
+        font-size: 14px;
+        min-width: 18px;
+    }
+    
+    /* Адаптация SVG-эмодзи на мобильных */
+    .badge-icon img.emoji,
+    .badge-icon .emoji,
+    .year-icon img.emoji,
+    .year-icon .emoji {
+        width: 14px !important;
+        height: 14px !important;
+    }
+    
+    .work-card-footer {
+        padding-top: 8px;
+    }
+    
+    .work-card-link-button {
+        font-size: 11px;
+        gap: 6px;
+    }
+    
+    .work-card-year {
+        padding: 3px 8px;
+        font-size: 12px;
+        gap: 4px;
+    }
+    
+    .year-icon {
+        font-size: 14px;
+    }
+}
+
+/* Принудительное отображение WordPress эмодзи */
+.emoji,
+img.emoji {
+    display: inline !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    height: 1em !important;
+    width: 1em !important;
+    margin: 0 .07em !important;
+    vertical-align: -0.1em !important;
+    background: none !important;
+    padding: 0 !important;
+}

@@ -1,0 +1,455 @@
+/* ============================================
+   AJAX ФИЛЬТРАЦИЯ РАБОТ - ЕДИНЫЙ ФАЙЛ
+   ============================================ */
+
+/* ============================================
+   AJAX ФИЛЬТРАЦИЯ РАБОТ - ЕДИНЫЙ ФАЙЛ
+   ============================================ */
+
+/* Контейнер фильтров */
+.archive-filters-container {
+    background: var(--wp--preset--color--primary-black);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 24px;
+    margin-bottom: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.works-filter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+/* ===== ВЕРХНЯЯ СТРОКА: поиск + основные фильтры в один ряд ===== */
+.filters-top-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+}
+
+/* Поиск - фиксированная ширина */
+.filter-search-group {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+/* ... остальные стили фильтров ... */
+
+.search-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.filter-search {
+    width: 100%;
+    padding: 8px 30px 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--wp--preset--color--primary-white);
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 13px;
+    line-height: 1.4;
+    box-sizing: border-box;
+}
+
+.filter-search:focus {
+    outline: none;
+    border-color: var(--wp--preset--color--accent-blue);
+}
+
+.filter-search::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.search-clear {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-clear:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Основные фильтры (Форма + Содержание) - занимают оставшееся место */
+.main-filters {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.main-filter-group {
+    width: 100%;
+}
+
+.main-filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.main-filter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.3;
+}
+
+.main-filter-button:hover {
+    border-color: var(--wp--preset--color--accent-blue);
+    background: rgba(26, 95, 180, 0.1);
+}
+
+.main-filter-button input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.main-filter-button:has(input:checked) {
+    background: rgba(26, 95, 180, 0.2);
+    border-color: var(--wp--preset--color--accent-blue);
+    color: white;
+}
+
+.main-filter-icon {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ===== АККОРДЕОН ===== */
+.filters-accordion {
+    width: 100%;
+    margin: 8px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.accordion-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.accordion-toggle:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--wp--preset--color--primary-white);
+}
+
+.toggle-icon {
+    font-size: 14px;
+}
+
+.toggle-text {
+    flex: 1;
+    text-align: left;
+}
+
+.toggle-arrow {
+    transition: transform 0.3s ease;
+    font-size: 12px;
+}
+
+.accordion-toggle.active .toggle-arrow {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin-top: 0;
+}
+
+.accordion-content.active {
+    max-height: 500px;
+    margin-top: 16px;
+}
+
+/* Дополнительные фильтры */
+.additional-filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.additional-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.additional-filter-label {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 11px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--wp--preset--color--primary-white);
+    font-family: var(--wp--preset--font-family--inter, sans-serif);
+    font-size: 13px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--wp--preset--color--accent-blue);
+}
+
+/* ===== НИЖНЯЯ СТРОКА ===== */
+.filters-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+}
+
+.filter-stats {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#filtered-count {
+    color: var(--wp--preset--color--accent-blue);
+}
+
+.filter-reset {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-reset:hover {
+    border-color: var(--wp--preset--color--accent-blue);
+    color: white;
+}
+
+.reset-icon {
+    font-size: 14px;
+}
+
+/* ===== СОСТОЯНИЯ ===== */
+.works-results-container.loading {
+    position: relative;
+    min-height: 200px;
+}
+
+.works-results-container.loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+.works-results-container.loading::after {
+    content: 'Загрузка...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    z-index: 11;
+}
+
+.no-works-found {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    margin: 40px 0;
+}
+
+.no-results-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.no-works-found h3 {
+    font-family: var(--wp--preset--font-family--spectral, serif);
+    font-size: 24px;
+    color: var(--wp--preset--color--primary-white);
+    margin-bottom: 12px;
+}
+
+.no-works-found p {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 24px;
+}
+
+.no-results-reset {
+    background: transparent;
+    border: 1px solid var(--wp--preset--color--accent-blue);
+    color: var(--wp--preset--color--accent-blue);
+    padding: 8px 24px;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.no-results-reset:hover {
+    background: var(--wp--preset--color--accent-blue);
+    color: white;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 1024px) {
+    .filters-top-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .filter-search-group {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .archive-filters-container {
+        padding: 16px;
+    }
+    
+    .additional-filters-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filters-bottom-row {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-filter-button {
+        flex: 1;
+        min-width: calc(50% - 3px);
+        justify-content: center;
+    }
+}
+
+/* Стили для выпадающих списков */
+.filter-select {
+    width: 100%;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--wp--preset--color--primary-white);
+    font-family: var(--wp--preset--font-family--inter, sans-serif);
+    font-size: 13px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--wp--preset--color--accent-blue);
+}
+
+/* Стили для опций в выпадающем списке */
+.filter-select option {
+    background: var(--wp--preset--color--primary-black);
+    color: var(--wp--preset--color--primary-white);
+    padding: 8px;
+}
+
+/* Для Firefox */
+.filter-select option:hover,
+.filter-select option:focus,
+.filter-select option:checked {
+    background: var(--wp--preset--color--accent-blue);
+    color: white;
+}
+
+/* Для Chrome/Safari */
+.filter-select:focus option:checked {
+    background: var(--wp--preset--color--accent-blue);
+    color: white;
+}
+
+.main-filter-label {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.main-filter-label .filter-icon {
+    margin-right: 4px;
+    opacity: 0.7;
+}

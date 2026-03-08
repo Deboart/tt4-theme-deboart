@@ -1,0 +1,149 @@
+/* ============================================
+   DEBOART WORK GRID v2.0
+   Оптимизированная сетка
+============================================ */
+
+.works-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+    animation: fadeInUp 0.5s ease;
+}
+
+@media (min-width: 600px) {
+    .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .works-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .works-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+    }
+}
+
+/* ЗАГОЛОВОК СЕТКИ */
+.works-grid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.works-stats {
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.stats-count {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 16px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ПАГИНАЦИЯ */
+.works-pagination {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.works-pagination .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    height: 42px;
+    padding: 0 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.works-pagination .page-numbers.current {
+    background: var(--wp--preset--color--accent-blue);
+    color: white;
+    border-color: transparent;
+}
+
+.works-pagination .page-numbers:hover:not(.current) {
+    background: rgba(26, 95, 180, 0.2);
+    border-color: var(--wp--preset--color--accent-blue);
+    transform: translateY(-2px);
+}
+
+/* ПУСТОЕ СОСТОЯНИЕ */
+.no-works-found {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    margin: 40px 0;
+}
+
+.no-results-icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+    opacity: 0.6;
+}
+
+.no-works-found h3 {
+    font-family: var(--wp--preset--font-family--spectral);
+    font-size: 28px;
+    margin-bottom: 12px;
+    color: var(--wp--preset--color--primary-white);
+}
+
+.no-works-found p {
+    font-family: var(--wp--preset--font-family--manrope);
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 24px;
+}
+
+.no-results-reset {
+    background: rgba(26, 95, 180, 0.2);
+    border: 1px solid var(--wp--preset--color--accent-blue);
+    color: var(--wp--preset--color--accent-blue);
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.no-results-reset:hover {
+    background: var(--wp--preset--color--accent-blue);
+    color: white;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

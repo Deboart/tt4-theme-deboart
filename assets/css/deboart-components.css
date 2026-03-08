@@ -1,0 +1,21 @@
+/* Deboart Components Master File */
+
+/* deboart-components.css */
+@import url('components/header.css');
+@import url('components/footer.css');
+
+/*
+@import url('components/hero-section.css');
+@import url('components/method-section.css');
+@import url('components/paradigm-diagram.css');
+@import url('components/research-cards.css');
+@import url('components/lab-section.css');
+@import url('components/contact-section.css');*/
+
+/* Компоненты архива работ */
+@import url('components/work-grid.css');      /* Сетка работ */
+@import url('components/work-card.css');     /* Карточки работ */
+
+
+/* Компоненты работы */
+@import url('components/related-works.css');     /* сетка связанных работ */

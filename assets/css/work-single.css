@@ -1,0 +1,619 @@
+/* ============================================
+   PAGES: Страница работы (single-work)
+   Лабораторный стиль v2.0 — строго и компактно
+   ============================================ */
+
+.single-work {
+    background: var(--wp--preset--color--primary-black, #0a0a0a);
+    min-height: 100vh;
+}
+
+/* Основной контейнер — забираем стили из archive-work */
+.single-work .deboart-work-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+/* --- Верхняя навигация (оставляем как есть, она ок) --- */
+.work-top-nav {
+    /* ... стили остаются без изменений ... */
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    background: var(--wp--preset--color--primary-black, #0a0a0a);
+}
+.work-top-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; }
+.work-top-nav a:hover { color: var(--wp--preset--color--accent-blue, #1a5fb4); }
+.nav-icon { margin-right: 4px; }
+.nav-actions a span:first-child { margin-right: 4px; }
+
+/* --- Хлебные крошки --- */
+.work-breadcrumbs {
+    margin-bottom: 30px;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.work-breadcrumbs a { color: rgba(255,255,255,0.6); text-decoration: none; }
+.work-breadcrumbs a:hover { color: var(--wp--preset--color--accent-blue, #1a5fb4); }
+.work-breadcrumbs .separator { margin: 0 6px; color: rgba(255,255,255,0.2); }
+.work-breadcrumbs .current { color: rgba(255,255,255,0.8); }
+
+/* --- ШАПКА РАБОТЫ (новая, строгая) --- */
+.work-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.work-title {
+    font-family: var(--wp--preset--font-family--spectral, serif); /* Оставим Spectral для заголовка, он строгий */
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--wp--preset--color--primary-white, #f8f8f8);
+    margin: 0 0 12px 0;
+    letter-spacing: -0.02em;
+}
+
+/* Контейнер для мета-данных в шапке */
+.work-meta-top {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 8px; /* Отступ перед заголовком */
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+}
+
+.work-year .text, .work-status {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 4px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    line-height: 1;
+}
+.work-year .icon { margin-right: 4px; opacity: 0.7; }
+.work-status.private { border-color: rgba(26, 95, 180, 0.3); color: var(--wp--preset--color--accent-blue, #1a5fb4); }
+
+/* --- ТАКСОНОМИИ ФОРМЫ И СОДЕРЖАНИЯ (компактно) --- */
+.work-taxonomies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin: 20px 0 0 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.taxonomy-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.taxonomy-label {
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.5px;
+}
+
+.taxonomy-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.taxonomy-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 11px;
+    line-height: 1;
+    transition: all 0.2s ease;
+}
+.taxonomy-item:hover {
+    border-color: var(--wp--preset--color--accent-blue, #1a5fb4);
+    background: rgba(26, 95, 180, 0.1);
+}
+.taxonomy-icon { font-size: 12px; opacity: 0.9; }
+.taxonomy-name { text-transform: none; } /* Убираем uppercase для названий */
+
+/* --- ОСНОВНОЙ КОНТЕНТ --- */
+.work-featured-image {
+    margin: 40px 0;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.work-featured-image img { display: block; width: 100%; height: auto; }
+
+.work-content {
+    font-family: var(--wp--preset--font-family--inter, sans-serif);
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 60px;
+}
+.work-content p { margin-bottom: 1.5rem; }
+
+/* --- СЕКЦИИ (общий стиль) --- */
+.work-section {
+    margin-bottom: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-header {
+    margin-bottom: 24px;
+}
+.section-title {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.5);
+    margin: 0 0 4px 0;
+}
+.section-title .section-icon {
+    margin-right: 6px;
+    font-size: 16px;
+    opacity: 0.8;
+}
+.section-subtitle {
+    font-family: var(--wp--preset--font-family--inter, sans-serif);
+    font-size: 15px;
+    color: rgba(255,255,255,0.4);
+}
+.section-subtitle .file-count,
+.section-subtitle .image-count {
+    color: var(--wp--preset--color--accent-blue, #1a5fb4);
+    margin-left: 4px;
+}
+
+/* Контент секций */
+.section-content {
+    font-family: var(--wp--preset--font-family--inter, sans-serif);
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+}
+.section-content p { margin-bottom: 1rem; }
+
+/* Концепт, Лаборатория, Текст */
+.concept-text, .laboratory-text, .description-text, .ai-opinion-text {
+    background: rgba(0,0,0,0.3);
+    border-left: 2px solid var(--wp--preset--color--accent-blue, #1a5fb4);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    font-size: 17px;
+}
+
+.key-quote {
+    margin-top: 24px;
+    padding: 20px 24px;
+    background: rgba(26, 95, 180, 0.05);
+    border: 1px solid rgba(26, 95, 180, 0.2);
+    display: flex;
+    gap: 16px;
+}
+.quote-icon { font-size: 24px; opacity: 0.8; }
+.quote-text {
+    margin: 0;
+    font-family: var(--wp--preset--font-family--spectral, serif);
+    font-size: 20px;
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+}
+
+/* --- ТЕХНИЧЕСКИЕ ДЕТАЛИ (как карточки в архиве) --- */
+.technical-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+.technical-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+}
+.technical-icon {
+    font-size: 20px;
+    opacity: 0.6;
+}
+.technical-content {
+    flex: 1;
+}
+.technical-label {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 11px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin: 0 0 8px 0;
+    letter-spacing: 0.5px;
+}
+.technical-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.technical-tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+}
+.technical-tag:hover {
+    border-color: var(--wp--preset--color--accent-blue, #1a5fb4);
+}
+.technical-value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    margin: 0;
+}
+
+/* --- НАВИГАЦИЯ ПО РАБОТАМ --- */
+.work-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 60px 0 40px;
+    padding: 24px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 14px;
+}
+.work-navigation a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.work-navigation a:hover { color: var(--wp--preset--color--accent-blue, #1a5fb4); }
+.nav-all a { color: rgba(255,255,255,0.5); }
+
+/* --- КОММЕНТАРИИ --- */
+.work-comments {
+    margin-top: 60px;
+}
+.comments-title {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--wp--preset--color--primary-white, #f8f8f8);
+    margin-bottom: 30px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+/* Стилизация стандартной формы комментариев WP */
+.comment-respond { margin-top: 30px; }
+.comment-reply-title { font-family: var(--wp--preset--font-family--jetbrains-mono, monospace); font-size: 16px; color: rgba(255,255,255,0.8);}
+.comment-form input, .comment-form textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 0;
+    color: white;
+    font-family: var(--wp--preset--font-family--inter, sans-serif);
+}
+.comment-form input:focus, .comment-form textarea:focus { border-bottom-color: var(--wp--preset--color--accent-blue, #1a5fb4); outline: none;}
+.comment-form .form-submit .submit {
+    background: transparent;
+    border: 1px solid var(--wp--preset--color--accent-blue, #1a5fb4);
+    color: var(--wp--preset--color--accent-blue, #1a5fb4);
+    padding: 8px 24px;
+    cursor: pointer;
+    width: auto;
+}
+.comment-list { list-style: none; padding: 0; }
+.comment { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 20px 0; }
+
+/* --- ГАЛЕРЕЯ, ВИДЕО, АУДИО, ДОКУМЕНТЫ (оставляем их стилизацию на твой вкус,
+    но приводим заголовки к общему виду .section-title, .section-subtitle) --- */
+/* Я не меняю здесь стили для .gallery-grid и т.д., чтобы не сломать их,
+    но ты можешь применить к ним те же принципы: убрать скругления, сделать границы тоньше */
+	
+	
+	/* ============================================
+   МЕДИА-СЕКЦИИ (изображения и видео)
+   Ограничение размеров для лабораторного стиля
+   ============================================ */
+
+/* --- ГАЛЕРЕЯ --- */
+.work-gallery .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.work-gallery .gallery-item {
+    position: relative;
+    aspect-ratio: 1 / 1; /* Квадратные ячейки */
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.work-gallery .gallery-item-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.work-gallery .gallery-image-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.work-gallery .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Обрезаем по квадрату */
+    transition: transform 0.3s ease;
+}
+
+.work-gallery .gallery-image:hover {
+    transform: scale(1.05);
+}
+
+/* Затемнение при ховере */
+.work-gallery .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.work-gallery .gallery-image-link:hover .image-overlay {
+    opacity: 1;
+}
+
+.work-gallery .zoom-icon {
+    font-size: 24px;
+    color: white;
+}
+
+/* Подпись под изображением */
+.work-gallery .image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.8);
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 10px;
+    padding: 4px 8px;
+    transform: translateY(100%);
+    transition: transform 0.2s ease;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.work-gallery .gallery-item:hover .image-caption {
+    transform: translateY(0);
+}
+
+/* --- ВИДЕО --- */
+.work-video .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.work-video .video-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.work-video .video-item-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.work-video .video-player {
+    width: 100%;
+    max-height: 180px; /* Ограничиваем высоту видео */
+    background: black;
+    object-fit: cover; /* Чтобы не искажалось */
+}
+
+/* Для видео-плейсхолдеров (если не видео файл) */
+.work-video .video-placeholder {
+    aspect-ratio: 16 / 9;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.work-video .file-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.work-video .file-link:hover {
+    color: var(--wp--preset--color--accent-blue, #1a5fb4);
+}
+
+.work-video .file-icon {
+    font-size: 32px;
+}
+
+.work-video .file-name {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 12px;
+    text-align: center;
+    max-width: 200px;
+}
+
+.work-video .video-caption {
+    padding: 8px 12px;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- АУДИО --- */
+.work-audio .audio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+}
+
+.work-audio .audio-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.work-audio .audio-player-wrapper {
+    padding: 12px;
+}
+
+.work-audio .audio-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.work-audio .audio-icon {
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+.work-audio .audio-title {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.work-audio .audio-player {
+    width: 100%;
+    height: 32px;
+}
+
+.work-audio .audio-player::-webkit-media-controls-panel {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.work-audio .audio-caption {
+    margin-top: 8px;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    padding-top: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- ДОКУМЕНТЫ --- */
+.work-documents .documents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 8px;
+}
+
+.work-documents .document-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.work-documents .document-item:hover {
+    border-color: var(--wp--preset--color--accent-blue, #1a5fb4);
+    background: rgba(26, 95, 180, 0.1);
+}
+
+.work-documents .document-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.work-documents .document-icon {
+    font-size: 24px;
+    opacity: 0.8;
+    min-width: 32px;
+    text-align: center;
+}
+
+.work-documents .document-info {
+    flex: 1;
+    min-width: 0; /* Для обрезания длинных названий */
+}
+
+.work-documents .document-title {
+    display: block;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.work-documents .document-meta {
+    display: block;
+    font-family: var(--wp--preset--font-family--inter, sans-serif);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.work-documents .download-icon {
+    font-size: 16px;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+.work-documents .document-link:hover .download-icon {
+    opacity: 1;
+}
+
+/* --- ДЛЯ ОСНОВНОГО ИЗОБРАЖЕНИЯ (featured image) --- */
+.work-featured-image {
+    margin: 40px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 800px; /* Ограничиваем ширину */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.work-featured-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 600px; /* Ограничиваем высоту */
+    object-fit: contain; /* Сохраняем пропорции */
+    background: rgba(0, 0, 0, 0.5); /* Фон для контраста */
+}

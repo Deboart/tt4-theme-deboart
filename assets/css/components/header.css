@@ -1,0 +1,1442 @@
+/* ============================================
+   HEADER СТИЛИ
+   ============================================ */
+
+/* Базовые стили хедера */
+.deboart-header {
+    background: rgba(13, 27, 42, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    padding: 0;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 1em auto;
+    padding: 20px 20px 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===== БРЕНДИНГ ===== */
+.site-branding {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+/* Кастомный логотип */
+.custom-logo {
+    margin: 0 !important;
+    line-height: 0;
+    flex-shrink: 0;
+}
+
+.custom-logo img {
+    border-radius: 8px;
+    object-fit: contain;
+    width: 60px !important;
+    height: 60px !important;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+/* Текстовый логотип - уменьшенная версия */
+.header-logo {
+    margin: 0 !important;
+    line-height: 1.1 !important;
+    white-space: nowrap;
+    font-family: 'Spectral', serif !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--wp--preset--color--primary-white) !important;
+    /* Уменьшаем размер */
+    font-size: 32px !important; /* Было 48px или больше */
+}
+
+/* Для мобильных еще меньше */
+@media (max-width: 768px) {
+    .header-logo {
+        font-size: 24px !important; /* Было 32px */
+    }
+}
+
+@media (max-width: 480px) {
+    .header-logo {
+        font-size: 20px !important; /* Еще меньше на телефонах */
+    }
+}
+
+.header-logo a {
+    color: var(--wp--preset--color--primary-white) !important;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.header-logo a:hover {
+    color: var(--wp--preset--color--accent-blue) !important;
+}
+
+.art-accent {
+    color: var(--wp--preset--color--accent-blue);
+    font-weight: 400;
+}
+
+.site-description {
+    font-family: 'JetBrains Mono', monospace !important;
+    color: var(--wp--preset--color--medium-gray) !important;
+    margin: 4px 0 0 0 !important;
+    opacity: 0.8;
+}
+
+.site-title-wrapper {
+    min-width: 0;
+}
+
+/* ===== НАВИГАЦИЯ ===== */
+.deboart-navigation {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* Кастомное меню */
+.primary-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.primary-menu li {
+    position: relative;
+    margin: 0;
+}
+
+.primary-menu a {
+    display: block;
+    padding: 12px 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--wp--preset--color--primary-white);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.primary-menu a:hover {
+    color: var(--wp--preset--color--accent-blue);
+}
+
+.primary-menu .active > a {
+    color: var(--wp--preset--color--accent-blue);
+    position: relative;
+}
+
+.primary-menu .active > a::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--wp--preset--color--accent-blue);
+}
+
+/* Выпадающее меню */
+.primary-menu .sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: rgba(13, 27, 42, 0.98);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 8px 0;
+    margin: 0;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.primary-menu li:hover > .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.primary-menu .sub-menu a {
+    padding: 10px 20px;
+    white-space: nowrap;
+    font-size: 15px;
+}
+
+.primary-menu .sub-menu a:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ===== CTA КНОПКА ===== */
+.header-actions {
+    flex: 0 0 auto;
+}
+
+.header-cta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.header-cta:hover {
+    background: rgba(26, 95, 180, 0.1);
+    border-color: var(--wp--preset--color--accent-blue);
+}
+
+.cta-icon {
+    font-size: 18px;
+}
+
+.cta-text {
+    font-family: 'Manrope', sans-serif !important;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--wp--preset--color--primary-white);
+    letter-spacing: 0.5px;
+}
+
+/* ===== ДЕКОРАТИВНЫЙ РАЗДЕЛИТЕЛЬ ===== */
+.header-divider {
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+}
+
+.divider-line {
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255,255,255,0.2) 20%, 
+        rgba(255,255,255,0.2) 80%, 
+        transparent
+    );
+    width: 100%;
+}
+
+.divider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: -4px;
+    position: relative;
+    z-index: 2;
+}
+
+.divider-dots .dot {
+    width: 4px;
+    height: 4px;
+    background: var(--wp--preset--color--accent-blue);
+    border-radius: 50%;
+    opacity: 0.5;
+    box-shadow: 0 0 8px rgba(26, 95, 180, 0.5);
+}
+
+/* ===== ДЕСКТОПНАЯ АДАПТАЦИЯ ===== */
+@media (min-width: 769px) {
+    .header-container {
+        display: flex;
+        flex-wrap: nowrap !important;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .site-branding {
+        flex: 0 0 auto;
+        min-width: fit-content;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    .primary-menu {
+        gap: 16px;
+    }
+    
+    .primary-menu a {
+        font-size: 14px !important;
+    }
+    
+    .cta-text {
+        font-size: 13px !important;
+    }
+}
+
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
+@media (max-width: 768px) {
+    /* Контейнер хедера */
+    .header-container {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        padding: 12px 16px 0 16px !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+    }
+    
+    /* Брендинг */
+    .site-branding {
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+        gap: 8px !important;
+        max-width: calc(100% - 100px) !important;
+    }
+    
+    .custom-logo {
+        flex-shrink: 0 !important;
+    }
+    
+    .custom-logo img {
+        width: 40px !important;
+        height: 40px !important;
+        max-width: 40px !important;
+        display: block !important;
+    }
+    
+    .header-logo {
+        font-size: 20px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 120px !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
+    }
+    
+    .site-title-wrapper {
+        min-width: 0 !important;
+        flex: 1 !important;
+    }
+    
+    .site-description {
+        display: none !important;
+    }
+    
+    /* Навигация */
+    .deboart-navigation {
+        flex: 0 0 auto !important;
+        margin: 0 !important;
+    }
+    
+    /* Кнопка бургер */
+    .menu-toggle {
+        width: 42px !important;
+        height: 42px !important;
+        min-width: 42px !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: transparent !important;
+        border: 1.5px solid rgba(255,255,255,0.2) !important;
+ 
+        color: white !important;
+        cursor: pointer !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* CTA кнопка */
+    .header-actions {
+        flex: 0 0 auto !important;
+    }
+    
+    .header-cta {
+        padding: 8px 12px !important;
+        gap: 4px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        white-space: nowrap !important;
+    }
+    
+    .cta-text {
+        display: none !important;
+    }
+    
+    .cta-icon {
+        font-size: 20px !important;
+        margin: 0 !important;
+        line-height: 1 !important;
+    }
+    
+    /* Разделитель на мобильных */
+    .divider-line {
+        background: linear-gradient(90deg, 
+            transparent, 
+            rgba(255,255,255,0.15) 10%, 
+            rgba(255,255,255,0.15) 90%, 
+            transparent
+        );
+    }
+    
+    .divider-dots {
+        gap: 6px;
+		margin-top: -5px; /* Немного корректируем для мобильных */
+    }
+    
+    .divider-dots .dot {
+        width: 3px;
+        height: 3px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .header-container {
+        padding: 10px 12px 0 12px !important;
+    }
+    
+    .header-logo {
+        max-width: 100px !important;
+        font-size: 18px !important;
+    }
+    
+    .custom-logo img {
+        width: 36px !important;
+        height: 36px !important;
+    }
+    
+    .menu-toggle {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+    }
+}
+
+/* ===== МОБИЛЬНОЕ МЕНЮ (ВЫПАДАЮЩЕЕ) ===== */
+@media (max-width: 768px) {
+    .primary-menu {
+        display: none !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: rgba(10, 20, 35, 0.98) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 0 !important;
+        z-index: 10000 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: opacity 0.3s ease, visibility 0.3s ease !important;
+        margin: 0 !important;
+        padding: 60px 20px !important;
+        box-sizing: border-box !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        list-style: none !important;
+    }
+    
+    .primary-menu.is-open {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .primary-menu li {
+        width: 100% !important;
+        max-width: 300px !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+        position: relative !important;
+    }
+    
+    .primary-menu a {
+        display: block !important;
+        padding: 16px 20px !important;
+        font-size: 20px !important;
+        font-family: 'Manrope', sans-serif !important;
+        color: white !important;
+        text-decoration: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        transition: background 0.3s ease !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+    
+    .primary-menu a:hover {
+        background: rgba(255, 255, 255, 0.05) !important;
+        color: var(--wp--preset--color--accent-blue) !important;
+    }
+    
+/* Кнопка закрытия - скрыта по умолчанию */
+.menu-close {
+    display: none !important;
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: white !important;
+    font-size: 24px !important;
+    cursor: pointer !important;
+    z-index: 10010 !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+}
+
+.menu-close:hover {
+    border-color: var(--wp--preset--color--accent-blue) !important;
+    background: rgba(26, 95, 180, 0.1) !important;
+}
+
+/* Показываем кнопку закрытия только когда меню открыто */
+.primary-menu.is-open .menu-close {
+    display: flex !important;
+}
+
+body:not(.is-menu-open) .menu-close {
+    display: none !important;
+}
+    
+    /* Выпадающие подменю */
+    .primary-menu .sub-menu {
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        transition: max-height 0.3s ease !important;
+        width: 100% !important;
+    }
+    
+    .primary-menu .has-children.open > .sub-menu {
+        max-height: 500px !important;
+        padding: 8px 0 !important;
+    }
+    
+    .primary-menu .sub-menu li {
+        width: 100% !important;
+    }
+    
+    .primary-menu .sub-menu a {
+        font-size: 18px !important;
+        padding: 12px 20px !important;
+        border-bottom: none !important;
+    }
+    
+    .primary-menu .active > a::after {
+        display: none !important;
+    }
+    
+    /* Блокировка скролла */
+    body.is-menu-open {
+        overflow: hidden !important;
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
+        left: 0 !important;
+        top: 0 !important;
+    }
+}
+
+/* ===== АНИМИРОВАННЫЙ БУРГЕР ===== */
+.menu-toggle {
+    display: none;
+    position: relative;
+    transition: border-color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    border-color: var(--wp--preset--color--accent-blue);
+}
+
+.menu-toggle-icon {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-toggle-icon span {
+    width: 100%;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon span:first-child {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon span:last-child {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* ===== ГАМБУРГЕР В СТИЛЕ КНОПКИ СВЯЗИ ===== */
+
+.menu-toggle {
+    display: none;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 3px; /* Как у кнопки связи */
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: rgba(26, 95, 180, 0.1);
+    border-color: var(--wp--preset--color--accent-blue);
+}
+
+.menu-toggle-icon {
+    width: 24px;
+    height: 18px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-toggle-icon span {
+    width: 100%;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Анимация при открытом меню */
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon span:first-child {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon span:last-child {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Кнопка закрытия в том же стиле */
+.menu-close {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 3px !important;
+    color: white !important;
+    font-size: 24px !important;
+    cursor: pointer !important;
+    z-index: 10010 !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+    display: none !important; /* Скрыта по умолчанию */
+}
+
+.menu-close:hover {
+    background: rgba(26, 95, 180, 0.1) !important;
+    border-color: var(--wp--preset--color--accent-blue) !important;
+}
+
+/* Показываем кнопку закрытия только когда меню открыто */
+.primary-menu.is-open .menu-close {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+/* Мобильные стили для хедера */
+@media (max-width: 768px) {
+    /* Существующие стили ... */
+    
+    /* Отступ для разделительной линии */
+    .header-divider {
+        margin-top: 8px; /* Небольшой отступ сверху */
+    }
+    
+    /* Если нужен отступ снизу от контента */
+    .header-container {
+        padding-bottom: 8px; /* Добавляем небольшой отступ снизу */
+    }
+    
+    /* Можно сделать линию чуть толще на мобильных */
+    .divider-line {
+        height: 1px;
+        background: linear-gradient(90deg, 
+            transparent, 
+            rgba(255,255,255,0.2) 10%, 
+            rgba(255,255,255,0.2) 90%, 
+            transparent
+        );
+    }
+    
+    /* Точки можно чуть сместить */
+    .divider-dots {
+        margin-top: -3px; /* Корректировка позиции точек */
+        gap: 6px;
+    }
+    
+    .divider-dots .dot {
+        width: 3px;
+        height: 3px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .header-divider {
+        margin-top: 6px;
+    }
+    
+    .header-container {
+        padding-bottom: 6px;
+    }
+}
+
+/* ============================================
+   КНОПКА СЛУЧАЙНОЙ РАБОТЫ
+   ============================================ */
+
+.header-random {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(26, 95, 180, 0.1);
+    border: 1px solid var(--wp--preset--color--accent-blue, #1a5fb4);
+    color: var(--wp--preset--color--primary-white, #f8f8f8);
+    text-decoration: none;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border-radius: 0;
+    margin-right: 10px;
+}
+
+.header-random:hover {
+    background: var(--wp--preset--color--accent-blue, #1a5fb4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 95, 180, 0.3);
+}
+
+.random-icon {
+    font-size: 1.1rem;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .header-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .header-random,
+    .header-cta {
+        justify-content: center;
+        width: 100%;
+        margin-right: 0;
+        padding: 12px 16px;
+    }
+    
+    .header-random {
+        order: 1; /* Случайная работа сверху */
+    }
+    
+    .header-cta {
+        order: 2; /* Сеанс связи снизу */
+    }
+}
+
+@media (max-width: 480px) {
+    .header-random,
+    .header-cta {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+    
+    .random-icon,
+    .cta-icon {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   КНОПКИ В HEADER
+   ============================================ */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-direction: row; /* Горизонтально */
+}
+
+.header-random,
+.header-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(26, 95, 180, 0.1);
+    border: 1px solid var(--wp--preset--color--accent-blue, #1a5fb4);
+    color: var(--wp--preset--color--primary-white, #f8f8f8);
+    text-decoration: none;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border-radius: 0;
+    white-space: nowrap; /* Текст в одну строку */
+}
+
+.header-random:hover,
+.header-cta:hover {
+    background: var(--wp--preset--color--accent-blue, #1a5fb4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 95, 180, 0.3);
+}
+
+.random-icon,
+.cta-icon {
+    font-size: 1.1rem;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .header-actions {
+        gap: 8px;
+    }
+    
+    .header-random,
+    .header-cta {
+        padding: 8px 12px;
+    }
+    
+    /* На мобильных скрываем текст, оставляем только иконки */
+    .random-text,
+    .cta-text {
+        display: none;
+    }
+    
+    .random-icon,
+    .cta-icon {
+        font-size: 1.3rem;
+        margin: 0;
+    }
+    
+    /* Добавляем подсказки при наведении */
+    .header-random:hover::after,
+    .header-cta:hover::after {
+        content: attr(title);
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(20, 20, 20, 0.9);
+        color: white;
+        padding: 4px 8px;
+        font-size: 12px;
+        font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+        border: 1px solid var(--wp--preset--color--accent-blue, #1a5fb4);
+        white-space: nowrap;
+        z-index: 100;
+    }
+    
+    .header-random,
+    .header-cta {
+        position: relative;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-random,
+    .header-cta {
+        padding: 6px 10px;
+    }
+    
+    .random-icon,
+    .cta-icon {
+        font-size: 1.2rem;
+    }
+}
+
+
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .header-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end; /* Прижимаем к правому краю */
+        gap: 8px;
+        width: auto; /* Не на всю ширину */
+    }
+    
+    .header-random,
+    .header-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 12px;
+        width: auto; /* Не растягиваем */
+        min-width: 40px; /* Минимальная ширина */
+        flex-shrink: 0; /* Запрещаем сжиматься */
+    }
+    
+    /* На мобильных скрываем текст, оставляем только иконки */
+    .random-text,
+    .cta-text {
+        display: none;
+    }
+    
+    .random-icon,
+    .cta-icon {
+        font-size: 1.3rem;
+        margin: 0;
+    }
+    
+    /* Добавляем подсказки при наведении */
+    .header-random:hover::after,
+    .header-cta:hover::after {
+        content: attr(title);
+        position: absolute;
+        bottom: -30px;
+        right: 0;
+        background: rgba(20, 20, 20, 0.9);
+        color: white;
+        padding: 4px 8px;
+        font-size: 12px;
+        font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+        border: 1px solid var(--wp--preset--color--accent-blue, #1a5fb4);
+        white-space: nowrap;
+        z-index: 100;
+    }
+    
+    .header-random,
+    .header-cta {
+        position: relative;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-random,
+    .header-cta {
+        padding: 6px 10px;
+        min-width: 36px;
+    }
+    
+    .random-icon,
+    .cta-icon {
+        font-size: 1.2rem;
+    }
+}
+
+/* ============================================
+   МОБИЛЬНОЕ МЕНЮ
+   ============================================ */
+
+/* Гамбургер-иконка */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1000;
+}
+
+.mobile-menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background: var(--wp--preset--color--primary-white, #f8f8f8);
+    transition: all 0.3s ease;
+}
+
+/* Оверлей меню */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+}
+
+.mobile-menu-overlay.active {
+    right: 0;
+}
+
+/* Контейнер меню */
+.mobile-menu-container {
+    max-width: 400px;
+    margin-left: auto;
+    background: var(--wp--preset--color--primary-black, #0a0a0a);
+    min-height: 100vh;
+    padding: 24px 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Шапка меню */
+.mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.mobile-site-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-title {
+    font-family: var(--wp--preset--font-family--spectral, serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--wp--preset--color--primary-white, #f8f8f8);
+}
+
+.mobile-description {
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.mobile-menu-close {
+    background: transparent;
+    border: none;
+    color: var(--wp--preset--color--primary-white, #f8f8f8);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+/* Навигация */
+.mobile-nav {
+    margin-bottom: 30px;
+}
+
+.mobile-primary-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-primary-menu li {
+    margin-bottom: 15px;
+}
+
+.mobile-primary-menu a {
+    display: block;
+    font-family: var(--wp--preset--font-family--spectral, serif);
+    font-size: 1.1rem;
+    color: var(--wp--preset--color--primary-white, #f8f8f8);
+    text-decoration: none;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: color 0.3s ease;
+}
+
+.mobile-primary-menu a:hover {
+    color: var(--wp--preset--color--accent-blue, #1a5fb4);
+}
+
+/* Дополнительные ссылки */
+.mobile-extra-links {
+    margin-bottom: 30px;
+}
+
+.mobile-extra-title {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.mobile-extra-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-extra-menu li {
+    margin-bottom: 10px;
+}
+
+.mobile-extra-menu a {
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.mobile-extra-menu a:hover {
+    color: var(--wp--preset--color--accent-blue, #1a5fb4);
+}
+
+/* Кнопки действий */
+.mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.mobile-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 20px;
+    background: rgba(26, 95, 180, 0.1);
+    border: 1px solid var(--wp--preset--color--accent-blue, #1a5fb4);
+    color: var(--wp--preset--color--primary-white, #f8f8f8);
+    text-decoration: none;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.mobile-action-btn:hover {
+    background: var(--wp--preset--color--accent-blue, #1a5fb4);
+    transform: translateY(-2px);
+}
+
+.mobile-action-btn .btn-icon {
+    font-size: 1.2rem;
+}
+
+/* Социальные сети */
+.mobile-social {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--wp--preset--color--accent-blue, #1a5fb4);
+    transform: translateY(-2px);
+}
+
+.social-icon {
+    font-size: 1.2rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-menu-overlay {
+        display: none;
+    }
+}
+
+/* ============================================
+   ГАМБУРГЕР-КНОПКА (В СТИЛЕ CTA)
+   ============================================ */
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 40px;
+    padding: 10px 8px;
+    background: rgba(26, 95, 180, 0.1);
+    border: 1px solid var(--wp--preset--color--accent-blue, #1a5fb4);
+    cursor: pointer;
+    position: relative;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--wp--preset--color--primary-white, #f8f8f8);
+    transition: all 0.3s ease;
+    transform-origin: left center;
+}
+
+/* Эффект при наведении как у CTA */
+.mobile-menu-toggle:hover {
+    background: var(--wp--preset--color--accent-blue, #1a5fb4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 95, 180, 0.3);
+}
+
+.mobile-menu-toggle:hover span {
+    background-color: var(--wp--preset--color--primary-white, #f8f8f8);
+}
+
+/* Анимация превращения в крестик */
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, -2px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, 2px);
+}
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-menu-toggle {
+        width: 36px;
+        height: 36px;
+        padding: 8px 6px;
+    }
+}
+
+
+/* ============================================
+   ЕДИНЫЙ СТИЛЬ ДЛЯ ВСЕХ КНОПОК
+   ============================================ */
+
+.header-random,
+.header-cta,
+.mobile-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 40px;        /* Фиксированная ширина */
+    height: 40px;       /* Фиксированная высота */
+    padding: 0;         /* Убираем внутренние отступы */
+    background: rgba(26, 95, 180, 0.1);
+    border: 1px solid var(--wp--preset--color--accent-blue, #1a5fb4);
+    color: var(--wp--preset--color--primary-white, #f8f8f8);
+    text-decoration: none;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border-radius: 0;
+    white-space: nowrap;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* Ховер-эффект одинаковый для всех */
+.header-random:hover,
+.header-cta:hover,
+.mobile-menu-toggle:hover {
+    background: var(--wp--preset--color--accent-blue, #1a5fb4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 95, 180, 0.3);
+}
+
+/* Текст внутри кнопок */
+.random-text,
+.cta-text {
+    display: inline;
+}
+
+/* Иконки внутри кнопок */
+.random-icon,
+.cta-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+/* Специально для гамбургера (полоски) */
+.mobile-menu-toggle {
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 8px;  /* Оставляем отступы внутри для полосок */
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--wp--preset--color--primary-white, #f8f8f8);
+    transition: all 0.3s ease;
+    transform-origin: left center;
+}
+
+/* Анимация гамбургера */
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, -2px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, 2px);
+}
+
+/* Мобильная версия - текст скрываем */
+@media (max-width: 768px) {
+    .random-text,
+    .cta-text {
+        display: none;
+    }
+    
+    .header-random,
+    .header-cta {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+    }
+    
+    .random-icon,
+    .cta-icon {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+    
+    /* Гамбургер остаётся того же размера */
+    .mobile-menu-toggle {
+        width: 40px;
+        height: 40px;
+        padding: 10px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-random,
+    .header-cta,
+    .mobile-menu-toggle {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .mobile-menu-toggle {
+        padding: 8px 6px;
+    }
+    
+    .random-icon,
+    .cta-icon {
+        font-size: 1.1rem;
+    }
+}

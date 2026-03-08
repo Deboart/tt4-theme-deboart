@@ -1,0 +1,149 @@
+<!-- patterns/header-footer/footer.html -->
+<!-- wp:group {"tagName":"footer","className":"deboart-footer","layout":{"type":"constrained"}} -->
+<footer class="wp-block-group deboart-footer">
+    
+    <!-- wp:group {"className":"footer-container","layout":{"type":"constrained"}} -->
+    <div class="wp-block-group footer-container">
+        
+        <!-- Колонки -->
+        <!-- wp:columns {"className":"footer-widgets","style":{"spacing":{"blockGap":{"top":"0","left":"var:preset|spacing|huge"}}}} -->
+        <div class="wp-block-columns footer-widgets">
+            
+            <!-- Колонка 1: Логотип и описание -->
+            <!-- wp:column {"className":"footer-column"} -->
+            <div class="wp-block-column footer-column">
+                
+<!-- wp:group {"className":"footer-branding","layout":{"type":"flex","flexWrap":"nowrap","align":"left"}} -->
+<div class="wp-block-group footer-branding">
+    
+    <!-- КАСТОМНЫЙ ЛОГОТИП (картинка) -->
+    <!-- wp:image {"id":123,"width":60,"height":60,"sizeSlug":"full","linkDestination":"custom","className":"custom-logo"} -->
+    <figure class="wp-block-image size-full is-resized custom-logo">
+        <img src="/wp-content/uploads/slavadbart-logo-6-1.png" alt="Deboart" width="60" height="60"/>
+    </figure>
+    <!-- /wp:image -->
+    
+    <!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+    <div class="wp-block-group">
+        <!-- wp:heading {"level":2,"className":"footer-logo","fontFamily":"spectral","fontSize":"gigantic"} -->
+        <h2 class="wp-block-heading footer-logo has-spectral-font-family has-gigantic-font-size">
+            DEBO<span class="art-accent">ART</span>
+        </h2>
+        <!-- /wp:heading -->
+        
+        <!-- wp:paragraph {"className":"footer-tagline","fontFamily":"manrope","fontSize":"small"} -->
+        <p class="footer-tagline has-manrope-font-family has-small-font-size">
+            Лаборатория творческого потенциала.<br>
+            Вопрос к форме. Ответ — в содержании.
+        </p>
+        <!-- /wp:paragraph -->
+    </div>
+    <!-- /wp:group -->
+    
+</div>
+<!-- /wp:group -->
+    
+
+            </div>
+            <!-- /wp:column -->
+            
+            <!-- Колонка 2: Исследования -->
+            <!-- wp:column {"className":"footer-column"} -->
+            <div class="wp-block-column footer-column">
+                
+                <!-- wp:heading {"level":3,"className":"footer-title","fontFamily":"spectral","fontSize":"large"} -->
+                <h3 class="wp-block-heading footer-title has-spectral-font-family has-large-font-size">🔬 Исследования</h3>
+                <!-- /wp:heading -->
+                
+                <!-- wp:query {"query":{"postType":"work","perPage":4,"order":"desc","orderBy":"date"}} -->
+                <div class="wp-block-query">
+                    <!-- wp:post-template -->
+                        <!-- wp:post-title {"isLink":true,"fontSize":"small","className":"footer-link","fontFamily":"manrope"} /-->
+                    <!-- /wp:post-template -->
+                </div>
+                <!-- /wp:query -->
+                
+            </div>
+            <!-- /wp:column -->
+            
+            <!-- Колонка 3: Контакты -->
+            <!-- wp:column {"className":"footer-column"} -->
+            <div class="wp-block-column footer-column">
+                
+                <!-- wp:heading {"level":3,"className":"footer-title","fontFamily":"spectral","fontSize":"large"} -->
+                <h3 class="wp-block-heading footer-title has-spectral-font-family has-large-font-size">📡 Сеанс связи</h3>
+                <!-- /wp:heading -->
+                
+                <!-- wp:group {"className":"footer-contacts","layout":{"type":"flex","orientation":"vertical"}} -->
+                <div class="wp-block-group footer-contacts">
+                    
+                    <!-- wp:paragraph {"className":"contact-item","fontFamily":"jetbrains-mono","fontSize":"small"} -->
+                    <p class="contact-item has-jetbrains-mono-font-family has-small-font-size">
+                        📧 <a href="mailto:сеанс@deboart.ru">сеанс@deboart.ru</a>
+                    </p>
+                    <!-- /wp:paragraph -->
+                    
+                    <!-- wp:paragraph {"className":"contact-item","fontFamily":"jetbrains-mono","fontSize":"small"} -->
+                    <p class="contact-item has-jetbrains-mono-font-family has-small-font-size">
+                        📱 <a href="https://t.me/deboart_lab" target="_blank" rel="noopener">Telegram: Тайная лаборатория</a>
+                    </p>
+                    <!-- /wp:paragraph -->
+                    
+                    <!-- wp:social-links {"className":"social-links"} -->
+                    <ul class="wp-block-social-links social-links">
+                        <!-- wp:social-link {"url":"https://instagram.com/deboart","service":"instagram"} /-->
+                        <!-- wp:social-link {"url":"https://behance.net/deboart","service":"behance"} /-->
+                        <!-- wp:social-link {"url":"https://youtube.com/@deboart","service":"youtube"} /-->
+                    </ul>
+                    <!-- /wp:social-links -->
+                    
+                </div>
+                <!-- /wp:group -->
+                
+            </div>
+            <!-- /wp:column -->
+            
+        </div>
+        <!-- /wp:columns -->
+        
+        <!-- Разделитель -->
+        <!-- wp:group {"className":"footer-divider"} -->
+        <div class="wp-block-group footer-divider">
+            <div class="divider-line"></div>
+            <!-- wp:paragraph {"align":"center","className":"divider-label","fontFamily":"jetbrains-mono","fontSize":"extra-small"} -->
+            <p class="has-text-align-center divider-label has-jetbrains-mono-font-family has-extra-small-font-size">
+                КОНЕЦ СЕАНСА
+            </p>
+            <!-- /wp:paragraph -->
+        </div>
+        <!-- /wp:group -->
+        
+        <!-- Нижняя часть -->
+        <!-- wp:group {"className":"footer-bottom","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+        <div class="wp-block-group footer-bottom">
+            
+            <!-- wp:paragraph {"className":"copyright","fontFamily":"jetbrains-mono","fontSize":"small"} -->
+            <p class="copyright has-jetbrains-mono-font-family has-small-font-size">
+                © 2026 DEBOART. Все исследования защищены.<br>
+                <span class="copyright-note has-manrope-font-family">Творчество — это не талант. Это режим доступа.</span>
+            </p>
+            <!-- /wp:paragraph -->
+            
+            <!-- wp:group {"className":"footer-links-bottom"} -->
+            <div class="wp-block-group footer-links-bottom">
+                <a href="/privacy" class="has-manrope-font-family">Конфиденциальность</a>
+                <span class="link-separator has-jetbrains-mono-font-family">•</span>
+                <a href="/manifest" class="has-manrope-font-family">Манифест</a>
+                <span class="link-separator has-jetbrains-mono-font-family">•</span>
+                <a href="/lab" class="has-manrope-font-family">Войти в лабораторию</a>
+            </div>
+            <!-- /wp:group -->
+            
+        </div>
+        <!-- /wp:group -->
+        
+    </div>
+    <!-- /wp:group -->
+    
+</footer>
+<!-- /wp:group -->

@@ -1,0 +1,250 @@
+/* ============================================
+   HERO SECTION - РАССВЕТ НА КРАСНОМ МОРЕ
+   Лабораторный стиль с акцентным фото
+   ============================================ */
+
+.section-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+}
+
+/* Фото рассвета как основа */
+.section-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/wp-content/uploads/20220229-egipetskij-rassvet-1.png');
+    /* Если фото в другой папке, поправь путь */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+/* Цветная наложение для приглушения яркого желтого */
+.section-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+                rgba(13, 27, 42, 0.85) 0%,
+                rgba(26, 95, 180, 0.4) 100%);
+    mix-blend-mode: multiply;
+    z-index: 2;
+}
+
+/* Лабораторная сетка поверх */
+.hero-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(26, 95, 180, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 95, 180, 0.15) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Контент поверх всего */
+.section-hero .section-container {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    max-width: 1200px;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hero-title {
+    font-family: var(--wp--preset--font-family--spectral, serif);
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--wp--preset--color--primary-white, #F8F8F8);
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-title span {
+    color: #FFD700; /* Золотой оттенок из рассвета */
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 40px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: fadeInUp 1s ease-out 0.2s backwards;
+}
+
+/* Индикатор скролла */
+.scroll-indicator {
+    position: relative;
+    z-index: 4;
+    animation: fadeInUp 1s ease-out 0.4s backwards;
+}
+
+.scroll-arrow {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.scroll-arrow:hover {
+    color: var(--wp--preset--color--accent-blue, #1A5FB4);
+    transform: translateY(5px);
+}
+
+.scroll-arrow svg {
+    width: 24px;
+    height: 40px;
+    filter: drop-shadow(0 0 10px rgba(26, 95, 180, 0.3));
+}
+
+/* Анимация стрелки */
+@keyframes scrollBounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(10px);
+    }
+    60% {
+        transform: translateY(5px);
+    }
+}
+
+.scroll-arrow {
+    animation: scrollBounce 2s infinite;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .hero-grid {
+        background-size: 50px 50px;
+    }
+    
+    .section-hero::after {
+        background: linear-gradient(135deg, 
+                    rgba(13, 27, 42, 0.8) 0%,
+                    rgba(26, 95, 180, 0.3) 100%);
+    }
+}
+
+/* Мобильные */
+@media (max-width: 768px) {
+    .section-hero {
+        min-height: 90vh;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+        margin-bottom: 16px;
+    }
+    
+    .hero-title span {
+        display: block; /* Чтобы переносить на новую строку */
+        margin-top: 10px;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+    }
+    
+    .section-hero::after {
+        background: linear-gradient(135deg, 
+                    rgba(13, 27, 42, 0.9) 0%,
+                    rgba(26, 95, 180, 0.5) 100%);
+    }
+    
+    .hero-grid {
+        background-size: 40px 40px;
+    }
+    
+    .scroll-arrow svg {
+        width: 20px;
+        height: 32px;
+    }
+}
+
+/* Маленькие мобильные */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 25px;
+    }
+    
+    .section-hero::after {
+        background: linear-gradient(135deg, 
+                    rgba(13, 27, 42, 0.95) 0%,
+                    rgba(26, 95, 180, 0.6) 100%);
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.75rem;
+    }
+}
+
+/* Для пользователей, предпочитающих уменьшенное движение */
+@media (prefers-reduced-motion: reduce) {
+    .hero-title,
+    .hero-subtitle,
+    .scroll-indicator,
+    .scroll-arrow {
+        animation: none;
+    }
+}

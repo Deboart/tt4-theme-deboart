@@ -1,0 +1,67 @@
+/* ============================================
+   FRONT PAGE - ГЛАВНАЯ СТРАНИЦА
+   Основной файл стилей
+   ============================================ */
+
+/* Импорт стилей секций */
+@import url('pages/sections/hero-section.css');
+@import url('pages/sections/method-section.css');
+@import url('pages/sections/paradigm-section.css');
+@import url('pages/sections/research-section.css');
+@import url('pages/sections/lab-section.css');
+@import url('pages/sections/contact-section.css');
+
+/* ============================================
+   ОБЩИЕ СТИЛИ ДЛЯ ГЛАВНОЙ
+   ============================================ */
+
+.front-page {
+    background: var(--wp--preset--color--primary-black, #0A0A0A);
+}
+
+.front-section {
+    padding: 80px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.front-section:last-child {
+    border-bottom: none;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-family: var(--wp--preset--font-family--ibm-plex-mono, monospace);
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--wp--preset--color--primary-white, #F8F8F8);
+    margin: 0 0 40px 0;
+    letter-spacing: -0.02em;
+}
+
+/* Адаптивность для общих элементов */
+@media (max-width: 1024px) {
+    .front-section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 36px;
+        margin-bottom: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .front-section {
+        padding: 40px 0;
+    }
+    
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 24px;
+    }
+}

@@ -1,0 +1,421 @@
+/* ============================================
+   DEBOART METHOD SECTION - МИКРОТОЧКИ
+   Секция "Метод" с галереей и текстурой лабораторной бумаги
+   ============================================ */
+
+/* ===== ОСНОВНЫЕ СТИЛИ СЕКЦИИ ===== */
+.deboart-method-section {
+    background-color: var(--wp--preset--color--primary-black, #0a0a0a);
+    color: var(--wp--preset--color--primary-white, #fff);
+    padding: clamp(80px, 10vw, 120px) 20px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===== МИКРОТОЧКИ (лабораторная бумага) ===== */
+.deboart-method-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 2px 2px, rgba(26, 95, 180, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ===== КОНТЕЙНЕР КОНТЕНТА ===== */
+.deboart-method-section .wp-block-group__inner-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+/* ===== ЗАГОЛОВОК ===== */
+.method-heading {
+    font-family: var(--wp--preset--font-family--spectral, 'Spectral', serif) !important;
+    font-weight: 300 !important;
+    font-size: clamp(3rem, 6vw, 5rem) !important;
+    color: var(--wp--preset--color--primary-white, #fff) !important;
+    margin-bottom: 50px !important;
+    letter-spacing: -0.02em;
+    position: relative;
+    padding-bottom: 20px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.method-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--wp--preset--color--accent-blue, #1a5fb4), transparent);
+}
+
+/* ===== КОЛОНКИ ===== */
+.method-columns {
+    display: flex !important;
+    gap: 60px !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.method-text-column {
+    flex: 0 0 35% !important;
+    max-width: 35% !important;
+    animation: fadeInUp 0.8s ease-out 0.1s backwards;
+    box-sizing: border-box;
+    padding-right: 60px;
+}
+
+.method-gallery-column {
+    flex: 0 0 65% !important;
+    max-width: 65% !important;
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    overflow: visible !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===== ТЕКСТОВЫЙ БЛОК ===== */
+.method-intro {
+    font-family: var(--wp--preset--font-family--manrope, 'Manrope', sans-serif) !important;
+    font-size: var(--wp--preset--font-size--extra-large, 1.4rem) !important;
+    line-height: 1.5 !important;
+    color: var(--wp--preset--color--primary-white, #fff) !important;
+    margin-bottom: 2rem !important;
+    font-weight: 300;
+}
+
+.method-list {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+}
+
+.method-list-item {
+    font-family: var(--wp--preset--font-family--manrope, 'Manrope', sans-serif) !important;
+    font-size: var(--wp--preset--font-size--large, 1.2rem) !important;
+    color: var(--wp--preset--color--medium-gray, rgba(255,255,255,0.9)) !important;
+    padding: 16px 0 16px 35px !important;
+    position: relative !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    transition: all 0.3s ease;
+}
+
+.method-list-item:last-child {
+    border-bottom: none !important;
+}
+
+.method-list-item::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--wp--preset--color--accent-blue, #1a5fb4);
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.method-list-item:hover {
+    color: var(--wp--preset--color--primary-white, #fff);
+    transform: translateX(5px);
+}
+
+/* ===== ГАЛЕРЕЯ ===== */
+
+/* Контейнер галереи */
+.wp-block-gallery.method-gallery {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Карточка галереи */
+.method-gallery-item {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 1/1 !important;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer;
+    animation: fadeInUp 0.8s ease-out backwards;
+    box-sizing: border-box;
+}
+
+/* Изображение */
+.method-gallery-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.5s ease !important;
+    display: block !important;
+    filter: grayscale(30%) contrast(1.1);
+    max-width: 100%;
+}
+
+/* Плейсхолдер (если нет изображения) */
+.method-gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--wp--preset--color--primary-dark-blue, #0D1B2A);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-sizing: border-box;
+}
+
+.method-gallery-emoji-large {
+    font-size: 3rem;
+    opacity: 0.5;
+}
+
+/* Ссылка-оверлей */
+.method-gallery-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    text-decoration: none;
+}
+
+/* Подпись */
+.method-gallery-item figcaption,
+.method-gallery-item .method-caption {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: rgba(10, 10, 10, 0.95) !important;
+    color: rgba(255,255,255,0.9) !important;
+    padding: 12px 8px !important;
+    margin: 0 !important;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, 'JetBrains Mono', monospace) !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    opacity: 0 !important;
+    transform: translateY(100%) !important;
+    transition: all 0.3s ease !important;
+    z-index: 11;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Показываем подпись при ховере */
+.method-gallery-item:hover figcaption,
+.method-gallery-item:hover .method-caption {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Ховер эффекты для карточки */
+.method-gallery-item:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    border-color: var(--wp--preset--color--accent-blue, #1a5fb4) !important;
+    border-width: 2px !important;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(26, 95, 180, 0.3),
+        inset 0 0 20px rgba(26, 95, 180, 0.1) !important;
+    z-index: 20;
+}
+
+.method-gallery-item:hover .method-gallery-image {
+    transform: scale(1.08) !important;
+    filter: grayscale(0%) contrast(1.2);
+}
+
+/* Задержки для анимации */
+.method-gallery-item:nth-child(1) { animation-delay: 0.3s; }
+.method-gallery-item:nth-child(2) { animation-delay: 0.35s; }
+.method-gallery-item:nth-child(3) { animation-delay: 0.4s; }
+.method-gallery-item:nth-child(4) { animation-delay: 0.45s; }
+.method-gallery-item:nth-child(5) { animation-delay: 0.5s; }
+.method-gallery-item:nth-child(6) { animation-delay: 0.55s; }
+.method-gallery-item:nth-child(7) { animation-delay: 0.6s; }
+.method-gallery-item:nth-child(8) { animation-delay: 0.65s; }
+.method-gallery-item:nth-child(9) { animation-delay: 0.7s; }
+
+/* Сообщение, если нет работ */
+.method-gallery-placeholder-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px;
+    border: 2px dashed var(--wp--preset--color--dark-gray, #2A2A2A);
+    font-family: var(--wp--preset--font-family--manrope, 'Manrope', sans-serif);
+    color: var(--wp--preset--color--medium-gray, #6C6C6C);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===== АНИМАЦИИ ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и небольшие десктопы */
+@media (max-width: 1100px) {
+    .method-columns {
+        flex-direction: column !important;
+        gap: 50px !important;
+    }
+
+    .method-text-column,
+    .method-gallery-column {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+        padding-right: 0;
+    }
+    
+    .wp-block-gallery.method-gallery {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Планшеты */
+@media (max-width: 768px) {
+    .deboart-method-section .wp-block-group__inner-container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+    
+    .method-heading {
+        text-align: center !important;
+    }
+    
+    .method-heading::after {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+    
+    .method-intro {
+        text-align: center !important;
+        font-size: 1.3rem !important;
+    }
+    
+    .method-gallery-item figcaption,
+    .method-gallery-item .method-caption {
+        padding: 10px 6px !important;
+        font-size: 10px !important;
+    }
+    
+    .wp-block-gallery.method-gallery {
+        gap: 15px !important;
+    }
+    
+    /* Уменьшаем размер точек на мобильных */
+    .deboart-method-section::before {
+        background-size: 20px 20px;
+    }
+}
+
+/* Мобильные */
+@media (max-width: 480px) {
+    .deboart-method-section .wp-block-group__inner-container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    
+    .wp-block-gallery.method-gallery {
+        gap: 10px !important;
+    }
+    
+    .method-list-item {
+        font-size: 1rem !important;
+    }
+    
+    .method-gallery-item {
+        border-radius: 6px !important;
+    }
+    
+    .method-gallery-item figcaption,
+    .method-gallery-item .method-caption {
+        padding: 8px 4px !important;
+        font-size: 9px !important;
+    }
+    
+    .deboart-method-section::before {
+        background-size: 15px 15px;
+        opacity: 0.7;
+    }
+}
+
+/* Очень маленькие телефоны */
+@media (max-width: 360px) {
+    .wp-block-gallery.method-gallery {
+        gap: 8px !important;
+    }
+    
+    .method-gallery-item figcaption,
+    .method-gallery-item .method-caption {
+        padding: 6px 4px !important;
+        font-size: 8px !important;
+    }
+}
+
+/* Большие экраны */
+@media (min-width: 1800px) {
+    .deboart-method-section .wp-block-group__inner-container {
+        max-width: 1600px;
+    }
+}
+
+/* ===== ИСПРАВЛЕНИЯ ДЛЯ WORDPRESS ===== */
+
+/* Убираем стандартные отступы */
+.wp-block-columns.method-columns {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+}
+
+/* Принудительно ограничиваем ширину галереи */
+.wp-block-gallery.method-gallery {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* Для десктопов убираем паддинги у контейнера */
+@media (min-width: 1400px) {
+    .wp-block-group__inner-container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}

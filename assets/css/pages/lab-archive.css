@@ -1,0 +1,140 @@
+/* ============================================
+   DEBOART LAB ARCHIVE
+   Страница архива лаборатории
+============================================ */
+
+/* Основной контейнер - теперь фон будет на всю ширину */
+.lab-archive {
+    position: relative;
+    max-width: 100%; /* На всю ширину */
+    margin: 0 auto;
+    background: var(--wp--preset--color--primary-black);
+    overflow: hidden; /* Чтобы клетки не создавали скролл */
+}
+
+/* Клетчатый фон на всю ширину экрана */
+.lab-archive::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Вся ширина окна */
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1;
+    pointer-events: none;
+    transform: translateX(-50%); /* Центрируем относительно родителя */
+    left: 50%;
+}
+
+/* Контент - ограничиваем ширину, но фон под ним все равно виден */
+.lab-archive__content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+/* Заголовок */
+.lab-archive__header {
+    margin-bottom: 60px;
+}
+
+.lab-archive__title {
+    font-family: var(--wp--preset--font-family--spectral);
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--wp--preset--color--primary-white);
+    margin-bottom: 1rem;
+}
+
+.lab-archive__description {
+    font-family: var(--wp--preset--font-family--manrope);
+    font-size: 1.2rem;
+    color: var(--wp--preset--color--medium-gray);
+    max-width: 600px;
+}
+
+/* Сетка архива */
+.lab-archive__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 60px;
+}
+
+/* Пагинация */
+.lab-archive__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 60px;
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+}
+
+.lab-archive__pagination a,
+.lab-archive__pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    background: rgba(13, 27, 42, 0.7);
+    border: 1px solid var(--wp--preset--color--dark-gray);
+    color: var(--wp--preset--color--primary-white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.lab-archive__pagination a:hover {
+    border-color: var(--wp--preset--color--accent-blue);
+    color: var(--wp--preset--color--accent-blue);
+    transform: translateY(-2px);
+}
+
+.lab-archive__pagination .current {
+    background: var(--wp--preset--color--accent-blue);
+    border-color: var(--wp--preset--color--accent-blue);
+    color: var(--wp--preset--color--primary-white);
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .lab-archive__grid {
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .lab-archive__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .lab-archive__title {
+        font-size: 2.5rem;
+    }
+    
+    .lab-archive__description {
+        font-size: 1rem;
+    }
+    
+    .lab-archive__content {
+        padding: 20px 16px 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lab-archive__title {
+        font-size: 2rem;
+    }
+    
+    .lab-archive__content {
+        padding: 20px 12px 40px;
+    }
+}

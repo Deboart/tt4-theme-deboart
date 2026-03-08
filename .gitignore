@@ -1,0 +1,22 @@
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Логи и кэш
+*.log
+wp-content/cache/
+wp-content/uploads/  # картинки не храним в Git
+
+# Конфиги с паролями
+wp-config.php
+.env
+*.local.php
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Локальные записи
+node_modules/
+npm-debug.log

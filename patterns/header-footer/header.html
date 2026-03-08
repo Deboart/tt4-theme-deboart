@@ -1,0 +1,69 @@
+<!-- patterns/header-footer/header.html -->
+<!-- wp:group {"tagName":"header","className":"deboart-header","layout":{"type":"constrained"}} -->
+<header class="wp-block-group deboart-header">
+    
+    <!-- ===== ЭТОТ БЛОК НУЖНО ДОБАВИТЬ ===== -->
+    <!-- wp:group {"className":"header-container","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+    <div class="wp-block-group header-container">
+    <!-- =================================== -->
+        
+        <!-- Логотип и название -->
+        <!-- wp:group {"className":"site-branding","layout":{"type":"flex","flexWrap":"nowrap","align":"left"}} -->
+        <div class="wp-block-group site-branding">
+            
+            <!-- КАСТОМНЫЙ ЛОГОТИП (картинка) -->
+            <!-- wp:image {"id":123,"width":60,"height":60,"sizeSlug":"full","linkDestination":"custom","className":"custom-logo"} -->
+            <figure class="wp-block-image size-full is-resized custom-logo">
+                <a href="/">
+                    <img src="/wp-content/uploads/slavadbart-logo-6-1.png" alt="Deboart" width="60" height="60"/>
+                </a>
+            </figure>
+            <!-- /wp:image -->
+            
+            <!-- Текстовый логотип DEBOART -->
+            <!-- wp:group {"className":"site-title-wrapper","layout":{"type":"flex","orientation":"vertical"}} -->
+            <div class="wp-block-group site-title-wrapper">
+                <!-- wp:heading {"level":1,"className":"header-logo","fontFamily":"spectral","fontSize":"extra-large"} -->
+                <h1 class="wp-block-heading header-logo has-spectral-font-family has-extra-large-font-size">
+                    <a href="/">DEBO<span class="art-accent">ART</span></a>
+                </h1>
+                <!-- /wp:heading -->
+                
+                <!-- wp:paragraph {"className":"site-description","fontFamily":"jetbrains-mono","fontSize":"extra-small"} -->
+                <p class="site-description has-jetbrains-mono-font-family has-extra-small-font-size">Лаборатория творческого потенциала</p>
+                <!-- /wp:paragraph -->
+            </div>
+            <!-- /wp:group -->
+            
+        </div>
+        <!-- /wp:group -->
+        
+        <!-- Навигация с явным overlayMenu="always" -->
+        <!-- wp:navigation {"overlayMenu":"always","layout":{"type":"flex","justifyContent":"center"},"className":"deboart-navigation","style":{"spacing":{"blockGap":"var:preset|spacing|large"}},"fontFamily":"manrope"} /-->
+        
+        <!-- Кнопка CTA -->
+        <!-- wp:group {"className":"header-actions"} -->
+        <div class="wp-block-group header-actions">
+            <a href="/сеанс" class="header-cta">
+                <span class="cta-icon">💬</span>
+                <span class="cta-text has-manrope-font-family">Сеанс связи</span>
+            </a>
+        </div>
+        <!-- /wp:group -->
+        
+    </div> <!-- ===== ЗАКРЫТИЕ header-container ===== -->
+    
+    <!-- Декоративный разделитель -->
+    <!-- wp:group {"className":"header-divider"} -->
+    <div class="wp-block-group header-divider">
+        <div class="divider-line"></div>
+        <div class="divider-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+    <!-- /wp:group -->
+    
+</header>
+<!-- /wp:group -->

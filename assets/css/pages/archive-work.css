@@ -1,0 +1,596 @@
+/* ============================================
+   PAGES: Архив работ (archive-work)
+   Лабораторный стиль v2.0
+   ============================================ */
+
+.archive-work {
+    padding: 40px 20px;
+    background: #0a0a0a;
+    min-height: 100vh;
+}
+
+/* Общий контейнер для контента */
+.archive-work .site-main {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.work-archive__content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+/* ЗАГОЛОВОК АРХИВА */
+.archive-work .archive-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left; /* Меняем с center на left */
+}
+
+.archive-work .archive-title {
+    font-family: var(--wp--preset--font-family--spectral);
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 0 0 12px 0; /* Убираем лишние отступы */
+    color: var(--wp--preset--color--primary-white);
+    letter-spacing: -0.02em;
+    background: none; /* Убираем градиент */
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: var(--wp--preset--color--primary-white); /* Белый цвет */
+}
+
+.archive-work .archive-description {
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    max-width: 600px;
+    margin: 0; /* Убираем margin: 0 auto */
+    line-height: 1.6;
+}
+
+/* СТАТИСТИКА (если используется) */
+.archive-work .archive-stats {
+    display: flex;
+    gap: 2rem;
+    margin: 20px 0 30px;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Выравнивание слева */
+}
+
+.archive-work .stat-item {
+    text-align: left;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.archive-work .stat-number {
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--wp--preset--color--accent-blue);
+    margin-bottom: 4px;
+}
+
+.archive-work .stat-label {
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* КОНТЕЙНЕР ФИЛЬТРОВ */
+.archive-work .archive-filters-container {
+    margin-bottom: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 24px;
+}
+
+/* СЕТКА РАБОТ */
+.archive-work .works-grid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 24px 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.archive-work .works-stats {
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.archive-work .stats-count {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.archive-work .works-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin: 0 0 40px 0;
+}
+
+@media (min-width: 600px) {
+    .archive-work .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .archive-work .works-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .archive-work .works-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+    }
+}
+
+/* ПАГИНАЦИЯ */
+.archive-work .works-pagination {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.archive-work .works-pagination .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.archive-work .works-pagination .page-numbers.current {
+    background: var(--wp--preset--color--accent-blue);
+    border-color: transparent;
+    color: white;
+}
+
+.archive-work .works-pagination .page-numbers:hover:not(.current) {
+    background: rgba(26, 95, 180, 0.15);
+    border-color: var(--wp--preset--color--accent-blue);
+}
+
+/* ПУСТОЕ СОСТОЯНИЕ */
+.archive-work .no-works-found {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    margin: 40px 0;
+}
+
+.archive-work .no-results-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.archive-work .no-works-found h3 {
+    font-family: var(--wp--preset--font-family--spectral);
+    font-size: 24px;
+    color: var(--wp--preset--color--primary-white);
+    margin-bottom: 12px;
+}
+
+.archive-work .no-works-found p {
+    font-family: var(--wp--preset--font-family--manrope);
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 24px;
+}
+
+.archive-work .no-results-reset {
+    background: rgba(26, 95, 180, 0.1);
+    border: 1px solid var(--wp--preset--color--accent-blue);
+    color: var(--wp--preset--color--accent-blue);
+    padding: 10px 24px;
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.archive-work .no-results-reset:hover {
+    background: var(--wp--preset--color--accent-blue);
+    color: white;
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 768px) {
+    .archive-work {
+        padding: 20px 15px;
+    }
+    
+    .archive-work .archive-title {
+        font-size: 2.2rem;
+    }
+    
+    .archive-work .archive-filters-container {
+        padding: 16px;
+    }
+    
+    .archive-work .works-grid-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
+
+/* ============================================
+   ИСПРАВЛЕНИЯ ДЛЯ ФИЛЬТРОВ
+   ============================================ */
+
+/* Контейнер фильтров - ограничиваем ширину */
+.archive-work .archive-filters-container {
+    /*max-width: 1200px;*/
+    margin: 0 auto 40px auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Верхняя строка с поиском */
+.archive-work .filters-top-row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+/* Группа поиска */
+.archive-work .filter-search-group {
+    width: 100%;
+}
+
+.archive-work .search-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.archive-work .filter-search {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.archive-work .filter-search:focus {
+    outline: none;
+    border-color: var(--wp--preset--color--accent-blue, #1a5fb4);
+}
+
+.archive-work .search-clear {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.archive-work .search-clear:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Основные фильтры */
+.archive-work .main-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.archive-work .main-filter-group {
+    width: 100%;
+}
+
+.archive-work .main-filter-label {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.archive-work .main-filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.archive-work .main-filter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.archive-work .main-filter-button:hover {
+    border-color: var(--wp--preset--color--accent-blue, #1a5fb4);
+    background: rgba(26, 95, 180, 0.1);
+}
+
+.archive-work .main-filter-button input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.archive-work .main-filter-button input[type="checkbox"]:checked + .main-filter-icon + .main-filter-text,
+.archive-work .main-filter-button:has(input:checked) {
+    background: rgba(26, 95, 180, 0.2);
+    border-color: var(--wp--preset--color--accent-blue, #1a5fb4);
+    color: white;
+}
+
+.archive-work .main-filter-icon {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* Нижняя строка фильтров */
+.archive-work .filters-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+}
+
+.archive-work .filter-stats {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.archive-work .filter-stats strong {
+    color: var(--wp--preset--color--accent-blue, #1a5fb4);
+    font-weight: normal;
+}
+
+.archive-work .filter-reset {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 8px 16px;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.archive-work .filter-reset:hover {
+    border-color: var(--wp--preset--color--accent-blue, #1a5fb4);
+    color: white;
+}
+
+/* Аккордеон */
+.archive-work .filters-accordion {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.archive-work .accordion-toggle {
+    width: 100%;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 16px;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.archive-work .accordion-toggle:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.archive-work .accordion-toggle .toggle-arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.archive-work .accordion-toggle.active .toggle-arrow {
+    transform: rotate(180deg);
+}
+
+.archive-work .accordion-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+}
+
+.archive-work .accordion-content.active {
+    display: block;
+}
+
+/* Дополнительные фильтры */
+.archive-work .additional-filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.archive-work .additional-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.archive-work .additional-filter-label {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 11px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+}
+
+.archive-work .filter-select {
+    width: 100%;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    font-family: var(--wp--preset--font-family--inter, sans-serif);
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.archive-work .filter-select:focus {
+    outline: none;
+    border-color: var(--wp--preset--color--accent-blue, #1a5fb4);
+}
+
+/* Адаптивность для планшетов и десктопа */
+@media (min-width: 768px) {
+    .archive-work .filters-top-row {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .archive-work .filter-search-group {
+        width: 300px;
+        flex-shrink: 0;
+    }
+    
+    .archive-work .main-filters {
+        flex: 1;
+    }
+}
+
+@media (max-width: 767px) {
+    .archive-work .filters-bottom-row {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+    
+    .archive-work .additional-filters-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ============================================
+   ОСНОВНОЙ КОНТЕЙНЕР СТРАНИЦЫ
+   ============================================ */
+
+.archive-work .site-main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;  /* Добавляем отступы по бокам */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Заголовок архива */
+.archive-work .archive-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Заголовок архива */
+.archive-work .archive-title {
+    font-family: var(--wp--preset--font-family--spectral);
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    color: var(--wp--preset--color--primary-white);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;  /* Добавляет заглавные буквы */
+}
+
+.archive-work .archive-description {
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+}
+
+/* Статистика */
+.archive-work .archive-stats {
+    margin: 20px 0 30px;
+}
+
+.archive-work .stats-count {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Контейнер фильтров - тоже на всю ширину внутри site-main */
+.archive-work .archive-filters-container {
+    width: 100%;
+    margin-bottom: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 24px;
+    box-sizing: border-box;
+}

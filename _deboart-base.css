@@ -1,0 +1,91 @@
+/* ============================================
+   DEBOART BASE TYPOGRAPHY
+   ============================================ */
+
+/* Базовые настройки */
+:root {
+    /* Цвета уже в theme.json */
+    /* Шрифты */
+    --font-mono: 'IBM Plex Mono', monospace;
+    --font-sans: 'Inter', sans-serif;
+    
+    /* Типографические шкалы */
+    --text-xs: 0.75rem;    /* 12px */
+    --text-sm: 0.875rem;   /* 14px */
+    --text-base: 1rem;     /* 16px */
+    --text-lg: 1.125rem;   /* 18px */
+    --text-xl: 1.25rem;    /* 20px */
+    --text-2xl: 1.5rem;    /* 24px */
+    --text-3xl: 1.875rem;  /* 30px */
+    --text-4xl: 2.25rem;   /* 36px */
+    --text-5xl: 3rem;      /* 48px */
+    --text-6xl: 3.75rem;   /* 60px */
+    --text-7xl: 4.5rem;    /* 72px */
+}
+
+/* Базовые сбросы */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--wp--preset--color--primary-black);
+    background: var(--wp--preset--color--primary-white);
+}
+
+/* Заголовки */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 0.5em;
+    color: var(--wp--preset--color--primary-black);
+}
+
+h1 { font-size: var(--text-6xl); }
+h2 { font-size: var(--text-5xl); }
+h3 { font-size: var(--text-4xl); }
+h4 { font-size: var(--text-3xl); }
+h5 { font-size: var(--text-2xl); }
+h6 { font-size: var(--text-xl); }
+
+/* Текст */
+p {
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+}
+
+/* Утилитарные классы для шрифтов */
+.font-mono {
+    font-family: var(--font-mono) !important;
+}
+
+.font-sans {
+    font-family: var(--font-sans) !important;
+}
+
+.font-light { font-weight: 300 !important; }
+.font-normal { font-weight: 400 !important; }
+.font-medium { font-weight: 500 !important; }
+.font-semibold { font-weight: 600 !important; }
+.font-bold { font-weight: 700 !important; }
+
+.tracking-tight { letter-spacing: -0.02em !important; }
+.tracking-normal { letter-spacing: 0 !important; }
+.tracking-wide { letter-spacing: 0.05em !important; }
+.tracking-wider { letter-spacing: 0.1em !important; }
+
+.leading-tight { line-height: 1.1 !important; }
+.leading-normal { line-height: 1.5 !important; }
+.leading-relaxed { line-height: 1.75 !important; }

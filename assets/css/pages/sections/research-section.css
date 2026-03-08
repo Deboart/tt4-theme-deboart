@@ -1,0 +1,663 @@
+/* ============================================
+   DEBOART RESEARCH CARDS
+   Карточки ключевых работ в секции "Исследования"
+   Версия: 2.0 (актуальные шрифты + чистый код)
+============================================ */
+
+/* ===== ОСНОВНЫЕ СТИЛИ СЕКЦИИ ===== */
+.deboart-research-section {
+    background: var(--wp--preset--color--primary-dark) !important;
+    color: var(--wp--preset--color--primary-white);
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+/* Градиентный переход сверху */
+.deboart-research-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(180deg,
+        var(--wp--preset--color--primary-black) 0%,
+        transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===== ЗАГОЛОВКИ СЕКЦИИ ===== */
+.deboart-research-section .wp-block-heading {
+    margin-bottom: 24px !important;
+}
+
+.deboart-research-section .wp-block-paragraph.has-text-align-center {
+    margin-bottom: 48px !important;
+    max-width: 800px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* ===== КОНТЕЙНЕР КАРТОЧЕК ===== */
+.research-cards-container,
+.wp-block-group.research-cards-container {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 24px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    align-items: stretch !important;
+}
+
+/* Планшет: 2 колонки */
+@media (min-width: 768px) {
+    .research-cards-container,
+    .wp-block-group.research-cards-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 30px !important;
+    }
+}
+
+/* Десктоп: 3 колонки */
+@media (min-width: 1024px) {
+    .research-cards-container,
+    .wp-block-group.research-cards-container {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 32px !important;
+    }
+}
+
+/* ===== КАРТОЧКА РАБОТЫ ===== */
+.research-card,
+.wp-block-group.research-card {
+    display: flex !important;
+    flex-direction: column !important;
+    background: var(--wp--preset--color--primary-white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.research-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+    border-color: var(--wp--preset--color--accent-blue);
+}
+
+/* ===== ИЗОБРАЖЕНИЕ КАРТОЧКИ ===== */
+.research-card-image {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    background: var(--wp--preset--color--primary-black);
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.research-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+}
+
+.research-card:hover .research-card-image img {
+    transform: scale(1.05);
+}
+
+/* ===== БЕЙДЖ ФОРМЫ ===== */
+.research-card-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(10, 10, 10, 0.9);
+    color: var(--wp--preset--color--primary-white);
+    padding: 0.5rem 1rem;
+    /* ✅ ИСПРАВЛЕНО: jetbrains-mono вместо ibm-plex-mono */
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 0.8rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 0.03em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== КОНТЕНТ КАРТОЧКИ ===== */
+.research-card-content {
+    padding: 1.5rem;
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: var(--wp--preset--color--primary-white);
+}
+
+.research-card-title {
+    /* ✅ ИСПРАВЛЕНО: spectral вместо ibm-plex-mono */
+    font-family: var(--wp--preset--font-family--spectral);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--wp--preset--color--primary-black);
+    line-height: 1.3;
+}
+
+.research-card-description {
+    /* ✅ ИСПРАВЛЕНО: manrope вместо inter */
+    font-family: var(--wp--preset--font-family--manrope);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--wp--preset--color--medium-gray);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* ===== КНОПКА ===== */
+.research-card-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--wp--preset--color--accent-blue);
+    color: var(--wp--preset--color--primary-white) !important;
+    padding: 0.75rem 1.5rem;
+    /* ✅ ИСПРАВЛЕНО: jetbrains-mono вместо ibm-plex-mono */
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none !important;
+    border: none;
+    transition: all 0.3s ease;
+    margin-top: auto !important;
+    width: 100%;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.research-card-button:hover {
+    background: var(--wp--preset--color--primary-black);
+    color: var(--wp--preset--color--primary-white) !important;
+    transform: translateY(-2px);
+    border-color: var(--wp--preset--color--accent-blue);
+}
+
+.research-card-button::after {
+    content: '→';
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.research-card-button:hover::after {
+    transform: translateX(4px);
+}
+
+/* ===== КНОПКА "ВСЕ ИССЛЕДОВАНИЯ" ===== */
+.deboart-research-section .wp-block-buttons {
+    margin-top: 48px !important;
+}
+
+.deboart-research-section .wp-block-button__link {
+    /* ✅ ИСПРАВЛЕНО: jetbrains-mono вместо ibm-plex-mono */
+    font-family: var(--wp--preset--font-family--jetbrains-mono) !important;
+    padding: 1rem 2.5rem !important;
+    border: 1px solid var(--wp--preset--color--accent-blue) !important;
+    background: transparent !important;
+    color: var(--wp--preset--color--primary-white) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+.deboart-research-section .wp-block-button__link:hover {
+    background: var(--wp--preset--color--accent-blue) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26, 95, 180, 0.3);
+}
+
+/* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.research-card {
+    animation: cardAppear 0.6s ease-out backwards;
+}
+
+.research-card:nth-child(1) { animation-delay: 0.1s; }
+.research-card:nth-child(2) { animation-delay: 0.2s; }
+.research-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 768px) {
+    .deboart-research-section {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+    
+    .research-card-image {
+        height: 220px;
+    }
+    
+    .research-card-title {
+        font-size: 1.2rem;
+    }
+    
+    .research-card-description {
+        font-size: 0.9rem;
+    }
+    
+    .deboart-research-section .wp-block-buttons {
+        margin-top: 32px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .deboart-research-section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    
+    .research-card-image {
+        height: 200px;
+    }
+    
+    .research-card-content {
+        padding: 1.25rem;
+    }
+    
+    .research-card-title {
+        font-size: 1.1rem;
+    }
+    
+    .research-card-button {
+        padding: 0.6rem 1.25rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ===== БОЛЬШИЕ ЭКРАНЫ ===== */
+@media (min-width: 1400px) {
+    .research-card-image {
+        height: 280px;
+    }
+    
+    .research-card-title {
+        font-size: 1.4rem;
+    }
+}
+
+
+/* ============================================
+   ИСПРАВЛЕНИЯ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ - RESEARCH SECTION
+   ============================================ */
+
+/* Основной контейнер секции */
+.deboart-research-section {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+}
+
+.deboart-research-section .wp-block-group__inner-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Заголовок - добавляем отступ сверху */
+.research-heading {
+    margin-top: 0 !important;
+    margin-bottom: 24px !important;
+    font-family: var(--wp--preset--font-family--spectral, serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+}
+
+/* Подзаголовок - добавляем отступ снизу */
+.research-subtitle {
+    margin-bottom: 48px !important;
+    max-width: 800px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 0 10px;
+}
+
+/* Контейнер карточек */
+.research-cards-container {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 24px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+/* Карточка */
+.research-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    background: var(--wp--preset--color--primary-white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Изображение карточки */
+.research-card-image {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    background: var(--wp--preset--color--primary-black);
+}
+
+.research-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+}
+
+/* Бейдж */
+.research-card-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(10, 10, 10, 0.9);
+    color: var(--wp--preset--color--primary-white);
+    padding: 0.5rem 1rem;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 0.8rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Контент карточки */
+.research-card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--wp--preset--color--primary-white);
+    box-sizing: border-box;
+}
+
+.research-card-title {
+    font-family: var(--wp--preset--font-family--spectral, serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--wp--preset--color--primary-black);
+    line-height: 1.3;
+}
+
+.research-card-description {
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--wp--preset--color--medium-gray, #6C6C6C);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* Кнопка */
+.research-card-button {
+    margin-top: auto !important;
+    width: 100%;
+}
+
+.research-card-button .wp-block-button__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--wp--preset--color--accent-blue, #1A5FB4);
+    color: var(--wp--preset--color--primary-white) !important;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none !important;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.research-card-button .wp-block-button__link:hover {
+    background: var(--wp--preset--color--primary-black);
+    border-color: var(--wp--preset--color--accent-blue);
+    transform: translateY(-2px);
+}
+
+.research-card-button .wp-block-button__link::after {
+    content: '→';
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.research-card-button .wp-block-button__link:hover::after {
+    transform: translateX(4px);
+}
+
+/* Кнопка "Все исследования" */
+.wp-block-buttons {
+    margin-top: 48px !important;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.research-archive-button .wp-block-button__link {
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace) !important;
+    padding: 1rem 2.5rem !important;
+    border: 1px solid var(--wp--preset--color--accent-blue) !important;
+    background: transparent !important;
+    color: var(--wp--preset--color--primary-white) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.research-archive-button .wp-block-button__link:hover {
+    background: var(--wp--preset--color--accent-blue) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26, 95, 180, 0.3);
+}
+
+/* ===== МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ===== */
+@media (max-width: 768px) {
+    .deboart-research-section {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+    
+    .deboart-research-section .wp-block-group__inner-container {
+        padding: 0 16px;
+    }
+    
+    .research-heading {
+        margin-bottom: 16px !important;
+    }
+    
+    .research-subtitle {
+        margin-bottom: 32px !important;
+        font-size: 0.9rem;
+        padding: 0;
+    }
+    
+    .research-cards-container {
+        gap: 20px !important;
+    }
+    
+    .research-card-image {
+        height: 220px;
+    }
+    
+    .research-card-title {
+        font-size: 1.2rem;
+    }
+    
+    .research-card-description {
+        font-size: 0.9rem;
+    }
+    
+    .research-card-button .wp-block-button__link {
+        padding: 0.6rem 1.25rem;
+        font-size: 0.8rem;
+    }
+    
+    .wp-block-buttons {
+        margin-top: 32px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .deboart-research-section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    
+    .deboart-research-section .wp-block-group__inner-container {
+        padding: 0 12px;
+    }
+    
+    .research-heading {
+        font-size: 1.8rem;
+        margin-bottom: 12px !important;
+    }
+    
+    .research-subtitle {
+        margin-bottom: 24px !important;
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+    
+    .research-cards-container {
+        gap: 16px !important;
+    }
+    
+    .research-card-image {
+        height: 200px;
+    }
+    
+    .research-card-content {
+        padding: 1.25rem;
+    }
+    
+    .research-card-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .research-card-description {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+    
+    .wp-block-buttons {
+        margin-top: 24px !important;
+    }
+    
+    .research-archive-button .wp-block-button__link {
+        padding: 0.8rem 2rem !important;
+        font-size: 0.9rem;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 360px) {
+    .research-card-image {
+        height: 180px;
+    }
+    
+    .research-card-badge {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.7rem;
+    }
+    
+    .research-card-title {
+        font-size: 1rem;
+    }
+    
+    .research-card-description {
+        font-size: 0.8rem;
+    }
+}
+
+/* Планшеты */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .research-cards-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px !important;
+    }
+}
+
+/* Десктоп */
+@media (min-width: 1025px) {
+    .research-cards-container {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 32px !important;
+    }
+}
+
+/* Анимация */
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.research-card {
+    animation: cardAppear 0.6s ease-out backwards;
+}
+
+.research-card:nth-child(1) { animation-delay: 0.1s; }
+.research-card:nth-child(2) { animation-delay: 0.2s; }
+.research-card:nth-child(3) { animation-delay: 0.3s; }
