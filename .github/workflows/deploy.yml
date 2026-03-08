@@ -19,5 +19,5 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./
-        server-dir: /deboart.ru/www/wp-content/themes/tt4-deboart/
+        server-dir: /wp-content/themes/tt4-deboart/
         dangerous-clean-slate: false  # НЕ удалять лишние файлы на сервере
