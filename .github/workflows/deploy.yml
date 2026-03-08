@@ -1,22 +1,23 @@
-name: Деплой на хостинг
+name: Deploy to FTP
 
 on:
   push:
-    branches: [ main ]  # Срабатывает только при пуше в main
+    branches: [ main ]
 
 jobs:
-  deploy:
+  web-deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Проверка кода
-        uses: actions/checkout@v3
-
-- name: Деплой по FTP (только изменения)
-  uses: SamKirkland/FTP-Deploy-Action@4.3.5
-  with:
-    server: ${{ secrets.FTP_HOST }}
-    username: ${{ secrets.FTP_USERNAME }}
-    password: ${{ secrets.FTP_PASSWORD }}
-    local-dir: ./
-    server-dir: /deboart.ru/www/wp-content/themes/tt4-deboart/
-    dangerous-clean-slate: false  # НЕ удалять лишние файлы на сервере
+    - name: Get code
+      uses: actions/checkout@v3
+    
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./
+        server-dir: /deboart.ru/www/wp-content/themes/tt4-deboart/
+        dangerous-clean-slate: false  # НЕ удалять лишние файлы на сервере
