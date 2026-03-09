@@ -1,0 +1,589 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1773094291870,
+    "data": [
+        {
+            "type": "file",
+            "name": "README.md",
+            "size": 1132,
+            "hash": "43e6dfa0902ab3688cf6884310cbfbbb7e7c3928ce12330cafa51937fc149d10"
+        },
+        {
+            "type": "file",
+            "name": "_base.css",
+            "size": 3627,
+            "hash": "0dddd45806541e99329ddd6d3a80ba8eba1013e702d33a44e80a226621e835aa"
+        },
+        {
+            "type": "file",
+            "name": "_deboart-base.css",
+            "size": 2484,
+            "hash": "799191e0b69ff7eeb1376ce5dc691b83d9f4e576b7fb177e2b91964a11f3b5fa"
+        },
+        {
+            "type": "file",
+            "name": "archive-work.php",
+            "size": 15248,
+            "hash": "f468f7d3eafacd8c47e4d8150a2330a0158f08c817e0e52d7321ca7ce2c87e7d"
+        },
+        {
+            "type": "folder",
+            "name": "assets"
+        },
+        {
+            "type": "file",
+            "name": "category-lab.php",
+            "size": 3690,
+            "hash": "09daf7d5f81701c4dec54363040626bea82bf0aecd07d6c245d00c7999763a76"
+        },
+        {
+            "type": "file",
+            "name": "footer.php",
+            "size": 8176,
+            "hash": "3597b3a2eb2da9f482338e7813aa9dfe4daae6ec8f2c1f62d77ac60e9c75a8f9"
+        },
+        {
+            "type": "file",
+            "name": "front-page.php",
+            "size": 1358,
+            "hash": "e0bccf18c0603963291afacefd96ffe831749d1739f46f0109b4e868c56afacf"
+        },
+        {
+            "type": "file",
+            "name": "functions.php",
+            "size": 25113,
+            "hash": "28f598efe5f6de396f72d3c4dbfe59d98ae39ff6ee0ec0322f1f8498ea37c6ce"
+        },
+        {
+            "type": "file",
+            "name": "functions_new.php",
+            "size": 16667,
+            "hash": "ac3490069c4a03611be3456521097879a933394a2530d6eee1037d951ae19067"
+        },
+        {
+            "type": "file",
+            "name": "header-archive-work.php",
+            "size": 884,
+            "hash": "f7500e643f454667a9a4bce5b8d09d65ba49bc24c609c1536e4c8afff2662466"
+        },
+        {
+            "type": "file",
+            "name": "header.php",
+            "size": 7615,
+            "hash": "b583f83cefb57b73b9ea07fc9001395996f7dadb52756f90f9c2b1c8efa1f0c7"
+        },
+        {
+            "type": "folder",
+            "name": "includes"
+        },
+        {
+            "type": "folder",
+            "name": "parts"
+        },
+        {
+            "type": "folder",
+            "name": "patterns"
+        },
+        {
+            "type": "file",
+            "name": "single-work.php",
+            "size": 36921,
+            "hash": "8dda8cfa1cff887be9b73ccaeabb8b00305338ecc79388ea055c9e0d389c2b32"
+        },
+        {
+            "type": "file",
+            "name": "style.css",
+            "size": 695,
+            "hash": "d5678e26c3976b483ddccc4f80be488b98e9a232d5ec2097a88e67b72e0f9477"
+        },
+        {
+            "type": "file",
+            "name": "template-helpers.php",
+            "size": 1846,
+            "hash": "57f87cad1fe31c83576c3f021791f77840a5868e7dfcfa0514c0e14e7a5a8e7f"
+        },
+        {
+            "type": "folder",
+            "name": "template-parts"
+        },
+        {
+            "type": "folder",
+            "name": "templates"
+        },
+        {
+            "type": "file",
+            "name": "theme.json",
+            "size": 6520,
+            "hash": "530964954bdb558af835bfdfc02677b07fa17cff603a91bc0e8dbac1bfefa1dd"
+        },
+        {
+            "type": "folder",
+            "name": "assets/css"
+        },
+        {
+            "type": "folder",
+            "name": "assets/fonts"
+        },
+        {
+            "type": "folder",
+            "name": "assets/images"
+        },
+        {
+            "type": "folder",
+            "name": "assets/js"
+        },
+        {
+            "type": "file",
+            "name": "includes/ajax-handler.php",
+            "size": 5113,
+            "hash": "d110557902ddfb96e907c0d85aafc23c164de58da6007374017d7426c335d317"
+        },
+        {
+            "type": "file",
+            "name": "parts/content-work-card.php",
+            "size": 5415,
+            "hash": "b75fe31ff20f45f22190fe5f96899edb8c6cbcd6c0ec7088c53923f1ec61ea80"
+        },
+        {
+            "type": "file",
+            "name": "parts/content-work-card0.php",
+            "size": 5531,
+            "hash": "10ada479b50e307238c9344c1c3c9efcac3658cef593708101a90169724c981c"
+        },
+        {
+            "type": "file",
+            "name": "patterns/README-patterns.md",
+            "size": 1,
+            "hash": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068"
+        },
+        {
+            "type": "file",
+            "name": "patterns/contact-section.php",
+            "size": 8884,
+            "hash": "244c4e8c1438158aff325541ceb390e59b96ba9d84a154b9afc0d7384e464180"
+        },
+        {
+            "type": "folder",
+            "name": "patterns/header-footer"
+        },
+        {
+            "type": "file",
+            "name": "patterns/hero-section.php",
+            "size": 5930,
+            "hash": "9b164e8b68820b1c3bd0acbe0eaf799776708db12a65770f1aa031cb88867cd1"
+        },
+        {
+            "type": "file",
+            "name": "patterns/lab-section.php",
+            "size": 8424,
+            "hash": "be4cef3909f6c280bcf0e350e49f1e19142d91f2695c5c4e1d4c180e4c22a4f3"
+        },
+        {
+            "type": "file",
+            "name": "patterns/method-section.php",
+            "size": 5833,
+            "hash": "7a4848ef3da8290420c4e046b0e937a74d1cbbca7da7653f2cddfcbfb75152ba"
+        },
+        {
+            "type": "file",
+            "name": "patterns/method-section_old.php",
+            "size": 6103,
+            "hash": "36238b08ec3f918335b56b729409ec50ebe32310b221c8daf1746014cf62cb95"
+        },
+        {
+            "type": "file",
+            "name": "patterns/paradigm-section.php",
+            "size": 8093,
+            "hash": "f743b22f420b664ba71727be39df413a8a33b10486a9655be987bdcc029127fd"
+        },
+        {
+            "type": "file",
+            "name": "patterns/research-section.php",
+            "size": 11338,
+            "hash": "ca073c12bead985be72d64d502fdc692222b7b830b081e80e0afb45001c6459b"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/related-graph.php",
+            "size": 42605,
+            "hash": "c569003d3121e6c3a4efca021e9ab0b24438b73635744004eb801e5dad95c5d4"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/related-graph_var1.php",
+            "size": 17708,
+            "hash": "b18f6e4ea57f973288c01c2f2bbe51c61187419bdc82fbbca2a911a81e5d1490"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/related-graph_var2.php",
+            "size": 29145,
+            "hash": "c0c8d456bf0f19585a90dbb7cbdfdc9070759f0911db627351e31f9edd0c77dd"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/related-works.php",
+            "size": 5761,
+            "hash": "048ae0939ad62a715e72822e7a24636f7d18390afccb8403ab4f34baf2fddbc1"
+        },
+        {
+            "type": "folder",
+            "name": "template-parts/sections"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/site-footer.php",
+            "size": 167,
+            "hash": "43061bf68a795e6e895e8290fc32a2200413cace9b3ec90db2ae67411b709d58"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/site-header.php",
+            "size": 167,
+            "hash": "4b2d524b8d5e5e0e8fc439ed7c43b3f2911b3274dfe4e91bd1045a8c147b137d"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/works-grid.php",
+            "size": 1839,
+            "hash": "a26e31e8e575110c531d869d91ad310c5d57d0d342b3a1c1370ea6bb1612d131"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/works-grid_old2.php",
+            "size": 5310,
+            "hash": "0e5c138dbe0f44feceeb6a3e6d92d73000f1292fb887fade363f7dc307fa63e5"
+        },
+        {
+            "type": "file",
+            "name": "templates/README-templates.md",
+            "size": 1,
+            "hash": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/_custom.css",
+            "size": 3550,
+            "hash": "804fc06e9f156cbc7844433350f34abc7cf566cf98ab72db74e485b38aec7b94"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/base.css",
+            "size": 3627,
+            "hash": "0dddd45806541e99329ddd6d3a80ba8eba1013e702d33a44e80a226621e835aa"
+        },
+        {
+            "type": "folder",
+            "name": "assets/css/components"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/deboart-components.css",
+            "size": 766,
+            "hash": "8e04cc7b8e4cc7c5bbdd7cfe87f736f702b3abe95e1b45835f3a7057f9f437b1"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/fonts.css",
+            "size": 1247,
+            "hash": "4d501f83b64cce9c0175749c57e8d7f3191a3c093784f11416c39e479f7795de"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/front-page.css",
+            "size": 1664,
+            "hash": "4085f1172545e26b2ca9b5f7aafe23df61964e725e3328ccdbe7735bf0bfe3e9"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/layout.css",
+            "size": 1558,
+            "hash": "38769862d8b337bc56f3731625bc5728a8b7a4edccb98e7e9deff56f7a860a4d"
+        },
+        {
+            "type": "folder",
+            "name": "assets/css/pages"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/work-single.css",
+            "size": 17348,
+            "hash": "b47b1f71f27d827491d49985945c8f0f4c64935a4e783cba27cbf427c73286cf"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/work-single_old.css",
+            "size": 21338,
+            "hash": "c24da18f23c90cdd3a35e6a47ab1c20de2c80fa108790ad79d74d00d3789d48b"
+        },
+        {
+            "type": "file",
+            "name": "assets/fonts/Inter18pt-Light.woff2",
+            "size": 118376,
+            "hash": "7e28582ac56250bbd860f9a539dbb704301dac776c928174902ee87421bdc1e7"
+        },
+        {
+            "type": "file",
+            "name": "assets/fonts/Inter18pt-Medium.woff2",
+            "size": 118976,
+            "hash": "374be1a97881d4a7875bb12fdb82e690c0bd044f58680043f40069541c01bdb9"
+        },
+        {
+            "type": "file",
+            "name": "assets/fonts/ibm-plex-mono-bold.woff2",
+            "size": 40052,
+            "hash": "3366c65adb3830a45eaa9e2893483ff9b84efb9fac39f725f0042f37f2a669b2"
+        },
+        {
+            "type": "file",
+            "name": "assets/fonts/ibm-plex-mono-regular.woff2",
+            "size": 38920,
+            "hash": "8a090c8f140f55339caf7d1596be2323cf8ad1bc4c70999368cadf6e0e733c9c"
+        },
+        {
+            "type": "file",
+            "name": "assets/fonts/inter-light.woff2",
+            "size": 105640,
+            "hash": "87ed65f80a4b970f7c8a41ab7ef281716dfd823ffc647b455deae7f22dd5302a"
+        },
+        {
+            "type": "file",
+            "name": "assets/fonts/inter-medium.woff2",
+            "size": 114348,
+            "hash": "0ff3e94614e1493eb556314fd247ae6c4a85a7783b4cc86be539940cf83f2a48"
+        },
+        {
+            "type": "file",
+            "name": "assets/fonts/inter-regular.woff2",
+            "size": 116872,
+            "hash": "ed1e24ce1154d6057adc6c15e443d6941ccca4b9f813351699a1e6d8c50812d1"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/hero-placeholder.png",
+            "size": 326264,
+            "hash": "8a51c5feb6b3055c0da54a4a1696ca15494c371ebc5f808ff9944238d6e903da"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/thumb-placeholder.jpg",
+            "size": 21969,
+            "hash": "90a2da6ee0c57254387e948c00e3460d0c6c8c5b7718ff614642df1254d7312f"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/ajax-filter.js",
+            "size": 7481,
+            "hash": "2209c1e5789690ab61b781b8bfe1a0be660226f2e4760dd2739d236f4c2d5bfe"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/custom.js",
+            "size": 1,
+            "hash": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/grid-connection.js",
+            "size": 2090,
+            "hash": "8f61a215493de0ce29ba1b21462d6977075f7dd4074920f7fd0d3f112fc60c84"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/hero-3d-grid.js",
+            "size": 5338,
+            "hash": "ca912fecbc81ad6567523c830839b49e9e3cb4bf0c1d9b8133c80271cf56c818"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/mobile-menu.js",
+            "size": 1170,
+            "hash": "fb1c8abd06b4537bf8c7cf0fdcb51d233b7f10d5ae45ba65ddfb5367ff0fa159"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/navigation.js",
+            "size": 7934,
+            "hash": "b236de4d23d14ce6cbdb5a6cdee0bf5274e511750badb99d473f7cce43fcb275"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/paradigm-diagram.js",
+            "size": 10401,
+            "hash": "d482619584f1ad899ec7616480659f4fdb6ceb88acc0a1b520871b7e4e398804"
+        },
+        {
+            "type": "file",
+            "name": "patterns/header-footer/footer.html",
+            "size": 7737,
+            "hash": "59bac5f299481b97d211eae70a391b61cd09afbb9e42b96955a3f1cb4a6b0b53"
+        },
+        {
+            "type": "file",
+            "name": "patterns/header-footer/header.html",
+            "size": 3575,
+            "hash": "d2d9282af8fdf8ba88d08684cc058e7ca23d04e84c08707c7f48e7ec370908a6"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/sections/section-contact.php",
+            "size": 2950,
+            "hash": "fc67fd7aa0791de2c350cae8ded274c5c705250b492b44df3c5e5b213e69887d"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/sections/section-hero.php",
+            "size": 4971,
+            "hash": "9a4c9e76e6fa38ba3525c03263174f66c9635287a2740e02b8292e8be2838ab7"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/sections/section-lab.php",
+            "size": 5200,
+            "hash": "f89cdc328a9e883ab052a0a271daedb910132d638dfa30ef116237cda449b271"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/sections/section-method.php",
+            "size": 4598,
+            "hash": "b02ad6922f019504598385d33b32de67de99f1c69873344c6d1939b8e90b727f"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/sections/section-paradigm.php",
+            "size": 11130,
+            "hash": "d49efa1f6701cac607307a917b2bdaa054bde033d759841b9191440e02226152"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/sections/section-research.php",
+            "size": 4715,
+            "hash": "e2d78b467a4e1d4923fc0d3d2319ea93058262b4c1cbb6a4a14e18b0f6d9a071"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/components/filter.css",
+            "size": 10916,
+            "hash": "d9a3731e550c192958345653f9919e19ade3efbe4eb414b02c33b855f90d610c"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/components/archive-works.css",
+            "size": 1716,
+            "hash": "95abbf87b27b0c4d0561d0a0b8162480e1e8255d9c9f506119ba8b1381e2d2f6"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/components/footer.css",
+            "size": 13434,
+            "hash": "9af21cbefb7f5a7c63efc6d6d6788a54c5591ebaf89c09deed2c7ee3be2ce8f8"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/components/gallery.css",
+            "size": 2306,
+            "hash": "74eb3b299adcc00078c2254720da1b6ca8bd45b4379a003358366d0f3b28dd8b"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/components/header.css",
+            "size": 34850,
+            "hash": "0e668f2b0c4edb5ed979d2a7ef04db7582f372b34b5aace4b9f8ccecef11df36"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/components/related-works.css",
+            "size": 2558,
+            "hash": "8c82dad3f8d3ee98be4a500e6b68aaf6efab20d3d4a5306f4da5d8a1aeb062d7"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/components/work-card.css",
+            "size": 8545,
+            "hash": "9a8614dd6f2733757bcd9d28d80ec4a89484c6ce6c1a0879f4f6692e763ae648"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/components/work-grid.css",
+            "size": 3547,
+            "hash": "a0f4885e227b0e824efaed786dbec31293fbb8c6eb7daa1e6f61e647a7c3845e"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/pages/lab-archive.css",
+            "size": 3603,
+            "hash": "55eb3357ebb4833c691cdd56e073f32608b1f9e2a907dfa3489c8cac35ba0c6c"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/pages/archive-work.css",
+            "size": 14960,
+            "hash": "c21f4dc6ec0ba3d3572ca98a9aee3e73c4ed8e44220dea8b76c32aea7d85131d"
+        },
+        {
+            "type": "folder",
+            "name": "assets/css/pages/sections"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/pages/single-work_old.css",
+            "size": 3335,
+            "hash": "6baa332891ed7d02637a3bdc0609fa398bc5887313206f6ecfc04708c5037bb6"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/pages/sections/contact-section.css",
+            "size": 12722,
+            "hash": "abea53572c3625cb6d07d1eb26f4aa057cf8d4f21c490546252236581ed3c258"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/pages/sections/hero-section.css",
+            "size": 5909,
+            "hash": "e0f9591c1bab2dc268f8bd93155504f400fa44b8ffa55e0e93162bdc0e759652"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/pages/sections/hero-section_with_bg.css",
+            "size": 5817,
+            "hash": "928ef4f826200a098ab4f7ef4a22e9a04ae96ec92705ccb68e00c7bceae57ee4"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/pages/sections/hero-section_without_bg.css",
+            "size": 9107,
+            "hash": "3f2b795c289b7550ed4970c7aa18d361429d25110ced02465773de6c7c53563d"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/pages/sections/lab-section.css",
+            "size": 13682,
+            "hash": "1924562090cb4a2d219d591a35f3c2275de5a1bac1a5d5afff42d3024f8e5c4e"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/pages/sections/method-section.css",
+            "size": 11830,
+            "hash": "586701bad3139a04136ddf08cac6498d79cdc831616687bf52e1c2fe7ac96a6b"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/pages/sections/paradigm-section.css",
+            "size": 15560,
+            "hash": "c50f6897c4ba2c9ab38c5c6dff01d750b1b6ced30ac71c1a658ad1e267e1da39"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/pages/sections/paradigm-section_old.css",
+            "size": 29310,
+            "hash": "b5aa5054a22e082f9844578b4826a59eb99e437598d28c2cf906073e730bd3aa"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/pages/sections/research-section.css",
+            "size": 16925,
+            "hash": "c75ab5a4ca4dddbd732c4423cd31ec27c30132761cfd86f3c96d29ca69727ed8"
+        }
+    ]
+}
