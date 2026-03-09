@@ -1,0 +1,94 @@
+/* Лаборатория: архив */
+.lab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.lab-card {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lab-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.lab-card__image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.lab-card__content {
+    padding: 1.5rem;
+}
+
+.lab-card__title {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+    font-family: 'Spectral', serif;
+}
+
+.lab-card__meta {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.lab-card__excerpt {
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Одиночная запись */
+.lab-entry {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.lab-entry__header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.lab-entry__title {
+    font-size: 2.5rem;
+    font-family: 'Spectral', serif;
+    margin: 1rem 0;
+}
+
+.lab-entry__lead {
+    font-size: 1.2rem;
+    color: #555;
+    font-style: italic;
+}
+
+.lab-entry__content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.lab-entry__content h2 {
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+}
+
+.lab-entry__related-works {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #eaeaea;
+}
+
+.works-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
