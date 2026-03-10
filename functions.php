@@ -155,22 +155,19 @@ if (is_post_type_archive('work') || is_tax('work_form') || is_tax('work_feeling'
 }
 
 // ========== 7. СТИЛИ ЛАБОРАТОРИИ ==========
-// Подключаем только на страницах лаборатории
+// Подключаем на всех страницах лаборатории: архив, отдельная запись, таксономии
 
-if (is_category('lab') || is_single() && in_category('lab')) {
+if (is_post_type_archive('lab') || is_singular('lab') || is_tax('lab_tag') || is_tax('lab_category')) {
     
-    // Стили архива лаборатории
-    $lab_archive_css = $assets_path . 'css/pages/lab-archive.css';
-    if (file_exists($lab_archive_css)) {
+    // Основные стили лаборатории
+    $lab_css = $assets_path . 'css/lab.css';
+    if (file_exists($lab_css)) {
         wp_enqueue_style(
-            'deboart-lab-archive',
-            $assets_uri . 'css/pages/lab-archive.css',
-            array($components_dependency), // Зависимость от компонентов
-            filemtime($lab_archive_css)
+            'deboart-lab',
+            $assets_uri . 'css/lab.css',
+            array($components_dependency),
+            filemtime($lab_css)
         );
-        
-        // Можно добавить отдельную переменную, если нужно
-        $lab_dependency = 'deboart-lab-archive';
     }
     
     // JavaScript для лаборатории (если нужен)
@@ -179,9 +176,9 @@ if (is_category('lab') || is_single() && in_category('lab')) {
         wp_enqueue_script(
             'deboart-lab',
             $assets_uri . 'js/lab.js',
-            array(), // Зависимости (jQuery и т.д.)
+            array(),
             filemtime($lab_js),
-            true // В футере
+            true
         );
     }
 }
@@ -728,3 +725,24 @@ function deboart_enqueue_mobile_menu_script() {
     );
 }
 add_action('wp_enqueue_scripts', 'deboart_enqueue_mobile_menu_script');
+
+
+/**
+ * Универсальный поиск шаблонов в папке /templates/
+ * Работает для всех типов записей, страниц, архивов, таксономий
+ */
+function tt4_deboart_template_include($template) {
+    // Получаем только имя файла из полного пути
+    $template_file = basename($template);
+    
+    // Ищем этот файл в папке /templates/
+    $new_template = locate_template('templates/' . $template_file);
+    
+    // Если нашли — используем его
+    if ($new_template) {
+        return $new_template;
+    }
+    
+    return $template;
+}
+add_filter('template_include', 'tt4_deboart_template_include');
