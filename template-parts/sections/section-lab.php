@@ -2,32 +2,49 @@
 /**
  * Секция "Лаборатория" - последние записи из дневника
  * 
- * Показывает 2 последние записи из категории "lab"
+ * Показывает 2 последние записи из типа записи "lab"
  */
 
-// Получаем последние 2 записи лаборатории
-// Вариант 1: Если используете категорию "lab" для обычных записей
+// Получаем последние 2 записи лаборатории из custom post type 'lab'
 $lab_query = new WP_Query(array(
-    'post_type' => 'post',
-    'category_name' => 'lab',
-    'posts_per_page' => 2,
-    'post_status' => 'publish',
-    'orderby' => 'date',
-    'order' => 'DESC',
-    'no_found_rows' => true,
-    'update_post_meta_cache' => true,
-    'update_post_term_cache' => true
+    'post_type' => 'lab',              // Тип записи lab
+    'posts_per_page' => 2,              // 2 записи
+    'post_status' => 'publish',         // Только опубликованные
+    'orderby' => 'date',                 // Сортировка по дате
+    'order' => 'DESC',                   // От новых к старым
+    'no_found_rows' => true,              // Оптимизация (не нужна пагинация)
+    'update_post_meta_cache' => true,     // Кэшируем мета-поля
+    'update_post_term_cache' => true      // Кэшируем таксономии
 ));
 
-// Вариант 2: Если используете отдельный тип записи 'debo_lab_entry' (раскомментируйте если нужно)
-// $lab_query = new WP_Query(array(
-//     'post_type' => 'debo_lab_entry',
-//     'posts_per_page' => 2,
-//     'post_status' => 'publish',
-//     'orderby' => 'date',
-//     'order' => 'DESC',
-//     'no_found_rows' => true
-// ));
+// Функция для иконок, если не определена
+if (!function_exists('deboart_get_form_icon')) {
+    function deboart_get_form_icon($slug) {
+        $icons = array(
+            'text'   => '📖',
+            'image'  => '🖼️',
+            'video'  => '🎬',
+            'audio'  => '🎵',
+            'web'    => '🌐',
+            'object' => '✨'
+        );
+        return isset($icons[$slug]) ? $icons[$slug] : '🎨';
+    }
+}
+
+if (!function_exists('deboart_get_feeling_icon')) {
+    function deboart_get_feeling_icon($slug) {
+        $icons = array(
+            'tishina' => '😌',
+            'energy'  => '⚡',
+            'thought' => '🤔',
+            'drama'   => '🎭',
+            'chaos'   => '🌀',
+            'memory'  => '🕰️'
+        );
+        return isset($icons[$slug]) ? $icons[$slug] : '💭';
+    }
+}
 ?>
 
 <section class="front-section deboart-lab-section">
@@ -47,26 +64,24 @@ $lab_query = new WP_Query(array(
                 $counter = 1;
                 while ($lab_query->have_posts()) : $lab_query->the_post(); 
                     
-                    // Получаем формы и содержания для иконок
-                    $form_terms = get_the_terms(get_the_ID(), 'work_form');
-                    $feeling_terms = get_the_terms(get_the_ID(), 'work_feeling');
+                    // Получаем таксономии лаборатории (не работ)
+                    $category_terms = get_the_terms(get_the_ID(), 'lab_category');
+                    $tag_terms = get_the_terms(get_the_ID(), 'lab_tag');
+                    
                     $icons = array();
                     
-                    if ($form_terms && !is_wp_error($form_terms)) {
-                        foreach ($form_terms as $term) {
-                            $icons[] = deboart_get_form_icon($term->slug);
-                        }
+                    // Используем первую букву категории как иконку, если нет специальных
+                    if ($category_terms && !is_wp_error($category_terms) && !empty($category_terms)) {
+                        $icons[] = '📂'; // Папка для категории
                     }
                     
-                    if ($feeling_terms && !is_wp_error($feeling_terms)) {
-                        foreach ($feeling_terms as $term) {
-                            $icons[] = deboart_get_feeling_icon($term->slug);
-                        }
+                    if ($tag_terms && !is_wp_error($tag_terms) && !empty($tag_terms)) {
+                        $icons[] = '🏷️'; // Тег для метки
                     }
                     
-                    // Если нет таксономий, используем стандартные иконки
+                    // Если нет таксономий, используем стандартные иконки лаборатории
                     if (empty($icons)) {
-                        $icons = array('📝', '🔬');
+                        $icons = array('🧪', '📝');
                     }
                     
                     // Ограничиваем до 2 иконок
@@ -85,7 +100,13 @@ $lab_query = new WP_Query(array(
                     </h3>
                     
                     <p class="lab-entry-description">
-                        <?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?>
+                        <?php 
+                        if (has_excerpt()) {
+                            echo wp_trim_words(get_the_excerpt(), 30, '...');
+                        } else {
+                            echo wp_trim_words(strip_tags(get_the_content()), 25, '...');
+                        }
+                        ?>
                     </p>
                     
                     <div class="lab-entry-meta">
@@ -110,7 +131,7 @@ $lab_query = new WP_Query(array(
             
             <p class="has-text-align-center lab-all-entries">
                 <div class="wp-block-button lab-all-entries-link">
-                    <a href="<?php echo get_category_link(get_category_by_slug('lab')); ?>" class="wp-block-button__link">
+                    <a href="<?php echo get_post_type_archive_link('lab'); ?>" class="wp-block-button__link">
                         Все записи лаборатории
                     </a>
                 </div>
