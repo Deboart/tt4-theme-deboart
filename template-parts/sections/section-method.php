@@ -1,19 +1,26 @@
 <?php
 /**
  * Секция "Метод" с миниатюрами работ
+ * 
+ * Показывает 9 случайных работ из портфолио
  */
+
 $method_intro = get_theme_mod('method_intro', 'Я не мастер одной техники. У меня есть метод:');
 
-// Получаем последние 9 работ для миниатюр
+// Получаем 9 случайных работ
 $works_query = new WP_Query(array(
     'post_type' => 'work',
     'posts_per_page' => 9,
-    'post_status' => 'publish'
+    'post_status' => 'publish',
+    'orderby' => 'rand',
+    'no_found_rows' => true, // Оптимизация для случайной выборки
+    'update_post_meta_cache' => false, // Дополнительная оптимизация
+    'update_post_term_cache' => false, // Дополнительная оптимизация
 ));
 ?>
 
 <section class="front-section deboart-method-section" id="deboart-method-section">
-<div class="grid-dots"></div>
+    <div class="grid-dots"></div>
     <div class="wp-block-group__inner-container">
         
         <h2 class="method-heading">МЕТОД</h2>
@@ -82,7 +89,7 @@ $works_query = new WP_Query(array(
                     
                 <?php else : ?>
                     <div class="method-gallery-placeholder-message">
-                        <p>Отметьте работы как «Избранные» в админке, чтобы они появились здесь</p>
+                        <p>Добавьте работы, чтобы они появились здесь</p>
                     </div>
                 <?php endif; ?>
                 

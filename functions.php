@@ -746,3 +746,5 @@ function tt4_deboart_template_include($template) {
     return $template;
 }
 add_filter('template_include', 'tt4_deboart_template_include');
+
+
