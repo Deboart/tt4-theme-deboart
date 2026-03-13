@@ -748,3 +748,300 @@ function tt4_deboart_template_include($template) {
 add_filter('template_include', 'tt4_deboart_template_include');
 
 
+/**
+ * Страница необработанных работ
+ * Показывает работы без формы или содержания
+ */
+
+// Добавляем пункт меню в админку
+function add_unprocessed_works_page() {
+    add_menu_page(
+        'Необработанные работы',
+        '🔍 Необработанные',
+        'edit_posts',
+        'unprocessed-works',
+        'render_unprocessed_works_page',
+        'dashicons-warning',
+        6 // Позиция после "Записи"
+    );
+}
+add_action('admin_menu', 'add_unprocessed_works_page');
+
+// Функция отображения страницы
+function render_unprocessed_works_page() {
+    // Получаем параметры сортировки и фильтрации
+    $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : 'title';
+    $order = isset($_GET['order']) ? $_GET['order'] : 'ASC';
+    $filter_status = isset($_GET['filter_status']) ? $_GET['filter_status'] : 'all';
+    
+    // Формируем запрос
+    $args = array(
+        'post_type' => 'work',
+        'posts_per_page' => -1, // Показываем все
+        'post_status' => 'publish',
+        'orderby' => $orderby,
+        'order' => $order
+    );
+    
+    // Если выбран фильтр по статусу обработки
+    if ($filter_status !== 'all') {
+        $tax_query = array('relation' => 'AND');
+        
+        if ($filter_status === 'no_form') {
+            $tax_query[] = array(
+                'taxonomy' => 'work_form',
+                'operator' => 'NOT EXISTS'
+            );
+        } elseif ($filter_status === 'no_feeling') {
+            $tax_query[] = array(
+                'taxonomy' => 'work_feeling',
+                'operator' => 'NOT EXISTS'
+            );
+        } elseif ($filter_status === 'no_both') {
+            $tax_query[] = array(
+                'taxonomy' => 'work_form',
+                'operator' => 'NOT EXISTS'
+            );
+            $tax_query[] = array(
+                'taxonomy' => 'work_feeling',
+                'operator' => 'NOT EXISTS'
+            );
+        }
+        
+        if (!empty($tax_query)) {
+            $args['tax_query'] = $tax_query;
+        }
+    }
+    
+    $works_query = new WP_Query($args);
+    $total_count = $works_query->found_posts;
+    
+    // Подсчет статистики
+    $stats = get_unprocessed_stats();
+    ?>
+    
+    <div class="wrap">
+        <h1>🔍 Необработанные работы</h1>
+        
+        <!-- Статистика -->
+        <div class="notice notice-info" style="margin: 20px 0; padding: 15px;">
+            <h3 style="margin-top: 0;">Статистика:</h3>
+            <ul style="margin-bottom: 0;">
+                <li>📊 Всего работ: <strong><?php echo $stats['total']; ?></strong></li>
+                <li>🎨 Без формы: <strong style="color: #d63638;"><?php echo $stats['no_form']; ?></strong></li>
+                <li>💭 Без содержания: <strong style="color: #d63638;"><?php echo $stats['no_feeling']; ?></strong></li>
+                <li>❌ Без формы и содержания: <strong style="color: #d63638;"><?php echo $stats['no_both']; ?></strong></li>
+                <li>✅ Полностью обработано: <strong style="color: #46b450;"><?php echo $stats['complete']; ?></strong></li>
+            </ul>
+        </div>
+        
+        <!-- Фильтры -->
+        <div style="margin: 20px 0;">
+            <form method="get" action="">
+                <input type="hidden" name="page" value="unprocessed-works">
+                
+                <label for="filter_status">Показать работы:</label>
+                <select name="filter_status" id="filter_status" style="margin: 0 10px 0 5px;">
+                    <option value="all" <?php selected($filter_status, 'all'); ?>>Все работы</option>
+                    <option value="no_form" <?php selected($filter_status, 'no_form'); ?>>Только без формы</option>
+                    <option value="no_feeling" <?php selected($filter_status, 'no_feeling'); ?>>Только без содержания</option>
+                    <option value="no_both" <?php selected($filter_status, 'no_both'); ?>>Без формы и содержания</option>
+                </select>
+                
+                <input type="submit" value="Применить" class="button">
+                
+                <?php if ($filter_status !== 'all') : ?>
+                    <a href="?page=unprocessed-works" class="button" style="margin-left: 10px;">Сбросить</a>
+                <?php endif; ?>
+            </form>
+        </div>
+        
+        <!-- Таблица работ -->
+        <table class="wp-list-table widefat fixed striped">
+            <thead>
+                <tr>
+                    <th width="30">ID</th>
+                    <th>
+                        <a href="?page=unprocessed-works&orderby=title&order=<?php echo $orderby === 'title' && $order === 'ASC' ? 'DESC' : 'ASC'; ?>&filter_status=<?php echo $filter_status; ?>">
+                            Название
+                            <?php if ($orderby === 'title') : ?>
+                                <span class="dashicons dashicons-arrow-<?php echo $order === 'ASC' ? 'up' : 'down'; ?>"></span>
+                            <?php endif; ?>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?page=unprocessed-works&orderby=date&order=<?php echo $orderby === 'date' && $order === 'ASC' ? 'DESC' : 'ASC'; ?>&filter_status=<?php echo $filter_status; ?>">
+                            Дата
+                            <?php if ($orderby === 'date') : ?>
+                                <span class="dashicons dashicons-arrow-<?php echo $order === 'ASC' ? 'up' : 'down'; ?>"></span>
+                            <?php endif; ?>
+                        </a>
+                    </th>
+                    <th width="150">🎨 Форма</th>
+                    <th width="150">💭 Содержание</th>
+                    <th width="100">Статус</th>
+                    <th width="200">Действия</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <?php if ($works_query->have_posts()) : ?>
+                    <?php while ($works_query->have_posts()) : $works_query->the_post(); 
+                        $id = get_the_ID();
+                        $form_terms = get_the_terms($id, 'work_form');
+                        $feeling_terms = get_the_terms($id, 'work_feeling');
+                        
+                        $has_form = $form_terms && !is_wp_error($form_terms);
+                        $has_feeling = $feeling_terms && !is_wp_error($feeling_terms);
+                        
+                        // Определяем статус
+                        if (!$has_form && !$has_feeling) {
+                            $status_class = 'critical';
+                            $status_text = '❌ Требуется всё';
+                        } elseif (!$has_form) {
+                            $status_class = 'warning';
+                            $status_text = '⚠️ Нет формы';
+                        } elseif (!$has_feeling) {
+                            $status_class = 'warning';
+                            $status_text = '⚠️ Нет содержания';
+                        } else {
+                            $status_class = 'ok';
+                            $status_text = '✅ Готово';
+                        }
+                        
+                        // Формируем отображение таксономий
+                        $form_display = array();
+                        if ($has_form) {
+                            foreach ($form_terms as $term) {
+                                $form_display[] = $term->name;
+                            }
+                        } else {
+                            $form_display[] = '<span style="color: #d63638;">—</span>';
+                        }
+                        
+                        $feeling_display = array();
+                        if ($has_feeling) {
+                            foreach ($feeling_terms as $term) {
+                                $feeling_display[] = $term->name;
+                            }
+                        } else {
+                            $feeling_display[] = '<span style="color: #d63638;">—</span>';
+                        }
+                    ?>
+                        <tr>
+                            <td><?php echo $id; ?></td>
+                            <td>
+                                <a href="<?php echo get_edit_post_link($id); ?>" target="_blank">
+                                    <?php the_title(); ?>
+                                </a>
+                            </td>
+                            <td><?php echo get_the_date('Y-m-d'); ?></td>
+                            <td><?php echo implode(', ', $form_display); ?></td>
+                            <td><?php echo implode(', ', $feeling_display); ?></td>
+                            <td>
+                                <span style="
+                                    display: inline-block;
+                                    padding: 3px 8px;
+                                    border-radius: 3px;
+                                    <?php 
+                                    if ($status_class === 'critical') echo 'background: #d63638; color: white;';
+                                    elseif ($status_class === 'warning') echo 'background: #f0ad4e; color: white;';
+                                    else echo 'background: #46b450; color: white;';
+                                    ?>
+                                ">
+                                    <?php echo $status_text; ?>
+                                </span>
+                            </td>
+                            <td>
+                                <a href="<?php echo get_edit_post_link($id); ?>" class="button button-small" target="_blank">
+                                    ✏️ Редактировать
+                                </a>
+                                <a href="<?php echo get_permalink($id); ?>" class="button button-small" target="_blank">
+                                    👁️ Просмотр
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else : ?>
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 20px;">
+                            🎉 Все работы обработаны!
+                        </td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+            
+            <tfoot>
+                <tr>
+                    <th colspan="7" style="text-align: right;">
+                        Показано: <?php echo $works_query->post_count; ?> из <?php echo $total_count; ?>
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+        
+        <?php wp_reset_postdata(); ?>
+    </div>
+    
+    <style>
+    .wp-list-table th a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .wp-list-table th .dashicons {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+        margin-left: 4px;
+    }
+    </style>
+    
+    <?php
+}
+
+// Функция для подсчета статистики
+function get_unprocessed_stats() {
+    $stats = array(
+        'total' => 0,
+        'no_form' => 0,
+        'no_feeling' => 0,
+        'no_both' => 0,
+        'complete' => 0
+    );
+    
+    $all_works = get_posts(array(
+        'post_type' => 'work',
+        'posts_per_page' => -1,
+        'post_status' => 'publish',
+        'fields' => 'ids'
+    ));
+    
+    $stats['total'] = count($all_works);
+    
+    foreach ($all_works as $work_id) {
+        $form_terms = get_the_terms($work_id, 'work_form');
+        $feeling_terms = get_the_terms($work_id, 'work_feeling');
+        
+        $has_form = $form_terms && !is_wp_error($form_terms);
+        $has_feeling = $feeling_terms && !is_wp_error($feeling_terms);
+        
+        if (!$has_form) {
+            $stats['no_form']++;
+        }
+        if (!$has_feeling) {
+            $stats['no_feeling']++;
+        }
+        if (!$has_form && !$has_feeling) {
+            $stats['no_both']++;
+        }
+        if ($has_form && $has_feeling) {
+            $stats['complete']++;
+        }
+    }
+    
+    return $stats;
+}
+
+/**
+ * конец Страницы необработанных работ
+ */
