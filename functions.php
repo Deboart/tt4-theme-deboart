@@ -1055,3 +1055,11 @@ function deboart_clear_cache_on_work_update($post_id) {
     }
 }
 add_action('save_post_work', 'deboart_clear_cache_on_work_update');
+
+
+// Подключаем ротатор заголовков только на главной странице
+add_action('wp_enqueue_scripts', function() {
+    if (is_front_page()) {
+        wp_enqueue_script('hero-rotator', get_stylesheet_directory_uri() . '/assets/js/hero-rotator.js', array(), '1.0', true);
+    }
+});

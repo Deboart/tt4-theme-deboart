@@ -2,17 +2,15 @@
 /**
  * Hero секция главной страницы
  * 
- * Поддерживает кастомизацию через настройки темы:
- * - hero_title - основной заголовок (поддерживает HTML теги)
- * - hero_subtitle - подзаголовок
+ * Заголовок динамически подставляется через JS
  */
-$hero_title = get_theme_mod('hero_title', 'ВОПРОС К ФОРМЕ.<br><span style="color: var(--wp--preset--color--accent-blue);">ОТВЕТ — В СОДЕРЖАНИИ.</span>');
 $hero_subtitle = get_theme_mod('hero_subtitle', 'Прокрутите, чтобы начать исследование');
 ?>
 
 <section class="front-section section-hero" id="deboart-hero-section">
     <div class="section-container">
-        <h1 class="hero-title"><?php echo wp_kses_post($hero_title); ?></h1>
+        <!-- Динамический заголовок -->
+        <h1 class="hero-title" id="rotating-title"></h1>
         
         <?php if ($hero_subtitle) : ?>
             <p class="hero-subtitle"><?php echo esc_html($hero_subtitle); ?></p>
