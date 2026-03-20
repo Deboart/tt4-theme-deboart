@@ -1043,5 +1043,15 @@ function get_unprocessed_stats() {
 }
 
 /**
- * конец Страницы необработанных работ
+ * конец Страницы  необработанных работ
  */
+
+ // Автоматическая очистка кэша WP Super Cache при обновлении работ
+function deboart_clear_cache_on_work_update($post_id) {
+    if (get_post_type($post_id) === 'work') {
+        if (function_exists('wp_cache_clear_cache')) {
+            wp_cache_clear_cache();
+        }
+    }
+}
+add_action('save_post_work', 'deboart_clear_cache_on_work_update');
