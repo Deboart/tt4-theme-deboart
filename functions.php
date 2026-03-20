@@ -1063,3 +1063,9 @@ add_action('wp_enqueue_scripts', function() {
         wp_enqueue_script('hero-rotator', get_stylesheet_directory_uri() . '/assets/js/hero-rotator.js', array(), '1.0', true);
     }
 });
+
+add_action('wp_enqueue_scripts', function() {
+    if (is_page_template('page-manifest.php')) {
+        wp_enqueue_style('manifest-styles', get_stylesheet_directory_uri() . '/assets/css/manifest.css', array(), '1.0');
+    }
+});

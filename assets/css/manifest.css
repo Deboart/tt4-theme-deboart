@@ -1,5 +1,8 @@
+/* Страница Манифеста — тёмная версия */
 .manifest-page {
-    background: #F8F8F8;
+    background: var(--wp--preset--color--primary, #0D1B2A);
+    color: var(--wp--preset--color--background, #F8F8F8);
+    min-height: 100vh;
 }
 
 .manifest-container {
@@ -10,14 +13,14 @@
 
 .manifest-block {
     padding: 6rem 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .manifest-block:last-child {
     border-bottom: none;
 }
 
-/* Блок 1 */
+/* Блок 1: Вопрос */
 .manifest-question {
     padding: 8rem 0;
     text-align: center;
@@ -28,7 +31,7 @@
     font-size: 1.25rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #666;
+    color: rgba(255,255,255,0.6);
     margin-bottom: 2rem;
 }
 
@@ -39,6 +42,7 @@
     font-weight: 400;
     max-width: 700px;
     margin: 0 auto;
+    color: #fff;
 }
 
 /* Блок 2 и 4 (текстовые) */
@@ -47,7 +51,7 @@
     font-family: 'Manrope', sans-serif;
     font-size: 1.125rem;
     line-height: 1.8;
-    color: #1a1a1a;
+    color: rgba(255,255,255,0.9);
 }
 
 .manifest-story__content p,
@@ -55,18 +59,19 @@
     margin-bottom: 1.5rem;
 }
 
-/* Блок 3 */
+/* Блок 3: Избранные работы */
 .manifest-featured__heading {
     font-family: 'Spectral', serif;
     font-size: 2rem;
     margin-bottom: 1rem;
     text-align: center;
+    color: #fff;
 }
 
 .manifest-featured__subheading {
     font-family: 'Manrope', sans-serif;
     font-size: 1rem;
-    color: #666;
+    color: rgba(255,255,255,0.6);
     text-align: center;
     margin-bottom: 3rem;
 }
@@ -78,6 +83,51 @@
     margin-bottom: 3rem;
 }
 
+/* Карточки работ */
+.manifest-work-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.manifest-work-card:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-4px);
+}
+
+.manifest-work-card__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.manifest-work-card__content {
+    padding: 1rem;
+}
+
+.manifest-work-card__title {
+    font-family: 'Spectral', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: #fff;
+}
+
+.manifest-work-card__excerpt {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.7);
+    margin: 0;
+}
+
+.manifest-work-card__link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .manifest-featured__action {
     text-align: center;
 }
@@ -87,18 +137,19 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.875rem;
     padding: 0.75rem 1.5rem;
-    border: 1px solid #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.3);
     text-decoration: none;
-    color: #1a1a1a;
+    color: #fff;
     transition: all 0.2s ease;
+    background: transparent;
 }
 
 .manifest-button:hover {
-    background: #1a1a1a;
-    color: #fff;
+    background: var(--wp--preset--color--accent-blue, #1A5FB4);
+    border-color: var(--wp--preset--color--accent-blue, #1A5FB4);
 }
 
-/* Блок 5 */
+/* Блок 5: Подпись */
 .manifest-signature {
     text-align: center;
     padding: 4rem 0;
@@ -107,7 +158,7 @@
 .manifest-signature__text {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.875rem;
-    color: #999;
+    color: rgba(255,255,255,0.5);
 }
 
 /* Адаптив */
