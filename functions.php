@@ -638,20 +638,6 @@ function deboart_header_customize_register($wp_customize) {
 add_action('customize_register', 'deboart_header_customize_register');
 
 
-/**
- * Fallback для основного меню
- */
-function deboart_primary_menu_fallback() {
-    ?>
-    <ul class="primary-menu fallback-menu">
-        <li class="menu-item"><a href="<?php echo esc_url(home_url('/')); ?>">DEBO</a></li>
-        <li class="menu-item"><a href="<?php echo esc_url(get_post_type_archive_link('work')); ?>">ИССЛЕДОВАНИЯ</a></li>
-        <li class="menu-item"><a href="<?php echo esc_url(home_url('/category/lab/')); ?>">ЛАБОРАТОРИЯ</a></li>
-        <li class="menu-item"><a href="<?php echo esc_url(home_url('/protocols/')); ?>">ПРОТОКОЛЫ</a></li>
-    </ul>
-    <?php
-}
-
 
 
 

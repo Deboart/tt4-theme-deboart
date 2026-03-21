@@ -58,18 +58,12 @@
             
             <!-- Навигация для десктопа -->
             <nav class="deboart-navigation desktop-nav">
-                <?php
-                wp_nav_menu(array(
-                    'theme_location' => 'primary',
-                    'menu_class'     => 'primary-menu',
-                    'container'      => false,
-                    'fallback_cb'    => 'deboart_primary_menu_fallback',
-                    'depth'          => 2,
-                    'walker'         => new Deboart_Walker_Nav_Menu(),
-                    'link_before'    => '<span class="menu-item-text">',
-                    'link_after'     => '</span>',
-                ));
-                ?>
+                <ul class="primary-menu">
+                    <li class="menu-item"><a href="<?php echo esc_url(get_post_type_archive_link('work')); ?>"><span class="menu-item-text">ИССЛЕДОВАНИЯ</span></a></li>
+                    <li class="menu-item"><a href="<?php echo esc_url(home_url('/lab/')); ?>"><span class="menu-item-text">ЛАБОРАТОРИЯ</span></a></li>
+                    <li class="menu-item"><a href="<?php echo esc_url(home_url('/manifest/')); ?>"><span class="menu-item-text">МАНИФЕСТ</span></a></li>
+                    <li class="menu-item"><a href="<?php echo esc_url(home_url('/protocols/')); ?>"><span class="menu-item-text">ПРОТОКОЛЫ</span></a></li>
+                </ul>
             </nav>
             
             <!-- Гамбургер-иконка для мобильных -->
@@ -133,9 +127,10 @@
             <!-- РУЧНАЯ НАВИГАЦИЯ -->
             <nav class="mobile-nav">
                 <ul class="mobile-primary-menu">
-                    <li><a href="<?php echo esc_url(home_url('/')); ?>">DEBO</a></li>
+                
                     <li><a href="<?php echo esc_url(get_post_type_archive_link('work')); ?>">ИССЛЕДОВАНИЯ</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/category/lab/')); ?>">ЛАБОРАТОРИЯ</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/lab/')); ?>">ЛАБОРАТОРИЯ</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/manifest/')); ?>">МАНИФЕСТ</a></li>
                     <li><a href="<?php echo esc_url(home_url('/protocols/')); ?>">ПРОТОКОЛЫ</a></li>
                 </ul>
             </nav>
