@@ -68,7 +68,25 @@ require get_stylesheet_directory() . '/template-parts/site-header.php';
                 ));
                 
                 foreach ($featured_works as $work) :
-                    // вывод карточки работы
+                    // Получаем метаполя
+                // Используем excerpt для краткого описания
+                $excerpt = $work->post_excerpt;
+                $thumbnail = get_the_post_thumbnail_url($work->ID, 'medium');
+            ?>
+                <div class="manifest-work-card">
+                    <a href="<?php echo get_permalink($work->ID); ?>" class="manifest-work-card__link">
+                        <?php if ($thumbnail) : ?>
+                            <img src="<?php echo esc_url($thumbnail); ?>" alt="<?php echo esc_attr($work->post_title); ?>" class="manifest-work-card__image">
+                        <?php endif; ?>
+                        <div class="manifest-work-card__content">
+                            <h3 class="manifest-work-card__title"><?php echo esc_html($work->post_title); ?></h3>
+                            <?php if ($excerpt) : ?>
+                                <p class="manifest-work-card__excerpt"><?php echo esc_html($excerpt); ?></p>
+                            <?php endif; ?>
+                        </div>
+                    </a>
+                </div>
+            <?php 
                 endforeach;
                 ?>
             </div>
@@ -100,7 +118,9 @@ require get_stylesheet_directory() . '/template-parts/site-header.php';
 Что вам интересно всё — но ненадолго.<br/>
 Что вы «поверхностны» в глазах мира, который требует глубины в одной точке.<p/>
 
-<p>Я доказываю обратное.<br/>
+<p>Я доказываю обратное. 
+<a href="/lab/kak-ya-nashel-sistemu" style="text-decoration: none; border-bottom: 1px solid currentColor;">Вот запись из лаборатории</a> 
+о том, как многогранность стала не проблемой, а методом.</p>
 Ваша многогранность — это не рассеянность.<br/>
 Это — метод исследования мира всеми доступными языками.<p/>
 

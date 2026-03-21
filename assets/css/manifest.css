@@ -185,3 +185,23 @@
         padding: 0 24px;
     }
 }
+
+.manifest-work-card__excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.manifest-invitation__content a {
+    color: var(--wp--preset--color--accent-blue, #1A5FB4);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    transition: opacity 0.2s ease;
+}
+
+.manifest-invitation__content a:hover {
+    opacity: 0.7;
+}
