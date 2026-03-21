@@ -617,3 +617,41 @@
     object-fit: contain; /* Сохраняем пропорции */
     background: rgba(0, 0, 0, 0.5); /* Фон для контраста */
 }
+
+.work-lab-links {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.work-lab-links__heading {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    color: #666;
+}
+
+.work-lab-links__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.work-lab-links__list li {
+    margin-bottom: 0.5rem;
+}
+
+.work-lab-links__list a {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--wp--preset--color--accent-blue, #1A5FB4);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.work-lab-links__list a:hover {
+    border-bottom-color: currentColor;
+}

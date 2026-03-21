@@ -767,6 +767,31 @@ $pods = pods('work', $work_id); // Добавь эту строку
             </div>
         </section>
         <?php endif; ?>
+
+        <!-- СВЯЗАННЫЕ статьи -->
+        <?php
+$related_labs = get_post_meta(get_the_ID(), 'related_lab_entry', false); // false = массив
+if (!empty($related_labs)) :
+?>
+    <div class="work-lab-links">
+        <p class="work-lab-links__heading">→ Читать в Лаборатории:</p>
+        <ul class="work-lab-links__list">
+            <?php foreach ($related_labs as $lab_id) : 
+                $lab_post = get_post($lab_id);
+                if ($lab_post) :
+            ?>
+                <li>
+                    <a href="<?php echo get_permalink($lab_post); ?>">
+                        «<?php echo esc_html($lab_post->post_title); ?>»
+                    </a>
+                </li>
+            <?php 
+                endif;
+            endforeach; 
+            ?>
+        </ul>
+    </div>
+<?php endif; ?>
 		
 		<!-- СВЯЗАННЫЕ РАБОТЫ -->
         <?php /*
