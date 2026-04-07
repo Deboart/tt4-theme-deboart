@@ -21,6 +21,9 @@ require get_stylesheet_directory() . '/template-parts/site-header.php';
     
     <!-- Секция 4: ИССЛЕДОВАНИЯ (3 ключевые работы) -->
     <?php get_template_part('template-parts/sections/section', 'research'); ?>
+
+    <!-- Добавляем блок "Сейчас в работе" -->
+    <?php get_template_part('template-parts/sections/section', 'current-projects'); ?>
     
     <!-- Секция 5: ЛАБОРАТОРИЯ (последние записи) -->
     <?php get_template_part('template-parts/sections/section', 'lab'); ?>

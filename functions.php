@@ -135,9 +135,9 @@ if (file_exists($components_css)) {
 
 
 // ========== 6. СТИЛИ АРХИВА РАБОТ ==========
-// Подключаем только на страницах работ
+// Подключаем на страницах архива работ, таксономиях, одиночных работах И на странице "В работе"
 
-if (is_post_type_archive('work') || is_tax('work_form') || is_tax('work_feeling') || is_tax('client') || is_tax('collaboration') || is_singular('work')) {
+if (is_post_type_archive('work') || is_tax('work_form') || is_tax('work_feeling') || is_tax('client') || is_tax('collaboration') || is_singular('work') || is_page_template('page-in-progress.php')) {
     
     // Архив работ - основные стили страницы
     $archive_work_css = $assets_path . 'css/pages/archive-work.css';

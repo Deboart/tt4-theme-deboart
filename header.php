@@ -61,6 +61,7 @@
                 <ul class="primary-menu">
                     <li class="menu-item"><a href="<?php echo esc_url(get_post_type_archive_link('work')); ?>"><span class="menu-item-text">ИССЛЕДОВАНИЯ</span></a></li>
                     <li class="menu-item"><a href="<?php echo esc_url(home_url('/lab/')); ?>"><span class="menu-item-text">ЛАБОРАТОРИЯ</span></a></li>
+                    <li class="menu-item"><a href="<?php echo esc_url(home_url('/in-progress/')); ?>"><span class="menu-item-text">В РАБОТЕ</span></a></li>
                     <li class="menu-item"><a href="<?php echo esc_url(home_url('/manifest/')); ?>"><span class="menu-item-text">МАНИФЕСТ</span></a></li>
                     <li class="menu-item"><a href="<?php echo esc_url(home_url('/protocols/')); ?>"><span class="menu-item-text">ПРОТОКОЛЫ</span></a></li>
                 </ul>

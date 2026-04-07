@@ -1,0 +1,363 @@
+/* ============================================
+   DEBOART CURRENT PROJECTS SECTION
+   Секция "Сейчас в работе" — по аналогии с "Исследования"
+   Версия: 1.0
+============================================ */
+
+.deboart-current-section {
+    background: linear-gradient(180deg, 
+        var(--wp--preset--color--primary-dark) 0%,
+        var(--wp--preset--color--primary-black) 100%) !important;
+    color: var(--wp--preset--color--primary-white);
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.deboart-current-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===== ВНУТРЕННИЙ КОНТЕЙНЕР С ОТСТУПАМИ ===== */
+.deboart-current-section .wp-block-group__inner-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===== ЗАГОЛОВКИ СЕКЦИИ ===== */
+.deboart-current-section .wp-block-heading {
+    margin-bottom: 24px !important;
+}
+
+.deboart-current-section .wp-block-paragraph.has-text-align-center {
+    margin-bottom: 48px !important;
+    max-width: 800px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* ===== КОНТЕЙНЕР КАРТОЧЕК ===== */
+.current-cards-container,
+.wp-block-group.current-cards-container {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 24px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    align-items: stretch !important;
+}
+
+/* Планшет: 2 колонки */
+@media (min-width: 768px) {
+    .current-cards-container,
+    .wp-block-group.current-cards-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 30px !important;
+    }
+}
+
+/* Десктоп: 3 колонки */
+@media (min-width: 1024px) {
+    .current-cards-container,
+    .wp-block-group.current-cards-container {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 32px !important;
+    }
+}
+
+/* ===== КАРТОЧКА РАБОТЫ ===== */
+.current-card,
+.wp-block-group.current-card {
+    display: flex !important;
+    flex-direction: column !important;
+    background: var(--wp--preset--color--primary-white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.current-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+    border-color: var(--wp--preset--color--accent-blue);
+}
+
+/* ===== ИЗОБРАЖЕНИЕ КАРТОЧКИ ===== */
+.current-card-image {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    background: var(--wp--preset--color--primary-black);
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.current-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+}
+
+.current-card:hover .current-card-image img {
+    transform: scale(1.05);
+}
+
+/* ===== БЕЙДЖ ФОРМЫ ===== */
+.current-card-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(10, 10, 10, 0.9);
+    color: var(--wp--preset--color--primary-white);
+    padding: 0.5rem 1rem;
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 0.8rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 0.03em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== БЕЙДЖ "В РАБОТЕ" ===== */
+.current-card-status {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+}
+
+.status-badge {
+    display: inline-block;
+    background: rgba(26, 95, 180, 0.95);
+    backdrop-filter: blur(4px);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+}
+
+/* ===== КОНТЕНТ КАРТОЧКИ ===== */
+.current-card-content {
+    padding: 1.5rem;
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: var(--wp--preset--color--primary-white);
+}
+
+.current-card-title {
+    font-family: var(--wp--preset--font-family--spectral);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--wp--preset--color--primary-black);
+    line-height: 1.3;
+}
+
+.current-card-description {
+    font-family: var(--wp--preset--font-family--manrope);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--wp--preset--color--medium-gray);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* ===== КНОПКА ===== */
+.current-card-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--wp--preset--color--accent-blue);
+    color: var(--wp--preset--color--primary-white) !important;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--wp--preset--font-family--jetbrains-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none !important;
+    border: none;
+    transition: all 0.3s ease;
+    margin-top: auto !important;
+    width: 100%;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.current-card-button:hover {
+    background: var(--wp--preset--color--primary-black);
+    color: var(--wp--preset--color--primary-white) !important;
+    transform: translateY(-2px);
+    border-color: var(--wp--preset--color--accent-blue);
+}
+
+.current-card-button::after {
+    content: '→';
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.current-card-button:hover::after {
+    transform: translateX(4px);
+}
+
+/* ===== КНОПКА "ВСЕ ПРОЕКТЫ В РАБОТЕ" ===== */
+.deboart-current-section .wp-block-buttons {
+    margin-top: 48px !important;
+}
+
+.deboart-current-section .wp-block-button__link {
+    font-family: var(--wp--preset--font-family--jetbrains-mono) !important;
+    padding: 1rem 2.5rem !important;
+    border: 1px solid var(--wp--preset--color--accent-blue) !important;
+    background: transparent !important;
+    color: var(--wp--preset--color--primary-white) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+.deboart-current-section .wp-block-button__link:hover {
+    background: var(--wp--preset--color--accent-blue) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26, 95, 180, 0.3);
+}
+
+/* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.current-card {
+    animation: cardAppear 0.6s ease-out backwards;
+}
+
+.current-card:nth-child(1) { animation-delay: 0.1s; }
+.current-card:nth-child(2) { animation-delay: 0.2s; }
+.current-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 768px) {
+    .deboart-current-section {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+    
+    .deboart-current-section .wp-block-group__inner-container {
+        padding: 0 16px;
+    }
+    
+    .current-card-image {
+        height: 220px;
+    }
+    
+    .current-card-title {
+        font-size: 1.2rem;
+    }
+    
+    .current-card-description {
+        font-size: 0.9rem;
+    }
+    
+    .deboart-current-section .wp-block-buttons {
+        margin-top: 32px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .deboart-current-section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    
+    .deboart-current-section .wp-block-group__inner-container {
+        padding: 0 12px;
+    }
+    
+    .current-heading {
+        font-size: 1.8rem;
+    }
+    
+    .current-card-image {
+        height: 200px;
+    }
+    
+    .current-card-content {
+        padding: 1.25rem;
+    }
+    
+    .current-card-title {
+        font-size: 1.1rem;
+    }
+    
+    .current-card-description {
+        font-size: 0.85rem;
+    }
+    
+    .current-card-button {
+        padding: 0.6rem 1.25rem;
+        font-size: 0.8rem;
+    }
+    
+    .deboart-current-section .wp-block-buttons {
+        margin-top: 24px !important;
+    }
+    
+    .deboart-current-section .wp-block-button__link {
+        padding: 0.8rem 2rem !important;
+        font-size: 0.9rem;
+    }
+}
+
+/* Планшеты */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .current-cards-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px !important;
+    }
+}
+
+/* Десктоп */
+@media (min-width: 1025px) {
+    .current-cards-container {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 32px !important;
+    }
+}
