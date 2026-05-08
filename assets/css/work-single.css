@@ -13,7 +13,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 /* --- Верхняя навигация (оставляем как есть, она ок) --- */
@@ -45,9 +45,9 @@
 
 /* --- ШАПКА РАБОТЫ (новая, строгая) --- */
 .work-header {
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+   /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
 }
 
 .work-title {
@@ -81,6 +81,74 @@
 .work-status.private { border-color: rgba(26, 95, 180, 0.3); color: var(--wp--preset--color--accent-blue, #1a5fb4); }
 
 /* --- ТАКСОНОМИИ ФОРМЫ И СОДЕРЖАНИЯ (компактно) --- */
+
+/* --- НОВАЯ МЕТА-СТРОКА (компактная) --- */
+.work-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin: 8px 0 0 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-family: var(--wp--preset--font-family--jetbrains-mono, monospace);
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+/* Бейдж года (в стиле старых) */
+.work-year-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.work-year-badge .icon {
+    opacity: 0.7;
+}
+
+/* Блоки Формы и Содержания (используют старые .taxonomy-items и .taxonomy-item) */
+.work-form-badge,
+.work-feeling-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.work-form-badge .label,
+.work-feeling-badge .label {
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.5px;
+}
+
+/* Переиспользуем старые стили для .taxonomy-items и .taxonomy-item */
+/* Они уже есть в твоём CSS, ничего менять не нужно */
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .work-meta-row {
+        gap: 0.75rem;
+        padding-bottom: 8px;
+    }
+    
+    .work-year-badge {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 480px) {
+    .work-meta-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
 .work-taxonomies {
     display: flex;
     flex-wrap: wrap;
@@ -654,4 +722,298 @@
 
 .work-lab-links__list a:hover {
     border-bottom-color: currentColor;
+}
+
+
+
+/* --- СТИЛИ ДЛЯ КОНТЕНТА ПО ФОРМЕ РАБОТЫ ) --- */
+
+/* ============================================
+   ВИДЕО-ПЛЕЕР (основной акцент)
+   Поддержка нескольких видео, адаптив для любых форматов
+   ============================================ */
+
+.work-video-primary {
+    margin: 1rem 0 2.5rem;
+}
+
+/* Сетка для нескольких видео */
+.video-primary-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Каждый видео-блок */
+.video-primary-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 280px;
+    max-width: 100%;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Видеоплеер */
+.video-primary-player {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.video-primary-player:focus {
+    outline: none;
+}
+
+/* Капшн под видео (поверх, появляется при ховере) */
+.video-primary-wrapper .video-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+    color: #fff;
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: 0.8rem;
+    padding: 1rem;
+    margin: 0;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.video-primary-wrapper:hover .video-caption {
+    opacity: 1;
+}
+
+/* ===== АДАПТИВ ===== */
+
+/* Планшет (до 1024px) */
+@media (max-width: 1024px) {
+    .work-video-primary {
+        margin: 1.5rem 0 2.5rem;
+    }
+    
+    .video-primary-grid {
+        gap: 1.5rem;
+    }
+}
+
+/* Мобильный (до 768px) — переключаем в столбик */
+@media (max-width: 768px) {
+    .work-video-primary {
+        margin: 0.75rem 0 1.5rem;
+    }
+    
+    .video-primary-grid {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .video-primary-wrapper {
+        min-width: 100%;
+        border-radius: 8px;
+    }
+    
+    .video-primary-player {
+        border-radius: 8px;
+    }
+    
+    .video-primary-wrapper .video-caption {
+        font-size: 0.7rem;
+        padding: 0.5rem;
+        opacity: 1;
+        background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, transparent 100%);
+    }
+}
+
+/* Маленький мобильный (до 480px) */
+@media (max-width: 480px) {
+    .video-primary-wrapper {
+        border-radius: 6px;
+    }
+    
+    .video-primary-player {
+        border-radius: 6px;
+    }
+}
+
+/* Десктоп: если одно видео — ограничиваем ширину и центрируем */
+@media (min-width: 769px) {
+    .video-primary-grid:has(> .video-primary-wrapper:only-child) {
+        justify-content: center;
+    }
+    
+    .video-primary-grid:has(> .video-primary-wrapper:only-child) .video-primary-wrapper {
+        max-width: 800px;
+        flex: none;
+    }
+}
+
+/* Большие экраны: максимум 3 видео в ряд */
+@media (min-width: 1200px) {
+    .video-primary-grid {
+        gap: 2rem;
+    }
+    
+    .video-primary-wrapper {
+        flex: 1 1 calc(33.333% - 2rem);
+        min-width: 300px;
+    }
+}
+
+/* ============================================
+   АУДИО-КАРТОЧКА (плеер с обложкой)
+   ============================================ */
+
+.work-audio-primary {
+    margin: 1rem 0 2rem;
+}
+
+.audio-card {
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.audio-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Обложка */
+.audio-card__cover {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-card__cover-image {
+    width: 70%;
+    height: 100%;
+    object-fit: contain; /* Вместо cover — вписываем целиком */
+    object-position: center;
+    transition: transform 0.5s ease;
+   /* background: #0a0a0a; /* Фон под логотипом на случай прозрачности */
+}
+
+.audio-card:hover .audio-card__cover-image {
+    transform: scale(1.02);
+}
+
+.audio-card__cover--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-card__placeholder-icon {
+    font-size: 4rem;
+    opacity: 0.5;
+}
+
+/* Информация о треке */
+.audio-card__info {
+    padding: 1.25rem 1.5rem 0.5rem;
+    text-align: center;
+}
+
+.audio-card__title {
+    font-family: var(--wp--preset--font-family--spectral, serif);
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin: 0 0 0.25rem 0;
+    color: #fff;
+}
+
+.audio-card__artist {
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+/* Плеер */
+.audio-card__player {
+    padding: 0.5rem 1.5rem 1.5rem;
+}
+
+.audio-card__player-element {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+}
+
+/* Капшн под плеером */
+.audio-card__caption {
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    margin-top: 0.75rem;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .audio-card {
+        max-width: 100%;
+        border-radius: 16px;
+    }
+    
+    .audio-card__info {
+        padding: 1rem 1.25rem 0.25rem;
+    }
+    
+    .audio-card__title {
+        font-size: 1.1rem;
+    }
+    
+    .audio-card__player {
+        padding: 0.25rem 1.25rem 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .audio-card {
+        border-radius: 12px;
+    }
+    
+    .audio-card__info {
+        padding: 0.75rem 1rem 0.25rem;
+    }
+    
+    .audio-card__player {
+        padding: 0.25rem 1rem 1rem;
+    }
+}
+
+/* Стили для стандартного аудиоплеера (кастомизация) */
+.audio-card__player-element::-webkit-media-controls-panel {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.audio-card__player-element::-webkit-media-controls-current-time-display,
+.audio-card__player-element::-webkit-media-controls-time-remaining-display {
+    color: #fff;
+}
+
+.audio-card__player-element::-webkit-media-controls-play-button {
+    background-color: var(--wp--preset--color--accent-blue, #1A5FB4);
+    border-radius: 50%;
 }
