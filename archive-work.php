@@ -85,16 +85,33 @@ $end = min($paged * $posts_per_page, $total_works);
     <div class="work-archive__content">
 
     <div class="archive-header">
-        <h1 class="archive-title"><?php post_type_archive_title(); ?></h1>
-        
-        <!-- Статистика работ -->
-        <div class="archive-stats">
-            <p class="archive-description">
-                <span class="stats-count">🕰️ Показано <?php echo $start; ?>—<?php echo $end; ?> из <?php echo $total_works; ?> работ</span>
-                <span class="stats-sort">Сортировка: по году создания (новые → старые)</span>
-            </p>
+        <div class="archive-header-row">
+            <h1 class="archive-title"><span class="archive-title-icon">🔬</span>
+                Исследования</h1>
+            
+            <div class="archive-search">
+                <div class="search-wrapper">
+                    <input type="text" 
+                        id="search-header" 
+                        name="search" 
+                        class="filter-search" 
+                        placeholder="Поиск по исследованиям..."
+                        value="<?php echo esc_attr($current_search); ?>">
+                    <button type="button" class="search-clear" title="Очистить">×</button>
+                </div>
+            </div>
         </div>
+
+        <!-- Пояснение раздела -->
+    <div class="archive-intro">
+        <p class="archive-intro-text">
+            Каждая работа — это законченное исследование. 
+            Здесь собраны экспериментальные протоколы, 
+            доказывающие, что границы между формами — иллюзия.
+        </p>
     </div>
+    
+</div>
 
     <!-- ФИЛЬТРЫ С AJAX -->
     <div class="archive-filters-container">
@@ -104,20 +121,7 @@ $end = min($paged * $posts_per_page, $total_works);
    
                <!-- ВЕРХНЯЯ СТРОКА: поиск + основные фильтры в один ряд -->
             <div class="filters-top-row">
-                <!-- Поиск - фиксированной ширины -->
-                <div class="filter-search-group">
-                    <div class="search-wrapper">
-                        <input type="text" 
-                               id="search" 
-                               name="search" 
-                               class="filter-search" 
-                               placeholder="Поиск работ..."
-                               value="<?php echo esc_attr($current_search); ?>">
-                        <button type="button" class="search-clear" title="Очистить">×</button>
-                    </div>
-                </div>
-                
-                <!-- ОСНОВНЫЕ ФИЛЬТРЫ (всегда видны) - занимают оставшееся место -->
+
                <!-- ОСНОВНЫЕ ФИЛЬТРЫ (всегда видны) - занимают оставшееся место -->
 <div class="main-filters">
     <!-- ФОРМА -->
@@ -256,6 +260,8 @@ $end = min($paged * $posts_per_page, $total_works);
         </div>
     </div>
 </div>
+
+
             
             <!-- НИЖНЯЯ СТРОКА: статистика и кнопки -->
             <div class="filters-bottom-row">
@@ -263,6 +269,7 @@ $end = min($paged * $posts_per_page, $total_works);
                     <span class="stats-text">Найдено:</span>
                     <strong id="filtered-count"><?php echo $total_works; ?></strong>
                     <span class="stats-text">работ</span>
+                    <span class="stats-sort">Сортировка: по году создания (новые → старые)</span>
                 </div>
                 
                 <div class="filter-actions">
