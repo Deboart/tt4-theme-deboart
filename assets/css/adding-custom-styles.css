@@ -1,0 +1,553 @@
+/* Эьти стили вырезаны из темы редактора WP Дополнительные стили */
+
+:where(.wp-site-blocks *:focus){outline-width:2px;outline-style:solid}
+
+/* Дополнительные стили для элементов */
+.work-meta,
+.post-date,
+.tags-list,
+.wp-block-code,
+code,
+kbd,
+pre,
+.mono-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+}
+
+.hero-title {
+  font-family: 'Spectral', serif;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+}
+
+.section-title {
+  font-family: 'Spectral', serif;
+  font-weight: 300;
+}
+
+.card-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+}
+
+.nav-menu {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Принудительное применение шрифтов */
+.deboart-method-section h2.method-heading {
+  font-family: 'Spectral', serif !important;
+  font-weight: 300 !important;
+}
+
+.deboart-method-section .method-intro,
+.deboart-method-section .method-list-item {
+  font-family: 'Manrope', sans-serif !important;
+}
+
+
+
+/* ============================================
+   ОБЩИЕ СТИЛИ И ШРИФТЫ
+   ============================================ */
+
+/* Подключение шрифтов */
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* Общие переменные */
+:root {
+  --section-padding: var(--wp--preset--spacing--huge);
+  --card-gap: 32px;
+  --transition-speed: 0.3s;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ============================================
+   HERO SECTION (Заставка)
+   ============================================ */
+
+.deboart-hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--wp--preset--color--primary-dark);
+  position: relative;
+  padding: 0 !important;
+}
+
+.deboart-hero-section .wp-block-group__inner-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+/* Заголовок Hero */
+.hero-heading {
+  font-family: 'Spectral', serif !important;
+  font-weight: 300 !important;
+  font-size: clamp(3rem, 8vw, 5.5rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--wp--preset--color--primary-white) !important;
+  margin: 0 0 1.5rem 0 !important;
+  text-transform: uppercase;
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-heading span {
+  font-weight: 400;
+  color: var(--wp--preset--color--accent-blue) !important;
+}
+
+/* Подзаголовок Hero */
+.hero-subtitle {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: var(--wp--preset--font-size--large) !important;
+  font-weight: 300 !important;
+  color: var(--wp--preset--color--medium-gray) !important;
+  margin: 0 0 3rem 0 !important;
+  opacity: 0.8;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero-subtitle:hover {
+  color: var(--wp--preset--color--accent-blue) !important;
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* Индикатор скролла Hero */
+.scroll-indicator {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  margin: 0 auto !important;
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.scroll-arrow {
+  display: inline-block;
+  color: var(--wp--preset--color--primary-white);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 15px;
+  line-height: 0;
+  animation: scrollBounce 2s infinite;
+}
+
+.scroll-arrow:hover {
+  color: var(--wp--preset--color--accent-blue) !important;
+  opacity: 1;
+  transform: translateY(5px);
+  animation: none;
+}
+
+.scroll-arrow svg {
+  width: 24px;
+  height: 40px;
+  stroke: currentColor;
+}
+
+/* Градиентный фон Hero */
+.deboart-hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+      radial-gradient(circle at 20% 30%, rgba(26, 95, 180, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(42, 140, 110, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+
+
+
+
+
+
+
+/* ============================================
+   АДАПТИВНОСТЬ
+   ============================================ */
+
+@media (max-width: 1024px) {
+  /* Research Cards */
+  .research-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+
+  
+  /* Method Gallery */
+  .method-gallery {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Method Columns */
+  .method-columns {
+    flex-direction: column !important;
+  }
+  
+  .method-text-column,
+  .method-gallery-column {
+    width: 100% !important;
+  }
+  
+  .method-text-column {
+    padding-right: 0 !important;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Общие отступы */
+  :root {
+    --section-padding: var(--wp--preset--spacing--x-large);
+  }
+  
+  /* Hero Section */
+  .hero-heading {
+    font-size: clamp(2.5rem, 6vw, 4rem) !important;
+    padding: 0 20px;
+  }
+  
+  .hero-subtitle {
+    font-size: var(--wp--preset--font-size--medium) !important;
+    padding: 0 30px;
+  }
+  
+  .scroll-indicator {
+    bottom: 40px;
+  }
+  
+  .scroll-arrow {
+    padding: 10px;
+  }
+  
+  .scroll-arrow svg {
+    width: 20px;
+    height: 35px;
+  }
+  
+  /* Research Cards */
+  .research-cards-container {
+    grid-template-columns: 1fr;
+  }
+  
+
+  
+  /* Method Gallery */
+  .method-gallery {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Contact Navigation */
+  .contact-nav-links {
+    gap: 16px;
+  }
+  
+  .contact-nav-link {
+    font-size: 16px;
+  }
+  
+  /* Формы */
+  .contact-form-input,
+  .contact-form-select,
+  .contact-form-textarea {
+    font-size: 14px !important;
+    padding: 10px 14px !important;
+  }
+  
+  .contact-submit-button {
+    font-size: 16px;
+    padding: 14px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* Заголовки */
+  .hero-heading,
+  .method-heading,
+  .paradigm-heading,
+  .research-heading,
+  .lab-heading,
+  .contact-heading {
+    font-size: var(--wp--preset--font-size--gigantic) !important;
+  }
+}
+
+/* ============================================
+   ДОСТУПНОСТЬ И ОПТИМИЗАЦИЯ
+   ============================================ */
+
+/* Убираем анимацию при prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-arrow,
+  .hero-heading,
+  .hero-subtitle,
+  .scroll-indicator,
+  .paradigm-arrow,
+  .paradigm-item,
+  .research-card,
+  .lab-entry-card {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Фокус-состояния для доступности */
+.contact-form-input:focus-visible,
+.contact-form-select:focus-visible,
+.contact-form-textarea:focus-visible,
+.contact-submit-button:focus-visible,
+.scroll-arrow:focus-visible,
+.contact-nav-link:focus-visible {
+  outline: 2px solid var(--wp--preset--color--accent-blue) !important;
+  outline-offset: 2px;
+}
+
+/* Улучшение читаемости */
+@media (prefers-contrast: high) {
+  .hero-heading,
+  .method-heading,
+  .paradigm-heading,
+  .research-heading,
+  .lab-heading,
+  .contact-heading {
+    color: #000 !important;
+  }
+  
+  .deboart-hero-section,
+  .deboart-method-section,
+  .deboart-research-section,
+  .deboart-lab-section,
+  .deboart-contact-section {
+    background: #fff !important;
+  }
+  
+  .hero-subtitle,
+  .method-list-item,
+  .research-subtitle,
+  .lab-subtitle,
+  .contact-subtitle {
+    color: #333 !important;
+  }
+}
+
+/* ============================================
+   ДОПОЛНИТЕЛЬНЫЕ УТИЛИТЫ
+   ============================================ */
+
+/* Классы шрифтов для WordPress редактора */
+.has-spectral-font-family {
+  font-family: 'Spectral', serif !important;
+}
+
+.has-manrope-font-family {
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.has-jetbrains-mono-font-family {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Плавный скролл для всей страницы */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Убираем стандартные отступы WordPress */
+.wp-block-group__inner-container > *:first-child {
+  margin-top: 0 !important;
+}
+
+.wp-block-group__inner-container > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+
+
+/* ============================================
+   ДОПОЛНИТЕЛЬНЫЕ ФИКСЫ ДЛЯ ВСЕХ СЕКЦИЙ
+   ============================================ */
+
+/* ============================================
+   КОНТЕЙНЕРЫ СЕКЦИЙ - ОПТИМАЛЬНАЯ ШИРИНА
+============================================ */
+
+/* HERO — почти полная ширина, много воздуха */
+.deboart-hero-section .wp-block-group__inner-container {
+    max-width: 1200px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+}
+
+/* METHOD — широкий для галереи */
+.deboart-method-section .wp-block-group__inner-container {
+    max-width: 1400px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+}
+
+
+
+/* RESEARCH — широкий для карточек */
+.deboart-research-section .wp-block-group__inner-container {
+    max-width: 1400px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+}
+
+/* LAB — средний для записей */
+.deboart-lab-section .wp-block-group__inner-container {
+    max-width: 1200px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+}
+
+/* CONTACT — узкий для формы */
+.deboart-contact-section .wp-block-group__inner-container {
+    max-width: 800px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 768px) {
+    .deboart-hero-section .wp-block-group__inner-container,
+    .deboart-method-section .wp-block-group__inner-container,
+    .deboart-paradigm-section .wp-block-group__inner-container,
+    .deboart-research-section .wp-block-group__inner-container,
+    .deboart-lab-section .wp-block-group__inner-container,
+    .deboart-contact-section .wp-block-group__inner-container {
+        max-width: 100% !important;
+        padding: 0 16px !important;
+    }
+}
+
+/* Исправляем колонки в методе */
+.deboart-method-section .method-columns {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 60px !important;
+  width: 100% !important;
+}
+
+.deboart-method-section .method-text-column {
+  flex: 0 0 40% !important;
+  max-width: 40% !important;
+}
+
+.deboart-method-section .method-gallery-column {
+  flex: 0 0 60% !important;
+  max-width: 60% !important;
+}
+
+@media (max-width: 1024px) {
+  .deboart-method-section .method-columns {
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+  
+  .deboart-method-section .method-text-column,
+  .deboart-method-section .method-gallery-column {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  
+  .deboart-method-section .method-text-column {
+    padding-right: 0 !important;
+  }
+}
+
+/* ============================================
+   ВАЖНЫЕ ПРАВИЛА ДЛЯ ПЕРЕОПРЕДЕЛЕНИЯ WORDPRESS
+   ============================================ */
+
+/* Отключаем стандартные стили галереи */
+.deboart-method-section .blocks-gallery-grid,
+.deboart-method-section .wp-block-gallery {
+  padding-left: 0 !important;
+  list-style: none !important;
+}
+
+.deboart-method-section .blocks-gallery-item,
+.deboart-method-section .wp-block-image {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Фиксируем размеры изображений */
+.deboart-method-section .wp-block-image img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* Гарантируем правильное отображение диаграммы */
+.deboart-paradigm-section .paradigm-diagram {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 30px !important;
+  width: 100% !important;
+}
+
+/* Адаптивные шрифты для заголовков */
+@media (max-width: 768px) {
+  .deboart-paradigm-section .paradigm-heading,
+  .deboart-method-section .method-heading {
+    font-size: var(--wp--preset--font-size--huge) !important;
+    text-align: center !important;
+  }
+}

@@ -334,8 +334,6 @@
 .research-heading {
     margin-top: 0 !important;
     margin-bottom: 24px !important;
-    font-family: var(--wp--preset--font-family--spectral, serif);
-    font-size: clamp(2rem, 5vw, 3rem);
     text-align: center;
 }
 
@@ -564,7 +562,6 @@
     }
     
     .research-heading {
-        font-size: 1.8rem;
         margin-bottom: 12px !important;
     }
     

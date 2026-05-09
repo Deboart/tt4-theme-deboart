@@ -45,10 +45,6 @@
 }
 
 .lab-archive__title {
-    font-family: var(--wp--preset--font-family--spectral);
-    font-size: 3rem;
-    font-weight: 600;
-    color: var(--wp--preset--color--primary-white);
     margin-bottom: 1rem;
 }
 
@@ -116,9 +112,7 @@
         grid-template-columns: 1fr;
     }
     
-    .lab-archive__title {
-        font-size: 2.5rem;
-    }
+   
     
     .lab-archive__description {
         font-size: 1rem;
@@ -130,9 +124,7 @@
 }
 
 @media (max-width: 480px) {
-    .lab-archive__title {
-        font-size: 2rem;
-    }
+  
     
     .lab-archive__content {
         padding: 20px 12px 40px;

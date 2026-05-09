@@ -88,10 +88,10 @@
 }
 
 .hero-title {
-    font-family: var(--wp--preset--font-family--spectral, serif);
+   /* font-family: var(--wp--preset--font-family--spectral, serif);*/
     font-size: clamp(2.5rem, 8vw, 6rem);
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.1;*/
     color: var(--wp--preset--color--primary-white, #F8F8F8);
     margin: 0 0 20px 0;
     text-transform: uppercase;
@@ -168,9 +168,9 @@
 
 /* Планшеты */
 @media (max-width: 1024px) {
-    .hero-title {
+   /* .hero-title {
         font-size: 4rem;
-    }
+    }*/
     
     .hero-grid-3d {
         background-size: 50px 50px;
@@ -191,10 +191,10 @@
         min-height: 90vh;
     }
     
-    .hero-title {
+  /*  .hero-title {
         font-size: 2.8rem;
         margin-bottom: 16px;
-    }
+    }*/
     
     .hero-subtitle {
         font-size: 0.9rem;
@@ -222,9 +222,9 @@
 
 /* Маленькие мобильные */
 @media (max-width: 480px) {
-    .hero-title {
+  /*  .hero-title {
         font-size: 2.2rem;
-    }
+    }*/
     
     .hero-subtitle {
         font-size: 0.8rem;
@@ -238,9 +238,9 @@
 
 /* Очень маленькие экраны */
 @media (max-width: 360px) {
-    .hero-title {
+  /*  .hero-title {
         font-size: 1.8rem;
-    }
+    }*/
     
     .hero-subtitle {
         font-size: 0.75rem;

@@ -43,9 +43,6 @@
 
 /* ===== ЗАГОЛОВКИ ===== */
 .lab-heading {
-    font-family: var(--wp--preset--font-family--spectral, serif);
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 300;
     color: var(--wp--preset--color--primary-white, #F8F8F8);
     margin-bottom: 24px !important;
     text-align: center;
@@ -402,7 +399,6 @@
     }
     
     .lab-heading {
-        font-size: 1.8rem;
         margin-bottom: 12px !important;
     }
     

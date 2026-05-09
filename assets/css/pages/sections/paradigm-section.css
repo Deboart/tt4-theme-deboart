@@ -49,9 +49,6 @@
 
 /* Заголовок */
 .paradigm-heading {
-    font-family: var(--wp--preset--font-family--spectral, serif);
-    font-size: 3rem;
-    font-weight: 300;
     color: var(--wp--preset--color--primary-white, #F8F8F8);
     text-align: center;
     margin-bottom: 40px;
@@ -382,7 +379,6 @@
     }
     
     .paradigm-heading {
-        font-size: 2rem;
         margin-bottom: 30px;
     }
     

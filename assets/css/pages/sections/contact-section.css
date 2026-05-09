@@ -42,9 +42,7 @@
 
 /* Заголовки */
 .contact-heading {
-    font-family: var(--wp--preset--font-family--spectral, serif) !important;
-    font-weight: 300 !important;
-    font-size: clamp(2rem, 5vw, 3rem) !important;
+   
     color: var(--wp--preset--color--primary-white, #F8F8F8) !important;
     margin-bottom: 24px !important;
     text-align: center;
@@ -369,7 +367,7 @@
     }
     
     .contact-heading {
-        font-size: 2rem !important;
+
         margin-bottom: 16px !important;
     }
     
@@ -408,9 +406,6 @@
         padding: 0 12px;
     }
     
-    .contact-heading {
-        font-size: 1.8rem !important;
-    }
     
     .contact-subtitle {
         margin-bottom: 24px !important;
@@ -458,10 +453,7 @@
 
 /* Для очень маленьких экранов */
 @media (max-width: 360px) {
-    .contact-heading {
-        font-size: 1.5rem !important;
-    }
-    
+ 
     .contact-subtitle {
         font-size: 0.9rem !important;
     }

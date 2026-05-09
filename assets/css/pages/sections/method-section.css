@@ -42,10 +42,10 @@
 
 /* ===== ЗАГОЛОВОК ===== */
 .method-heading {
-    font-family: var(--wp--preset--font-family--spectral, 'Spectral', serif) !important;
+  /*  font-family: var(--wp--preset--font-family--spectral, 'Spectral', serif) !important;
     font-weight: 300 !important;
     font-size: clamp(3rem, 6vw, 5rem) !important;
-    color: var(--wp--preset--color--primary-white, #fff) !important;
+    color: var(--wp--preset--color--primary-white, #fff) !important;*/
     margin-bottom: 50px !important;
     letter-spacing: -0.02em;
     position: relative;
