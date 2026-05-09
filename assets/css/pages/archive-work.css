@@ -54,9 +54,7 @@
 }
 
 .archive-work .archive-title {
-    font-family: var(--wp--preset--font-family--spectral);
-    font-size: 3rem;
-    font-weight: 600;
+   
     margin: 0 0 12px 0; /* Убираем лишние отступы */
     color: var(--wp--preset--color--primary-white);
     letter-spacing: -0.02em;
@@ -64,7 +62,10 @@
     -webkit-background-clip: unset;
     background-clip: unset;
     color: var(--wp--preset--color--primary-white); /* Белый цвет */
+  /*  text-transform: uppercase;  /* Добавляет заглавные буквы */
 }
+
+
 
 .archive-work .archive-description {
     font-family: var(--wp--preset--font-family--jetbrains-mono);
@@ -253,9 +254,7 @@
         padding: 20px 15px;
     }
     
-    .archive-work .archive-title {
-        font-size: 2.2rem;
-    }
+  
     
     .archive-work .archive-filters-container {
         padding: 16px;
@@ -285,7 +284,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-bottom: 24px;
+    margin-bottom: ,5em;
     width: 100%;
 }
 
@@ -574,20 +573,12 @@
   /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
 }
 
-/* Заголовок архива */
-.archive-work .archive-title {
-    font-family: var(--wp--preset--font-family--spectral);
-    font-size: 3rem;
-    font-weight: 600;
-    margin: 0 0 12px 0;
-    color: var(--wp--preset--color--primary-white);
-    letter-spacing: -0.02em;
-    text-transform: uppercase;  /* Добавляет заглавные буквы */
-}
+
+
 
 .archive-work .archive-description {
     font-family: var(--wp--preset--font-family--jetbrains-mono);
-    font-size: 14px;
+   
     color: rgba(255, 255, 255, 0.5);
     line-height: 1.6;
 }
@@ -693,15 +684,24 @@
 }
 
 .archive-title-icon {
-    font-size: 1.2em;
+   
     margin-right: 0.3rem;
     display: inline-block;
     vertical-align: middle;
 }
 
-/* Адаптив */
+
+
+/* Адаптив для заголовка архива */
 @media (max-width: 768px) {
-    .archive-title-icon {
-        font-size: 1.1em;
+    .archive-title {
+     
+        word-break: break-word; /* Переносим длинные слова */
+   
+    }
+    
+    .archive-header-row {
+        gap: 0.75rem;
     }
 }
+

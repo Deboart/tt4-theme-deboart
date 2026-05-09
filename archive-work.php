@@ -86,7 +86,7 @@ $end = min($paged * $posts_per_page, $total_works);
 
     <div class="archive-header">
         <div class="archive-header-row">
-            <h1 class="archive-title"><span class="archive-title-icon">🔬</span>
+            <h1 class="archive-title "><span class="archive-title-icon">🔬</span>
                 Исследования</h1>
             
             <div class="archive-search">
