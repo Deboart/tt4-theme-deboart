@@ -8,12 +8,16 @@
 // Подключаем header
 require get_stylesheet_directory() . '/template-parts/site-header.php';
 
-// Вспомогательная функция для фильтров (если не определена в functions.php)
+// Вспомогательная функция для создания ссылки на архив с фильтром.
 if (!function_exists('deboart_get_filtered_archive_url')) {
     function deboart_get_filtered_archive_url($taxonomy, $term_slug) {
         $base_url = get_post_type_archive_link('work');
-        $args = array();
         
+        $args = array(
+            'search' => '', // Пустой поиск, чтобы параметр был в URL
+        );
+        
+        // Добавляем параметр в зависимости от таксономии
         if ($taxonomy === 'work_form') {
             $args['form'] = array($term_slug);
         } elseif ($taxonomy === 'work_feeling') {

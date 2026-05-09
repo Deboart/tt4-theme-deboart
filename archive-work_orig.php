@@ -332,8 +332,6 @@ $end = min($paged * $posts_per_page, $total_works);
 	</div>
 </main>
 
-
-
 <?php
 require get_stylesheet_directory() . '/template-parts/site-footer.php';
 ?>

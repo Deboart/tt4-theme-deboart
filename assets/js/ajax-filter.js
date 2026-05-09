@@ -226,5 +226,46 @@ function initAccordion() {
     
     // Инициализация при загрузке документа
     $(document).ready(init);
+ 
+    // Экспортируем функцию в глобальную область для внешнего вызова
+window.filterWorks = filterWorks;
+
+// Автоматическая фильтрация при загрузке с параметрами в URL
+$(document).ready(function() {
+    // Получаем параметры из URL
+    var urlParams = new URLSearchParams(window.location.search);
     
+    // Проверяем наличие form, feeling или search
+    var hasForm = false;
+    var hasFeeling = false;
+    var hasSearch = false;
+    
+    // Перебираем все параметры
+    for (var pair of urlParams.entries()) {
+        var key = pair[0];
+        var value = pair[1];
+        
+        if (key === 'form' || key.includes('form')) {
+            hasForm = true;
+        }
+        if (key === 'feeling' || key.includes('feeling')) {
+            hasFeeling = true;
+        }
+        if (key === 'search' && value !== '') {
+            hasSearch = true;
+        }
+    }
+    
+    console.log('Фильтр по URL:', { hasForm, hasFeeling, hasSearch });
+    
+    if (hasForm || hasFeeling || hasSearch) {
+        setTimeout(function() {
+            if (typeof filterWorks === 'function') {
+                console.log('Вызов filterWorks(1)');
+                filterWorks(1);
+            }
+        }, 300);
+    }
+});
+
 })(jQuery);
