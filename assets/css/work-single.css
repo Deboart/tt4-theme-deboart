@@ -1017,3 +1017,85 @@
     background-color: var(--wp--preset--color--accent-blue, #1A5FB4);
     border-radius: 50%;
 }
+
+
+/* Обложка (главное изображение) */
+.work-cover {
+    margin: 1rem 0 2rem;
+}
+
+.cover-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.cover-image-wrapper {
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cover-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.cover-image-wrapper:hover .cover-image {
+    transform: scale(1.02);
+}
+
+.cover-caption {
+    padding: 0.75rem;
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .work-cover {
+        margin: 0.75rem 0 1.5rem;
+    }
+    
+    .cover-image-wrapper {
+        border-radius: 8px;
+    }
+}
+
+/* Сетка изображений (без заголовка) */
+.images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.grid-item {
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.2);
+}
+
+.grid-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.grid-item:hover .grid-image {
+    transform: scale(1.02);
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .images-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.75rem;
+    }
+}
