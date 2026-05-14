@@ -52,12 +52,8 @@
 
 .work-title {
     font-family: var(--wp--preset--font-family--spectral, serif); /* Оставим Spectral для заголовка, он строгий */
-    font-size: 3.5rem;
-    font-weight: 300;
-    line-height: 1.1;
     color: var(--wp--preset--color--primary-white, #f8f8f8);
     margin: 0 0 12px 0;
-    letter-spacing: -0.02em;
 }
 
 /* Контейнер для мета-данных в шапке */
