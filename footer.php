@@ -97,7 +97,7 @@
         <span class="social-text">Instagram</span>
     </a>
     
-    <a href="https://behance.net/deboart" class="social-link behance" target="_blank" rel="noopener" aria-label="Behance">
+    <a href="https://www.behance.net/slavadebo" class="social-link behance" target="_blank" rel="noopener" aria-label="Behance">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M8 11H12C13.1046 11 14 10.1046 14 9V8C14 6.89543 13.1046 6 12 6H8V11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M8 18H13C14.1046 18 15 17.1046 15 16V15C15 13.8954 14.1046 13 13 13H8V18Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
