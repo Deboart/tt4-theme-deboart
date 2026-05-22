@@ -1,154 +1,213 @@
 /**
  * Deboart Paradigm Diagram - Interactive Schema
- * Управление интерактивной схемой "Форма → Содержание"
- * Версия: 1.0
- * Дата: январь 2026
+ * Версия: 2.5 (финал — кликабельные ссылки)
  */
 
 document.addEventListener('DOMContentLoaded', function() {
     const diagram = document.getElementById('deboartParadigmDiagram');
     const tooltip = document.getElementById('paradigmTooltip');
-    const tooltipTitle = tooltip.querySelector('.tooltip-title');
-    const tooltipDescription = tooltip.querySelector('.tooltip-description');
-    const tooltipExamples = tooltip.querySelector('.tooltip-examples');
-
+    
     if (!diagram || !tooltip) return;
 
-    // Данные для подсказок
-    const tooltipData = {
-        // ФОРМЫ
-        text: {
-            title: '📖 Текстовые работы',
-            description: 'Поэзия, эссе, рассказы, манифесты. Исследование языка как материала.',
-            examples: ['Бесконечное зеркало 1', 'Стихотворение "Уж третий час..."']
-        },
-        image: {
-            title: '🖼️ Изобразительные работы',
-            description: 'Фотография, цифровая графика, коллажи. Диалог с визуальным пространством.',
-            examples: ['Логотип DEBOART', 'Цифровые коллажи']
-        },
-        video: {
-            title: '🎬 Видео работы',
-            description: 'Видеоклипы, видеоарт, документация процессов. Время как измерение формы.',
-            examples: ['Подниму голову в небеса', 'Пульс города']
-        },
-        audio: {
-            title: '🎵 Аудио работы',
-            description: 'Звуковые эксперименты, композиции, полевые записи. Пространство слышимого.',
-            examples: ['Звуки тишины', 'Аудиодневник']
-        },
-        web: {
-            title: '🌐 Веб/цифровые работы',
-            description: 'Интерактивные инсталляции, генеративное искусство, сетевые проекты.',
-            examples: ['Интерактивная поэзия', 'Сайт-как-произведение']
-        },
-        object: {
-            title: '✨ Объекты',
-            description: 'Физические артефакты, инсталляции, материальные эксперименты.',
-            examples: ['Хрупкая вечность', 'Стеклянные композиции']
-        },
+    const tooltipTitle = tooltip.querySelector('.tooltip-title');
+    const tooltipExamples = tooltip.querySelector('.tooltip-examples');
+    const tooltipDescription = tooltip.querySelector('.tooltip-description');
+    const hasDescription = !!tooltipDescription;
 
-        // СОДЕРЖАНИЯ
-        silence: {
-            title: '😌 Тишина',
-            description: 'Работы о созерцании, паузе, внутреннем покое. Пространство между звуками.',
-            examples: ['Медитативные тексты', 'Минималистичные композиции']
-        },
-        energy: {
-            title: '⚡ Энергия',
-            description: 'Динамика, движение, напряжение. Работы, которые заряжают и трансформируют.',
-            examples: ['Эксперименты с ритмом', 'Кинетические объекты']
-        },
-        thought: {
-            title: '🤔 Мысль',
-            description: 'Рефлексия, анализ, концептуальные исследования. Искусство как мышление.',
-            examples: ['Философские эссе', 'Концептуальные схемы']
-        },
-        drama: {
-            title: '🎭 Драма',
-            description: 'Конфликт, напряжение, нарратив. Эмоциональная интенсивность в форме.',
-            examples: ['Психологические портреты', 'Драматические видео']
-        },
-        chaos: {
-            title: '🌀 Хаос',
-            description: 'Случайность, энтропия, неконтролируемые процессы. Красота в беспорядке.',
-            examples: ['Алеаторные композиции', 'Эксперименты со случайностью']
-        },
-        memory: {
-            title: '🕰️ Память',
-            description: 'Время, ностальгия, архив. Что остаётся после момента?',
-            examples: ['Работы с архивом', 'Исследования времени']
-        }
-    };
-
-    // ЦВЕТА ДЛЯ БЕЙДЖЕЙ
     const badgeColors = {
-        'text': '#1A5FB4',
-        'image': '#2A8C6E',
-        'video': '#D4B48C',
-        'audio': '#6C6C6C',
-        'web': '#1A5FB4',
-        'object': '#2A8C6E',
-        'silence': '#6C6C6C',
-        'energy': '#1A5FB4',
-        'thought': '#2A8C6E',
-        'drama': '#D4B48C',
-        'chaos': '#A0AEC0',
-        'memory': '#2A2A2A'
+        'text': '#1A5FB4', 'image': '#2A8C6E', 'video': '#D4B48C',
+        'audio': '#6C6C6C', 'web': '#1A5FB4', 'object': '#2A8C6E',
+        'tishina': '#6C6C6C', 'energy': '#1A5FB4', 'thought': '#2A8C6E',
+        'drama': '#D4B48C', 'chaos': '#A0AEC0', 'memory': '#2A2A2A'
     };
 
-    // Элементы схемы
+    const feelingDescriptions = {
+        'tishina': 'Тишина и созерцание',
+        'energy': 'Энергия и движение',
+        'thought': 'Мысль и рефлексия',
+        'drama': 'Драма и напряжение',
+        'chaos': 'Хаос и случайность',
+        'memory': 'Память и время'
+    };
+
+    const fallbackExamples = {
+        'text': [{title: 'Бесконечное зеркало', url: '/works/infinite-mirror'}],
+        'image': [{title: 'Логотип DEBOART', url: '/works/deboart-logo'}],
+        'video': [{title: 'Подниму голову в небеса', url: '/works/video-clip'}],
+        'audio': [{title: 'Звуки тишины', url: '/works/sounds-of-silence'}],
+        'web': [{title: 'Сайт DEBOART', url: '/'}],
+        'object': [{title: 'Бесконечное зеркало 2', url: '/works/infinite-mirror-2'}],
+        'tishina': [{title: 'Медитация', url: '/works/meditation'}],
+        'energy': [{title: 'Пульс города', url: '/works/city-pulse'}],
+        'thought': [{title: 'Стихотворение', url: '/works/poem'}],
+        'drama': [{title: 'Конфликт', url: '/works/conflict'}],
+        'chaos': [{title: 'Случайный коллаж', url: '/works/random-collage'}],
+        'memory': [{title: 'Воспоминание', url: '/works/memory'}]
+    };
+
     const formItems = diagram.querySelectorAll('[data-form]');
     const contentItems = diagram.querySelectorAll('[data-content]');
     const allItems = [...formItems, ...contentItems];
 
-    // Активный элемент
     let activeItem = null;
+    let hideTimeout = null;
 
-    // ПОКАЗАТЬ ПОДСКАЗКУ
-    function showTooltip(item, event) {
-        const type = item.dataset.form ? 'form' : 'content';
+    function getItemTitle(item) {
+        const iconSpan = item.querySelector('.paradigm-item-icon');
+        let icon = '';
+        if (iconSpan) {
+            icon = iconSpan.textContent || iconSpan.innerText || '';
+            if (!icon.trim() && iconSpan.querySelector('img')) {
+                const img = iconSpan.querySelector('img');
+                icon = img.getAttribute('alt') || '🎨';
+            }
+        }
+        icon = icon.trim() || '🎨';
+        
+        const labelSpan = item.querySelector('.paradigm-item-label');
+        const label = labelSpan ? (labelSpan.textContent || labelSpan.innerText || '').trim() : '';
+        
+        return `${icon} ${label}`;
+    }
+
+    function getItemDescription(item) {
+        if (item.dataset.content) {
+            return item.dataset.description || feelingDescriptions[item.dataset.content] || '';
+        }
+        const form = item.dataset.form;
+        const descriptions = {
+            'text': 'Исследование языка как материала. Поэзия, эссе, манифесты.',
+            'image': 'Диалог с визуальным пространством. Фотография, графика, коллажи.',
+            'video': 'Время как измерение формы. Видеоарт, клипы, документация.',
+            'audio': 'Пространство слышимого. Звуковые эксперименты, композиции.',
+            'web': 'Интерактивные инсталляции, генеративное искусство, сетевые проекты.',
+            'object': 'Физические артефакты, инсталляции, материальные эксперименты.'
+        };
+        return descriptions[form] || '';
+    }
+
+    function getExamples(item) {
         const key = item.dataset.form || item.dataset.content;
-        const data = tooltipData[key];
+        
+        if (item.dataset.examples && item.dataset.examples !== '[]') {
+            try {
+                const examples = JSON.parse(item.dataset.examples);
+                if (Array.isArray(examples) && examples.length > 0) {
+                    return examples;
+                }
+            } catch(e) {
+                console.warn('Ошибка парсинга examples:', e);
+            }
+        }
+        
+        if (key && fallbackExamples[key]) {
+            return fallbackExamples[key];
+        }
+        return [];
+    }
 
-        if (!data) return;
+    function showTooltip(item, event) {
+        // Отменяем скрытие, если было запланировано
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+        }
+        
+        const iconSpan = item.querySelector('.paradigm-item-icon');
+        let icon = '';
+        if (iconSpan) {
+            icon = iconSpan.textContent || iconSpan.innerText || '';
+            if (!icon.trim() && iconSpan.querySelector('img')) {
+                const img = iconSpan.querySelector('img');
+                icon = img.getAttribute('alt') || '🎨';
+            }
+        }
+        icon = icon.trim() || '🎨';
+        
+        const labelSpan = item.querySelector('.paradigm-item-label');
+        const label = labelSpan ? (labelSpan.textContent || labelSpan.innerText || '').trim() : '';
+        const title = `${icon} ${label}`;
+        
+        const description = getItemDescription(item);
+        const examples = getExamples(item);
 
-        // Обновляем содержимое
-        tooltipTitle.textContent = data.title;
-        tooltipDescription.textContent = data.description;
+        const cleanTitle = title.replace(/<[^>]*>/g, '');
+        tooltipTitle.textContent = cleanTitle;
+        
+        if (hasDescription && tooltipDescription) {
+            if (description) {
+                tooltipDescription.style.display = 'block';
+                tooltipDescription.textContent = description;
+            } else {
+                tooltipDescription.style.display = 'none';
+            }
+        }
 
-        // Очищаем и добавляем примеры
         tooltipExamples.innerHTML = '';
-        data.examples.forEach(example => {
-            const badge = document.createElement('span');
-            badge.className = 'tooltip-badge';
-            badge.textContent = example;
-            badge.style.backgroundColor = badgeColors[key];
-            tooltipExamples.appendChild(badge);
-        });
+        
+        if (examples.length > 0) {
+            const examplesTitle = document.createElement('div');
+            examplesTitle.className = 'tooltip-examples-title';
+            examplesTitle.textContent = 'Примеры работ:';
+            tooltipExamples.appendChild(examplesTitle);
+            
+            const examplesList = document.createElement('div');
+            examplesList.className = 'tooltip-examples-list';
+            
+            examples.forEach(example => {
+                const link = document.createElement('a');
+                link.className = 'tooltip-badge';
+                link.textContent = example.title;
+                link.href = example.url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                
+                // Останавливаем всплытие, чтобы не скрывать тултип
+                link.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+                
+                // При наведении на ссылку — отменяем скрытие
+                link.addEventListener('mouseenter', function() {
+                    if (hideTimeout) {
+                        clearTimeout(hideTimeout);
+                        hideTimeout = null;
+                    }
+                });
+                
+                const key = item.dataset.form || item.dataset.content;
+                if (key && badgeColors[key]) {
+                    link.style.backgroundColor = badgeColors[key];
+                }
+                
+                examplesList.appendChild(link);
+            });
+            
+            tooltipExamples.appendChild(examplesList);
+        } else {
+            const noExamples = document.createElement('div');
+            noExamples.className = 'tooltip-no-examples';
+            noExamples.textContent = 'Примеры работ появятся позже';
+            tooltipExamples.appendChild(noExamples);
+        }
 
-        // Позиционируем подсказку
+        // Позиционирование
         const rect = item.getBoundingClientRect();
         const diagramRect = diagram.getBoundingClientRect();
 
-        // Определяем положение (сверху или снизу)
-        const spaceAbove = rect.top - diagramRect.top;
-        const spaceBelow = diagramRect.bottom - rect.bottom;
-
-        if (spaceBelow > 200 || spaceBelow > spaceAbove) {
-            // Показываем снизу
+        tooltip.style.position = 'absolute';
+        
+        if (rect.bottom + 250 < window.innerHeight) {
             tooltip.className = 'paradigm-tooltip active bottom';
             tooltip.style.top = (rect.bottom - diagramRect.top + 10) + 'px';
         } else {
-            // Показываем сверху
             tooltip.className = 'paradigm-tooltip active top';
             tooltip.style.top = (rect.top - diagramRect.top - tooltip.offsetHeight - 10) + 'px';
         }
 
-        // Центрируем по горизонтали
-        tooltip.style.left = (rect.left + rect.width/2 - tooltip.offsetWidth/2 - diagramRect.left) + 'px';
+        tooltip.style.left = (rect.left + rect.width/2 - tooltip.offsetWidth/2) + 'px';
+        tooltip.style.right = 'auto';
 
-        // Гарантируем, что подсказка не выходит за границы
         const tooltipRect = tooltip.getBoundingClientRect();
         if (tooltipRect.left < diagramRect.left) {
             tooltip.style.left = '0px';
@@ -157,14 +216,27 @@ document.addEventListener('DOMContentLoaded', function() {
             tooltip.style.left = (diagramRect.width - tooltip.offsetWidth) + 'px';
         }
 
-        // Активируем элемент
         if (activeItem) activeItem.classList.remove('active');
         item.classList.add('active');
         activeItem = item;
     }
 
-    // СКРЫТЬ ПОДСКАЗКУ
-    function hideTooltip() {
+    function scheduleHideTooltip() {
+        if (hideTimeout) clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(function() {
+            tooltip.classList.remove('active');
+            if (activeItem) {
+                activeItem.classList.remove('active');
+                activeItem = null;
+            }
+        }, 400);
+    }
+
+    function hideTooltipNow() {
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+        }
         tooltip.classList.remove('active');
         if (activeItem) {
             activeItem.classList.remove('active');
@@ -172,67 +244,65 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // ОБРАБОТЧИКИ СОБЫТИЙ
+    // Обработчики
     allItems.forEach(item => {
-        // Наведение
         item.addEventListener('mouseenter', function(e) {
             showTooltip(this, e);
         });
-
-        // Клик (для мобильных)
-        item.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                if (activeItem === this) {
-                    hideTooltip();
-                } else {
-                    showTooltip(this, e);
-                }
-            }
-        });
-
-        // Касание (для тач-устройств)
-        item.addEventListener('touchstart', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                if (activeItem === this) {
-                    hideTooltip();
-                } else {
-                    showTooltip(this, e);
-                }
-            }
+        
+        item.addEventListener('mouseleave', function(e) {
+            scheduleHideTooltip();
         });
     });
+    
+    // Тултип: при наведении — отменяем скрытие
+    tooltip.addEventListener('mouseenter', function() {
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+        }
+    });
+    
+    tooltip.addEventListener('mouseleave', function() {
+        scheduleHideTooltip();
+    });
+    
+    diagram.addEventListener('mouseleave', function() {
+        scheduleHideTooltip();
+    });
 
-    // Скрываем подсказку при уходе с диаграммы
-    diagram.addEventListener('mouseleave', hideTooltip);
+    // Мобильные устройства
+    diagram.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            const target = e.target.closest('.paradigm-item');
+            if (!target) {
+                hideTooltipNow();
+            }
+        }
+    });
 
-    // Скрываем при клике вне диаграммы (для мобильных)
     document.addEventListener('click', function(e) {
         if (window.innerWidth <= 768 && activeItem && !diagram.contains(e.target)) {
-            hideTooltip();
+            hideTooltipNow();
         }
     });
 
-    // АДАПТИВНОЕ ПОВЕДЕНИЕ
     function handleResize() {
-        // На мобильных скрываем подсказку при изменении ориентации
         if (window.innerWidth <= 768 && activeItem) {
-            hideTooltip();
+            hideTooltipNow();
         }
     }
-    
     window.addEventListener('resize', handleResize);
 
-    // АНИМАЦИЯ ПОЯВЛЕНИЯ
+    // Анимация
+    diagram.style.opacity = '0';
+    diagram.style.transform = 'translateY(20px)';
+    diagram.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    
     setTimeout(() => {
         diagram.style.opacity = '1';
         diagram.style.transform = 'translateY(0)';
     }, 300);
 
-    // ИНИЦИАЛИЗАЦИЯ
-    diagram.style.opacity = '0';
-    diagram.style.transform = 'translateY(20px)';
-    diagram.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-
-    console.log('Deboart Paradigm Diagram loaded successfully');
+    console.log('Deboart Paradigm Diagram v2.5 loaded');
 });
