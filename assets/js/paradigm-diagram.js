@@ -71,11 +71,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function getItemDescription(item) {
+        // Для содержаний используем статичные описания
         if (item.dataset.content) {
-            return item.dataset.description || feelingDescriptions[item.dataset.content] || '';
+            const descriptions = {
+                'tishina': 'Тишина и созерцание. Пространство между звуками, пауза, внутренний покой.',
+                'energy': 'Динамика, движение, напряжение. Работы, которые заряжают и трансформируют.',
+                'thought': 'Рефлексия, анализ, концептуальные исследования. Искусство как мышление.',
+                'drama': 'Конфликт, напряжение, нарратив. Эмоциональная интенсивность в форме.',
+                'chaos': 'Случайность, энтропия, неконтролируемые процессы. Красота в беспорядке.',
+                'memory': 'Время, ностальгия, архив. Что остаётся после момента?'
+            };
+            return descriptions[item.dataset.content] || '';
         }
+        
+        // Для форм
         const form = item.dataset.form;
-        const descriptions = {
+        const formDescriptions = {
             'text': 'Исследование языка как материала. Поэзия, эссе, манифесты.',
             'image': 'Диалог с визуальным пространством. Фотография, графика, коллажи.',
             'video': 'Время как измерение формы. Видеоарт, клипы, документация.',
@@ -83,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'web': 'Интерактивные инсталляции, генеративное искусство, сетевые проекты.',
             'object': 'Физические артефакты, инсталляции, материальные эксперименты.'
         };
-        return descriptions[form] || '';
+        return formDescriptions[form] || '';
     }
 
     function getExamples(item) {
