@@ -85,6 +85,28 @@ if ($has_taxonomies || $has_fields) : ?>
                     </div>
                 </div>
             <?php endif; endforeach; ?>
+
+            <!-- ТЕГИ -->
+            <?php
+            $post_tags = get_the_tags();
+            if ($post_tags && !is_wp_error($post_tags)) :
+            ?>
+                <div class="technical-card technical-tags">
+                    <div class="technical-icon">🏷️</div>
+                    <div class="technical-content">
+                        <h3 class="technical-label">Теги</h3>
+                        <div class="technical-tags-list">
+                            <?php foreach ($post_tags as $tag) : ?>
+                                <a href="<?php echo get_tag_link($tag->term_id); ?>" class="technical-tag">
+                                    #<?php echo esc_html($tag->name); ?>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+
         </div>
     </div>
 </section>
