@@ -51,10 +51,7 @@ require get_stylesheet_directory() . '/template-parts/site-header.php';
             $cover_id = get_post_thumbnail_id();
         }
         
-        // ЕСЛИ НЕТ ОБЛОЖКИ — ПРОПУСКАЕМ
-        if (!$cover_id) {
-            continue;
-        }
+        
         
         $cover_url = wp_get_attachment_image_url($cover_id, 'medium');
                     
