@@ -1095,3 +1095,106 @@
         gap: 0.75rem;
     }
 }
+
+/* Обложка (главное изображение) */
+.work-cover {
+    margin: 1rem 0 2rem;
+}
+
+.cover-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.cover-image-wrapper {
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cover-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.cover-image-wrapper:hover .cover-image {
+    transform: scale(1.02);
+}
+
+.cover-caption {
+    padding: 0.75rem;
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .work-cover {
+        margin: 0.75rem 0 1.5rem;
+    }
+    
+    .cover-image-wrapper {
+        border-radius: 8px;
+    }
+}
+
+
+/* ============================================
+   ТЕАЗЕР (краткое описание перед текстом)
+   ============================================ */
+
+.work-teaser {
+    margin: 0 0 2.5rem 0;
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid var(--wp--preset--color--accent-blue, #1A5FB4);
+    border-radius: 0 8px 8px 0;
+    position: relative;
+}
+
+.work-teaser .teaser-text {
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    font-style: italic;
+    margin: 0;
+}
+
+/* Декоративная кавычка */
+.work-teaser::before {
+    content: '"';
+    position: absolute;
+    top: -0.2rem;
+    left: 0.5rem;
+    font-family: var(--wp--preset--font-family--spectral, serif);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--wp--preset--color--accent-blue, #1A5FB4);
+    opacity: 0.3;
+    line-height: 1;
+    pointer-events: none;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .work-teaser {
+        padding: 1rem 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .work-teaser .teaser-text {
+        font-size: 0.95rem;
+    }
+    
+    .work-teaser::before {
+        font-size: 2.5rem;
+        left: 0.25rem;
+    }
+}
