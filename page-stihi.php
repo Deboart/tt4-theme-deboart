@@ -38,16 +38,25 @@ require get_stylesheet_directory() . '/template-parts/site-header.php';
                     'terms' => 'pojezija'
                 )
             ),
-            'orderby' => 'date',
+            'meta_key' => 'work_date',
+            'orderby' => 'meta_value_num',
             'order' => 'DESC'
         ));
 
             if ($stihi_query->have_posts()) :
                 while ($stihi_query->have_posts()) : $stihi_query->the_post();
-                    
-                    $pods = pods('work', get_the_ID());
-                    $cover_id = $pods->field('main_preview') ?: get_post_thumbnail_id();
-                    $cover_url = $cover_id ? wp_get_attachment_image_url($cover_id, 'medium') : '';
+                            // ПОЛУЧАЕМ ОБЛОЖКУ (без Pods)
+        $cover_id = get_post_meta(get_the_ID(), 'main_preview', true);
+        if (empty($cover_id)) {
+            $cover_id = get_post_thumbnail_id();
+        }
+        
+        // ЕСЛИ НЕТ ОБЛОЖКИ — ПРОПУСКАЕМ
+        if (!$cover_id) {
+            continue;
+        }
+        
+        $cover_url = wp_get_attachment_image_url($cover_id, 'medium');
                     
                     $work_date = get_post_meta(get_the_ID(), 'work_date', true);
                     $year = '';
