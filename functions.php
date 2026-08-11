@@ -1055,3 +1055,14 @@ add_action('wp_enqueue_scripts', function() {
         wp_enqueue_style('manifest-styles', get_stylesheet_directory_uri() . '/assets/css/manifest.css', array(), '1.0');
     }
 });
+
+
+// Подключаем глобальные стили для всех страниц
+add_action('wp_enqueue_scripts', function() {
+    wp_enqueue_style(
+        'deboart-page-styles',
+        get_stylesheet_directory_uri() . '/assets/css/pages/page.css',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/css/pages/page.css')
+    );
+});

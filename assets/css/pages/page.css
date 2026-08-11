@@ -1,0 +1,78 @@
+/* ============================================
+   ГЛОБАЛЬНЫЕ СТИЛИ ДЛЯ ВСЕХ СТРАНИЦ
+   ============================================ */
+
+.deboart-page {
+    padding: 2rem 0 4rem;
+    min-height: 60vh;
+}
+
+.deboart-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    width: 100%;
+}
+
+/* Шапка страницы (заголовок, описание) */
+.deboart-page .page-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.deboart-page .page-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.deboart-page .page-title {
+    margin: 0;
+}
+
+.deboart-page .page-intro {
+    margin: 1rem 0 0;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--wp--preset--color--accent-blue, #1A5FB4);
+    border-radius: 0 8px 8px 0;
+}
+
+.deboart-page .page-intro-text {
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+/* Основной контент страницы */
+.deboart-page .page-content {
+    font-family: var(--wp--preset--font-family--manrope, sans-serif);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px) {
+    .deboart-page {
+        padding: 1rem 0 3rem;
+    }
+    
+    .deboart-page-container {
+        padding: 0 1rem;
+    }
+    
+    .deboart-page .page-header {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+    }
+    
+    .deboart-page .page-intro {
+        padding: 0.75rem 1rem;
+    }
+}

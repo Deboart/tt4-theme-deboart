@@ -601,3 +601,81 @@
         transform: none;
     }
 }
+
+/* ============================================
+   ВЫПАДАЮЩЕЕ МЕНЮ (подпункты)
+   ============================================ */
+
+/* Родительский пункт — относительное позиционирование */
+.primary-menu .menu-item-has-children {
+    position: relative;
+}
+
+/* Подменю — скрыто по умолчанию */
+.primary-menu .sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: var(--wp--preset--color--primary-dark, #0D1B2A);
+    padding: 0.5rem 0;
+    margin: 0;
+    list-style: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+/* Показываем подменю при наведении на родительский пункт */
+.primary-menu .menu-item-has-children:hover .sub-menu {
+    display: block;
+}
+
+/* Стили для пунктов подменю */
+.primary-menu .sub-menu .menu-item {
+    display: block;
+    margin: 0;
+}
+
+.primary-menu .sub-menu .menu-item a {
+    display: block;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.primary-menu .sub-menu .menu-item a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--wp--preset--color--accent-blue, #1A5FB4);
+}
+
+/* Стрелочка-индикатор у пункта с подменю */
+.primary-menu .menu-item-has-children > a::after {
+    content: ' ▾';
+    font-size: 0.6rem;
+    opacity: 0.6;
+}
+
+/* ===== АДАПТИВ ДЛЯ МОБИЛЬНЫХ ===== */
+@media (max-width: 768px) {
+    /* На мобильных подменю показываем статически при клике */
+    .primary-menu .sub-menu {
+        position: static;
+        display: none;
+        border: none;
+        border-left: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0;
+        box-shadow: none;
+        padding-left: 1rem;
+        margin-top: 0.25rem;
+        background: transparent;
+    }
+    
+    .primary-menu .menu-item-has-children.active .sub-menu {
+        display: block;
+    }
+}
