@@ -150,3 +150,95 @@ a:hover {
     color: var(--color-accent);
     border: 1px solid rgba(255, 107, 157, 0.2);
 }
+
+/* ============================================
+   СТРАНИЦА СО СТИХАМИ — МОБИЛЬНАЯ АДАПТАЦИЯ
+   ============================================ */
+
+/* Контейнер для стихов */
+.stihi-feed {
+    overflow: hidden;
+}
+
+/* Каждый стих */
+.stihi-item {
+    overflow: hidden;
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Заголовок стиха */
+.stihi-item-title {
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Текст стихотворения */
+.stihi-item-excerpt {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    hyphens: auto;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+/* Обложка */
+.stihi-item-cover {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.stihi-item-cover img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Год */
+.stihi-item-year {
+    white-space: nowrap;
+}
+
+/* ===== МОБИЛЬНЫЕ ===== */
+@media (max-width: 768px) {
+    .stihi-item {
+        padding: 1rem 0.75rem;
+    }
+    
+    .stihi-item-title {
+        font-size: 1.2rem;
+        line-height: 1.3;
+    }
+    
+    .stihi-item-excerpt {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+    
+    .stihi-item-cover {
+        max-width: 100%;
+        margin: 0.75rem 0;
+    }
+    
+    .stihi-item-year {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stihi-item {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .stihi-item-title {
+        font-size: 1.1rem;
+    }
+    
+    .stihi-item-excerpt {
+        font-size: 0.85rem;
+    }
+}
