@@ -35,9 +35,6 @@ if ($cover_id) :
                      class="cover-image"
                      loading="eager">
             </a>
-            <?php if ($caption) : ?>
-                <p class="cover-caption"><?php echo esc_html($caption); ?></p>
-            <?php endif; ?>
         </div>
     </div>
 </section>
