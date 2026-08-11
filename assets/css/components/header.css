@@ -679,3 +679,26 @@
         display: block;
     }
 }
+
+/* ===== МОБИЛЬНОЕ МЕНЮ ===== */
+.mobile-nav .sub-menu {
+    display: none;
+    padding-left: 1.5rem;
+    margin: 0.25rem 0 0.5rem;
+    list-style: none;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav .menu-item-has-children.active .sub-menu {
+    display: block;
+}
+
+.mobile-nav .menu-item-has-children > a::after {
+    content: ' ▾';
+    font-size: 0.6rem;
+    opacity: 0.6;
+}
+
+.mobile-nav .menu-item-has-children.active > a::after {
+    content: ' ▴';
+}

@@ -1,6 +1,6 @@
 /**
  * Deboart - Навигация и мобильное меню
- * Версия 2.0 (кастомная реализация)
+ * Версия 2.2 (двойной клик для подменю на мобильных)
  */
 
 (function() {
@@ -9,39 +9,27 @@
     class DeboartNavigation {
         constructor() {
             this.menuToggle = document.querySelector('.menu-toggle');
-            this.menuClose = null; // Кнопка закрытия создается только при открытии
+            this.menuClose = null;
             this.primaryMenu = document.querySelector('.primary-menu');
+            this.mobileMenu = document.querySelector('.mobile-nav .mobile-primary-menu');
             this.body = document.body;
-            this.menuLinks = document.querySelectorAll('.primary-menu a');
+            this.menuLinks = document.querySelectorAll('.primary-menu a, .mobile-nav a');
             
             this.init();
         }
         
         init() {
-            if (!this.primaryMenu) return;
+            if (!this.primaryMenu && !this.mobileMenu) return;
             
-            // Создаем кнопку бургера, если её нет
             this.createToggleButton();
-            
-            // Добавляем обработчики
             this.addEventListeners();
-            
-            // Обработка выпадающих пунктов на мобильных
             this.setupDropdowns();
-            
-            // Начальное состояние
             this.checkScreenSize();
             
-            // Следим за изменением размера экрана
             window.addEventListener('resize', () => this.checkScreenSize());
         }
         
-        /**
-         * Создает только кнопку бургера
-         * Кнопка закрытия создается динамически при открытии меню
-         */
         createToggleButton() {
-            // Кнопка открытия (бургер)
             if (!this.menuToggle) {
                 const toggle = document.createElement('button');
                 toggle.className = 'menu-toggle';
@@ -63,33 +51,25 @@
             }
         }
         
-        /**
-         * Создает кнопку закрытия при открытии меню
-         */
         createCloseButton() {
-            if (this.menuClose) return; // Если уже есть, не создаем
+            if (this.menuClose) return;
             
             const close = document.createElement('button');
             close.className = 'menu-close';
             close.innerHTML = '✕';
             close.setAttribute('aria-label', 'Закрыть меню');
             
-            // Добавляем обработчик закрытия
             close.addEventListener('click', (e) => {
                 e.preventDefault();
                 this.closeMenu();
             });
             
-            // Вставляем в начало меню
             if (this.primaryMenu) {
                 this.primaryMenu.prepend(close);
                 this.menuClose = close;
             }
         }
         
-        /**
-         * Удаляет кнопку закрытия из DOM
-         */
         removeCloseButton() {
             if (this.menuClose && this.menuClose.parentNode) {
                 this.menuClose.parentNode.removeChild(this.menuClose);
@@ -98,7 +78,6 @@
         }
         
         addEventListeners() {
-            // Открытие меню по клику на бургер
             if (this.menuToggle) {
                 this.menuToggle.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -106,14 +85,12 @@
                 });
             }
             
-            // Закрытие по ESC
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && this.isMenuOpen()) {
                     this.closeMenu();
                 }
             });
             
-            // Закрытие по клику на ссылку
             this.menuLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     if (window.innerWidth <= 768 && this.isMenuOpen()) {
@@ -122,10 +99,10 @@
                 });
             });
             
-            // Закрытие по клику вне меню
             document.addEventListener('click', (e) => {
                 if (window.innerWidth <= 768 && this.isMenuOpen()) {
                     const isClickInside = this.primaryMenu?.contains(e.target) || 
+                                         this.mobileMenu?.contains(e.target) ||
                                          this.menuToggle?.contains(e.target);
                     
                     if (!isClickInside) {
@@ -136,17 +113,47 @@
         }
         
         setupDropdowns() {
-            // Для мобильных: клик по родительскому пункту открывает подменю
-            const dropdownItems = document.querySelectorAll('.primary-menu .has-children');
+            // ===== ДЛЯ ДЕСКТОПНОГО МЕНЮ =====
+            const desktopDropdowns = document.querySelectorAll('.primary-menu .menu-item-has-children');
             
-            dropdownItems.forEach(item => {
+            desktopDropdowns.forEach(item => {
                 const link = item.querySelector('a');
-                
                 if (link) {
                     link.addEventListener('click', (e) => {
                         if (window.innerWidth <= 768) {
                             e.preventDefault();
-                            item.classList.toggle('open');
+                            // Двойной клик: если уже открыто — переходим по ссылке
+                            if (item.classList.contains('active')) {
+                                window.location.href = link.href;
+                            } else {
+                                // Закрываем другие открытые подменю
+                                desktopDropdowns.forEach(other => {
+                                    if (other !== item) other.classList.remove('active');
+                                });
+                                item.classList.toggle('active');
+                            }
+                        }
+                    });
+                }
+            });
+            
+            // ===== ДЛЯ МОБИЛЬНОГО МЕНЮ =====
+            const mobileDropdowns = document.querySelectorAll('.mobile-nav .menu-item-has-children');
+            
+            mobileDropdowns.forEach(item => {
+                const link = item.querySelector('a');
+                if (link) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        // Двойной клик: если уже открыто — переходим по ссылке
+                        if (item.classList.contains('active')) {
+                            window.location.href = link.href;
+                        } else {
+                            // Закрываем другие открытые подменю
+                            mobileDropdowns.forEach(other => {
+                                if (other !== item) other.classList.remove('active');
+                            });
+                            item.classList.toggle('active');
                         }
                     });
                 }
@@ -154,7 +161,6 @@
         }
         
         openMenu() {
-            // Создаем кнопку закрытия при открытии
             this.createCloseButton();
             
             this.primaryMenu?.classList.add('is-open');
@@ -163,7 +169,6 @@
                 this.menuToggle.setAttribute('aria-expanded', 'true');
             }
             
-            // Блокируем скролл
             this.body.style.overflow = 'hidden';
         }
         
@@ -174,15 +179,16 @@
                 this.menuToggle.setAttribute('aria-expanded', 'false');
             }
             
-            // Возвращаем скролл
             this.body.style.overflow = '';
             
-            // Закрываем все открытые дропдауны
-            document.querySelectorAll('.primary-menu .has-children.open').forEach(item => {
-                item.classList.remove('open');
+            document.querySelectorAll('.primary-menu .menu-item-has-children.active').forEach(item => {
+                item.classList.remove('active');
             });
             
-            // Удаляем кнопку закрытия из DOM
+            document.querySelectorAll('.mobile-nav .menu-item-has-children.active').forEach(item => {
+                item.classList.remove('active');
+            });
+            
             this.removeCloseButton();
         }
         
@@ -192,7 +198,6 @@
         
         checkScreenSize() {
             if (window.innerWidth > 768) {
-                // На десктопе меню всегда видимо и без кнопки закрытия
                 if (this.isMenuOpen()) {
                     this.closeMenu();
                 }
@@ -201,7 +206,6 @@
         }
     }
 
-    // Инициализация после загрузки DOM
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             new DeboartNavigation();

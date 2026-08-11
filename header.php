@@ -132,16 +132,21 @@
                 <button class="mobile-menu-close">✕</button>
             </div>
             
-            <!-- РУЧНАЯ НАВИГАЦИЯ -->
-            <nav class="mobile-nav">
-                <ul class="mobile-primary-menu">
-                
-                    <li><a href="<?php echo esc_url(get_post_type_archive_link('work')); ?>">ИССЛЕДОВАНИЯ</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/lab/')); ?>">ЛАБОРАТОРИЯ</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/manifest/')); ?>">МАНИФЕСТ</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/protocols/')); ?>">ПРОТОКОЛЫ</a></li>
-                </ul>
-            </nav>
+<!-- РУЧНАЯ НАВИГАЦИЯ (мобильная) -->
+<nav class="mobile-nav">
+    <ul class="mobile-primary-menu">
+        <li class="menu-item-has-children">
+            <a href="<?php echo esc_url(get_post_type_archive_link('work')); ?>">ИССЛЕДОВАНИЯ</a>
+            <ul class="sub-menu">
+                <li><a href="<?php echo home_url('/poetry/'); ?>">Поэзия</a></li>
+                <!-- другие подпункты, если есть -->
+            </ul>
+        </li>
+        <li><a href="<?php echo esc_url(home_url('/lab/')); ?>">ЛАБОРАТОРИЯ</a></li>
+        <li><a href="<?php echo esc_url(home_url('/manifest/')); ?>">МАНИФЕСТ</a></li>
+        <li><a href="<?php echo esc_url(home_url('/protocols/')); ?>">ПРОТОКОЛЫ</a></li>
+    </ul>
+</nav>
             
             <!-- Дополнительные ссылки -->
             <div class="mobile-extra-links">
